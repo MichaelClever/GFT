@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { navLinks } from '@/content/site-nav';
 
 export function Navbar() {
     return (
@@ -23,9 +24,11 @@ export function Navbar() {
                         <div className="absolute right-[0px] bottom-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         
                         <nav className="flex gap-10 lg:gap-14 text-[#f3e5ab] font-lora text-[1.2rem] tracking-wide w-full justify-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] pr-6">
-                            <Link href="/teachers" className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(243,229,171,0.5)] transition-all">Teachers</Link>
-                            <Link href="/tools" className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(243,229,171,0.5)] transition-all">Tools</Link>
-                            <Link href="/research" className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(243,229,171,0.5)] transition-all">Research</Link>
+                            {navLinks.map((link) => (
+                                <Link key={link.href} href={link.href} className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(243,229,171,0.5)] transition-all">
+                                    {link.label}
+                                </Link>
+                            ))}
                         </nav>
                     </div>
 
