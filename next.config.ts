@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === 'production';
-
+// We enforce the GitHub Pages basePath locally as well
+// so that local development exactly mirrors production URLs without broken images
 const nextConfig: NextConfig = {
     output: 'export',
     images: {
         unoptimized: true,
     },
-    // Required for GitHub Pages deployment under a repository name
-    basePath: isProd ? '/GFT' : '',
-    assetPrefix: isProd ? '/GFT/' : '',
+    basePath: '/GFT',
+    assetPrefix: '/GFT/',
 };
 
 export default nextConfig;
