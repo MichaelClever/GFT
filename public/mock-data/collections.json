@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c1",
+    "handle": "flagship-games",
+    "title": "Flagship Logic Games",
+    "description": "Our most popular educational games that have stood the test of time.",
+    "image": {
+      "url": "/GFT/bg_creative.jpg",
+      "altText": "Flagship games collection"
+    }
+  },
+  {
+    "id": "c2",
+    "handle": "math-focused",
+    "title": "Mathematics Mastery",
+    "description": "Games designed specifically to build strong foundational and advanced math skills.",
+    "image": {
+      "url": "/GFT/bg_main.jpg",
+      "altText": "Math games collection"
+    }
+  }
+]

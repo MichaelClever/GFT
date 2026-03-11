@@ -1,0 +1,36 @@
+[
+  {
+    "id": "1",
+    "handle": "wff-n-proof",
+    "title": "WFF 'N PROOF: The Game of Modern Logic",
+    "description": "The classic educational game that teaches symbolic logic through engaging gameplay. Perfect for students and adults alike.",
+    "price": {
+      "amount": "49.99",
+      "currencyCode": "USD"
+    },
+    "images": [
+      {
+        "url": "/GFT/bg_creative.jpg",
+        "altText": "WFF 'N PROOF Box Set"
+      }
+    ],
+    "availableForSale": true
+  },
+  {
+    "id": "2",
+    "handle": "equations",
+    "title": "Equations: The Game of Creative Mathematics",
+    "description": "A fun and challenging game that develops math skills and mathematical reasoning.",
+    "price": {
+      "amount": "39.99",
+      "currencyCode": "USD"
+    },
+    "images": [
+      {
+        "url": "/GFT/bg_main.jpg",
+        "altText": "Equations Box Set"
+      }
+    ],
+    "availableForSale": true
+  }
+]

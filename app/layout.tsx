@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Cinzel_Decorative, Great_Vibes, Cinzel, Lora, EB_Garamond, Spectral } from "next/font/google";
 import "./globals.css";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/layout/Footer";
+import { CartProvider } from "@/features/cart/cart-context";
 
 const cinzelDecorative = Cinzel_Decorative({
     variable: "--font-cinzel-decorative",
@@ -52,8 +53,10 @@ export default function RootLayout({
                 className={`${cinzelDecorative.variable} ${greatVibes.variable} ${cinzel.variable} ${lora.variable} ${ebGaramond.variable} ${spectral.variable} antialiased text-[#f1e5d1] min-h-screen overflow-x-hidden flex flex-col`}
                 suppressHydrationWarning
             >
-                {children}
-                <Footer />
+                <CartProvider>
+                    {children}
+                    <Footer />
+                </CartProvider>
             </body>
         </html>
     );
