@@ -8,31 +8,31 @@ export default function Home() {
             name: 'Math',
             topIcon: <PlusSquare size={16} className="text-[#f1e5d1]" />,
             bottomIcon: <Hourglass size={16} className="text-[#f1e5d1]" />,
-            imagePath: '/Icon_math.png',
+            imagePath: '/GFT/Icon_math.png',
         },
         {
             name: 'Logic',
             topIcon: <Settings size={16} className="text-[#f1e5d1]" />,
             bottomIcon: <Settings size={16} className="text-[#f1e5d1]" />,
-            imagePath: '/icon_logic.png',
+            imagePath: '/GFT/icon_logic.png',
         },
         {
             name: 'Language',
-            topIcon: <Book size={16} className="text-[#f1e5d1]" />,
+            topIcon: <Scroll size={16} className="text-[#f1e5d1]" />,
             bottomIcon: <PenTool size={16} className="text-[#f1e5d1]" />,
-            imagePath: '/icon_language.png',
+            imagePath: '/GFT/icon_language.png',
         },
         {
             name: 'Science',
             topIcon: <Microscope size={16} className="text-[#f1e5d1]" />,
             bottomIcon: <FlaskConical size={16} className="text-[#f1e5d1]" />,
-            imagePath: '/Icon_science.png',
+            imagePath: '/GFT/Icon_science.png',
         },
         {
             name: 'Social',
             topIcon: <Globe size={16} className="text-[#f1e5d1]" />,
             bottomIcon: <Map size={16} className="text-[#f1e5d1]" />,
-            imagePath: '/icon_social.png',
+            imagePath: '/GFT/icon_social.png',
         },
     ];
 
@@ -104,7 +104,7 @@ export default function Home() {
                     {/* Video 1 */}
                     <div className="w-full md:w-1/2 aspect-video bg-[#1a0f0a] border-[3px] border-[#8c6a1d] rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.8),inset_0_0_20px_rgba(0,0,0,0.9)] flex items-center justify-center relative group overflow-hidden cursor-pointer">
                         {/* Fake thumbnail texture */}
-                        <div className="absolute inset-0 bg-[url('/bg_main.jpg')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity"></div>
+                        <div className="absolute inset-0 bg-[url('/GFT/bg_main.jpg')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0502] via-transparent to-[#0a0502] opacity-80"></div>
                         
                         {/* Play Button */}
@@ -117,7 +117,7 @@ export default function Home() {
                     {/* Video 2 */}
                     <div className="w-full md:w-1/2 aspect-video bg-[#1a0f0a] border-[3px] border-[#8c6a1d] rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.8),inset_0_0_20px_rgba(0,0,0,0.9)] flex items-center justify-center relative group overflow-hidden cursor-pointer">
                         {/* Fake thumbnail texture */}
-                        <div className="absolute inset-0 bg-[url('/bg_creative.jpg')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity"></div>
+                        <div className="absolute inset-0 bg-[url('/GFT/bg_creative.jpg')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0502] via-transparent to-[#0a0502] opacity-80"></div>
                         
                         {/* Play Button */}
