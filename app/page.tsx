@@ -29,7 +29,7 @@ export default function Home() {
             imagePath: '/GFT/Icon_science.png',
         },
         {
-            name: 'Social',
+            name: 'Social Studies',
             topIcon: <Globe size={16} className="text-[#f1e5d1]" />,
             bottomIcon: <Map size={16} className="text-[#f1e5d1]" />,
             imagePath: '/GFT/icon_social.png',
