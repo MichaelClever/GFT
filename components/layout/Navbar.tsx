@@ -83,14 +83,13 @@ export function Navbar() {
                                 Games For Thinkers
                             </Link>
                             
-                            {/* The Thinker Statue - Positioned to the right of the text and scaled precisely */}
-                            <div className="absolute left-full ml-3 pointer-events-none" style={{ top: '-38px', height: '105px', width: 'auto', zIndex: 30 }}>
-                                <img 
-                                    src="/GFT/thinker.png" 
-                                    alt="The Thinker" 
-                                    className="h-full w-auto object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)] filter transition-all hover:scale-105" 
-                                />
-                            </div>
+                            {/* The Thinker Statue - Scaled and pushed up to touch the top bounds */}
+                            <img 
+                                src="/GFT/thinker.png" 
+                                alt="The Thinker" 
+                                className="pointer-events-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)] filter transition-all hover:scale-105 ml-3 relative z-30" 
+                                style={{ height: '105px', width: 'auto', marginTop: '-38px' }}
+                            />
                         </div>
                     </div>
                 </div>
