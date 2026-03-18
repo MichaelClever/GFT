@@ -17,18 +17,26 @@ export function Navbar() {
 
                 {/* Unified Overlay Content Layer */}
                 <div className="w-full h-full flex z-20 relative px-[24px]">
-                    {/* Left Nav */}
+                    {/* Left Brand Text & Thinker */}
                     <div className="flex-1 h-[60px] flex items-center justify-center lg:pr-10 relative">
                         {/* Inner Nail Heads (Left Side of dip) */}
                         <div className="absolute right-[0px] top-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         <div className="absolute right-[0px] bottom-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
-                        <nav className="flex gap-6 lg:gap-10 text-[#f3e5ab] font-lora text-[1.2rem] tracking-wide w-full justify-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] pr-6 pl-4 lg:pl-6">
-                            {navLinks.map((link) => (
-                                <Link key={link.href} href={link.href} className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(243,229,171,0.5)] transition-all">
-                                    {link.label}
-                                </Link>
-                            ))}
-                        </nav>
+                        
+                        <div className="flex items-center relative">
+                            <Link href="/" className="font-cinzel-decorative text-[1rem] md:text-[1.1rem] font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-wide z-20 whitespace-nowrap">
+                                Games For Thinkers
+                            </Link>
+                            
+                            {/* The Thinker Statue - Positioned to the right of the text and scaled precisely */}
+                            <div className="absolute left-full ml-3 pointer-events-none" style={{ top: '-38px', height: '105px', width: 'auto', zIndex: 30 }}>
+                                <img 
+                                    src="/GFT/thinker.png" 
+                                    alt="The Thinker" 
+                                    className="h-full w-auto object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)] filter" 
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     {/* Center Gold Dip & Button */}
@@ -71,15 +79,19 @@ export function Navbar() {
                         </div>
                     </div>
 
-                    {/* Right Brand Text */}
+                    {/* Right Nav (Links) */}
                     <div className="flex-1 h-[60px] flex justify-center items-center lg:pl-10 pt-1 relative">
                         {/* Inner Nail Heads (Right Side of dip) */}
                         <div className="absolute left-[0px] top-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         <div className="absolute left-[0px] bottom-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         
-                        <Link href="/" className="font-cinzel-decorative text-[1rem] md:text-[1.1rem] font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-wide pl-6">
-                            Games For Thinkers
-                        </Link>
+                        <nav className="flex gap-6 lg:gap-10 text-[#f3e5ab] font-lora text-[1.2rem] tracking-wide w-full justify-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] pr-6 pl-4 lg:pl-6">
+                            {navLinks.map((link) => (
+                                <Link key={link.href} href={link.href} className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(243,229,171,0.5)] transition-all">
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
                     </div>
                 </div>
             </div>
