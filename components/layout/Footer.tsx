@@ -14,7 +14,7 @@ export function Footer() {
                         Accelerated Learning Foundation
                     </p>
                     <p className="text-[#f1e5d1] text-lg">A Non-Profit 501(c)(3) organization.</p>
-                    <p className="text-[#f1e5d1] text-lg">Publishers of WFF 'N PROOF</p>
+                    <p className="text-[#f1e5d1] text-lg">Publishers of WFF 'N PROOF - The Game of Modern Logic</p>
                     <div className="mt-4 flex gap-6 text-[1.1rem]">
                         <Link href="/history" className="hover:text-white transition-colors underline underline-offset-4 decoration-[#8c6a1d]">History</Link>
                         <Link href="/mission" className="hover:text-white transition-colors underline underline-offset-4 decoration-[#8c6a1d]">Mission</Link>
