@@ -23,9 +23,9 @@ export function Navbar() {
                         <div className="absolute right-[0px] top-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         <div className="absolute right-[0px] bottom-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         
-                        <nav className="flex gap-6 lg:gap-10 text-[#f3e5ab] font-lora text-[1.2rem] tracking-wide w-full justify-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] pr-6 pl-4 lg:pl-6">
+                        <nav className="flex gap-4 lg:gap-8 xl:gap-10 text-[#f3e5ab] font-lora text-[1.05rem] lg:text-[1.1rem] xl:text-[1.2rem] tracking-wide w-full justify-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] pr-6 pl-4 lg:pl-6">
                             {navLinks.map((link) => (
-                                <Link key={link.href} href={link.href} className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(243,229,171,0.5)] transition-all">
+                                <Link key={link.href} href={link.href} className="whitespace-nowrap hover:text-white hover:drop-shadow-[0_0_10px_rgba(243,229,171,0.5)] transition-all">
                                     {link.label}
                                 </Link>
                             ))}
