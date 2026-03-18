@@ -83,12 +83,12 @@ export function Navbar() {
                                 Games For Thinkers
                             </Link>
                             
-                            {/* The Thinker Statue - Scaled down 75% to act as a proper inline logo companion */}
+                            {/* The Thinker Statue - Scaled to 3/4 of original 105px size */}
                             <img 
                                 src="/GFT/thinker.png" 
                                 alt="The Thinker" 
-                                className="pointer-events-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)] filter transition-all hover:scale-105 ml-4 relative z-30" 
-                                style={{ height: '32px', width: 'auto' }}
+                                className="pointer-events-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)] filter transition-all hover:scale-105 ml-3 relative z-30" 
+                                style={{ height: '80px', width: 'auto', marginTop: '-28px' }}
                             />
                         </div>
                     </div>
