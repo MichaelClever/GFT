@@ -80,17 +80,12 @@ export function ResearchBookInner() {
                 onFlip={handleFlip}
             >
                 {/* 1. Front Cover (Index 0) */}
-                <Page className="bg-[#1f110a] bg-[url('/GFT/bg_main.jpg')] bg-cover bg-center border-[5px] border-[#8c6a1d] shadow-[inset_0_0_60px_rgba(0,0,0,1)] rounded-l-md">
+                <Page className="bg-[#1f110a] bg-[url('/GFT/leather.jpg')] bg-repeat border-[5px] border-[#8c6a1d] shadow-[inset_0_0_60px_rgba(0,0,0,1)] rounded-l-md">
                     {/* Dark Leather Texture Overlay */}
-                    <div className="absolute inset-0 bg-[#2a1105]/90 mix-blend-multiply"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#110500]/70 to-transparent"></div>
+                    <div className="absolute inset-0 bg-[#3a1d10]/40 mix-blend-multiply pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#110500]/70 to-transparent pointer-events-none"></div>
 
                     <div className="h-full w-full flex flex-col items-center justify-center text-[#fdf5d3] text-center px-4 relative z-10">
-                        {/* Faint ambient graphical watermark of Thinker in the background */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-[0.15] pointer-events-none mix-blend-screen scale-110">
-                            <img src="/GFT/thinker.png" alt="Cover Art Background" className="w-[90%] h-auto drop-shadow-2xl" />
-                        </div>
-                        
                         {/* Central bold graphical logo */}
                         <div className="relative w-28 h-28 rounded-full border-[3px] border-[#d4af37] flex items-center justify-center mb-10 shadow-[0_0_20px_rgba(212,175,55,0.6)] bg-black/60 backdrop-blur-sm z-10">
                             <img src="/GFT/thinker.png" alt="Thinker Centerpiece" className="h-20 w-auto drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)] brightness-110 sepia-[0.4]" />
@@ -303,10 +298,10 @@ export function ResearchBookInner() {
                 </Page>
 
                 {/* 14. Back Cover */}
-                <Page className="bg-[#1f110a] bg-[url('/GFT/bg_main.jpg')] bg-cover bg-center border-[5px] border-[#8c6a1d] shadow-[inset_0_0_60px_rgba(0,0,0,1)] rounded-r-md">
+                <Page className="bg-[#1f110a] bg-[url('/GFT/leather.jpg')] bg-repeat border-[5px] border-[#8c6a1d] shadow-[inset_0_0_60px_rgba(0,0,0,1)] rounded-r-md">
                     {/* Dark Leather Texture Overlay */}
-                    <div className="absolute inset-0 bg-[#2a1105]/90 mix-blend-multiply"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#110500]/70 to-transparent"></div>
+                    <div className="absolute inset-0 bg-[#3a1d10]/40 mix-blend-multiply pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#110500]/70 to-transparent pointer-events-none"></div>
 
                     <div className="h-full w-full flex flex-col items-center justify-center text-[#fdf5d3] text-center relative z-10">
                         <h3 className="font-cinzel-decorative text-2xl mb-4 text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-widest leading-snug">Games For Thinkers</h3>
