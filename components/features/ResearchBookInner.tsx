@@ -32,11 +32,13 @@ Page.displayName = 'Page';
 export function ResearchBookInner() {
     const bookRef = useRef<any>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const [isClosed, setIsClosed] = useState(true);
+    
+    type CoverState = 'front' | 'open' | 'back';
+    const [coverState, setCoverState] = useState<CoverState>('front');
 
     // Initial mount hydration layout check
     useEffect(() => {
-        setIsClosed(true);
+        setCoverState('front');
     }, []);
 
     // TOC Interaction Handler
@@ -47,20 +49,28 @@ export function ResearchBookInner() {
     };
 
     const handleFlip = (e: any) => {
-        // e.data === 0 means we are on the cover (index 0).
-        if (e.data === 0 || e.data >= 13) {
-            setIsClosed(true);
+        // e.data indicates the current left-page index being shown
+        if (e.data === 0) {
+            setCoverState('front');
+        } else if (e.data >= 13) {
+            setCoverState('back');
         } else {
-            setIsClosed(false);
+            setCoverState('open');
         }
     };
 
+    const getTransformClass = () => {
+        if (coverState === 'front') return 'md:-translate-x-[25%]';
+        if (coverState === 'back') return 'md:translate-x-[25%]';
+        return 'translate-x-0';
+    };
+
     return (
-        // For react-pageflip, closed cover natively draws on the right side of a massive 2-page spreader. 
-        // Applying a dynamic visual -25% transform offset when 'closed' precisely recenters the Book in the layout!
+        // react-pageflip draws the front cover on the RIGHT half, and back cover on the LEFT half, of a 2-page spread.
+        // We dynamically translate -25% (left) or +25% (right) to perfectly center whichever single cover is showing!
         <div 
             ref={containerRef}
-            className={`flex justify-center items-center w-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] z-20 mx-auto transition-transform duration-700 ease-in-out origin-center ${isClosed ? 'md:-translate-x-[25%]' : 'translate-x-0'}`}
+            className={`flex justify-center items-center w-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] z-20 mx-auto transition-transform duration-700 ease-in-out origin-center ${getTransformClass()}`}
         >
             {/* @ts-ignore */}
             <HTMLFlipBook 
