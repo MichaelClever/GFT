@@ -38,7 +38,7 @@ export default function PlayOnlinePage() {
                             </div>
                         </a>
                         
-                        <p className="text-[#f1e5d1] text-[0.95rem] md:text-[1rem] leading-relaxed font-lora">
+                        <p className="text-[#f1e5d1] text-[0.95rem] md:text-[1rem] leading-relaxed font-lora text-left w-full">
                             Login to create a member account for free. Begin your journey into the world of Propaganda. Discover the ease of learning to recognize various techniques of manipulation and faulty reasoning. We will start by getting comfortable with simple examples that we can all relate to.
                         </p>
                     </div>
@@ -67,8 +67,8 @@ export default function PlayOnlinePage() {
                             </div>
                         </a>
                         
-                        <p className="text-[#f1e5d1] text-[0.95rem] md:text-[1rem] leading-relaxed font-lora">
-                            Math Science Quest is a fun way to learn the fundamental reasoning skills that are the essence of scientific method. It can be played as an individual puzzle or a multi-player game. Players explore a complex mathematical puzzle attempting to find all the solutions. Experiments can be designed to provide additional information about the resources and concepts used in the undiscovered solutions. Through this elegant and concentrated simulation of scientific method, players develop powerful analytical and intuitive abilities. Math Science Quest creates an integrated improvement in thinking, reasoning, and mathematical comprehension.
+                        <p className="text-[#f1e5d1] text-[0.95rem] md:text-[1rem] leading-relaxed font-lora text-left w-full">
+                            Math Science Quest is a fun way to learn the fundamental reasoning skills that are the essence of scientific method. It can be played as an individual puzzle or a multi-player game. Players explore a complex mathematical puzzle attempting to find all the solutions.
                         </p>
                     </div>
 
