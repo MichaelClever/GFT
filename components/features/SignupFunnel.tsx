@@ -27,7 +27,11 @@ export function SignupFunnel() {
                     subject: `Webinar Registration - ${name}`,
                     from_name: "GFT Webinar Portal", 
                     replyto: email,
-                    message: `New Webinar Registration received!\n\nName: ${name}\nEmail: ${email}\nSelected Date: ${date}\nSelected Time: ${time}\nTime Zone: ${timezone}`
+                    Name: name,
+                    Email: email,
+                    Selected_Date: date,
+                    Selected_Time: time,
+                    Time_Zone: timezone
                 })
             });
         } catch (error) {
