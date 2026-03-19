@@ -24,14 +24,13 @@ export function SignupFunnel() {
                 },
                 body: JSON.stringify({
                     access_key: "958ee4fc-f53e-4082-acf8-acdda542dfcb",
-                    subject: `Webinar Registration - ${name}`,
-                    from_name: "GFT Webinar Portal", 
-                    replyto: email,
-                    Name: name,
-                    Email: email,
-                    Selected_Date: date,
-                    Selected_Time: time,
-                    Time_Zone: timezone
+                    subject: "New Webinar Registration!",
+                    from_name: "Webinar Portal", 
+                    name: name,
+                    email: email,
+                    date: date,
+                    time: time,
+                    timezone: timezone
                 })
             });
         } catch (error) {
