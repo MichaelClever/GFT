@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode, useRef, useState, useEffect } from 'react';
 // @ts-ignore - The types for this legacy module break with React 19 forwardRef patterns
 import HTMLFlipBook from 'react-pageflip';
 
@@ -17,10 +17,10 @@ const Page = forwardRef<HTMLDivElement, PageProps>((props, ref) => {
         {props.children}
       </div>
       
-      {/* Page Numbers */}
+      {/* Page Numbers at Bottom Right - As requested by user */}
       {props.number && (
-        <div className="absolute bottom-4 inset-x-0 text-center text-sm font-cinzel opacity-60">
-            - {props.number} -
+        <div className="absolute bottom-6 right-8 text-right text-[0.95rem] font-bold font-cinzel opacity-80 text-[#5c3a21]">
+            Page {props.number}
         </div>
       )}
     </div>
@@ -30,8 +30,38 @@ const Page = forwardRef<HTMLDivElement, PageProps>((props, ref) => {
 Page.displayName = 'Page';
 
 export function ResearchBookInner() {
+    const bookRef = useRef<any>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [isClosed, setIsClosed] = useState(true);
+
+    // Initial mount hydration layout check
+    useEffect(() => {
+        setIsClosed(true);
+    }, []);
+
+    // TOC Interaction Handler
+    const goToPage = (pageIndex: number) => {
+        if (bookRef.current && bookRef.current.pageFlip()) {
+            bookRef.current.pageFlip().flip(pageIndex);
+        }
+    };
+
+    const handleFlip = (e: any) => {
+        // e.data === 0 means we are on the cover (index 0).
+        if (e.data === 0 || e.data >= 13) {
+            setIsClosed(true);
+        } else {
+            setIsClosed(false);
+        }
+    };
+
     return (
-        <div className="flex justify-center items-center w-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] z-20 mx-auto">
+        // For react-pageflip, closed cover natively draws on the right side of a massive 2-page spreader. 
+        // Applying a dynamic visual -25% transform offset when 'closed' precisely recenters the Book in the layout!
+        <div 
+            ref={containerRef}
+            className={`flex justify-center items-center w-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] z-20 mx-auto transition-transform duration-700 ease-in-out origin-center ${isClosed ? 'md:-translate-x-[25%]' : 'translate-x-0'}`}
+        >
             {/* @ts-ignore */}
             <HTMLFlipBook 
                 width={480} 
@@ -46,34 +76,45 @@ export function ResearchBookInner() {
                 mobileScrollSupport={true}
                 className="book-theme mx-auto"
                 style={{ margin: '0 auto' }}
+                ref={bookRef}
+                onFlip={handleFlip}
             >
-                {/* 1. Front Cover */}
+                {/* 1. Front Cover (Index 0) */}
                 <Page className="bg-[#2a1b12] border-[5px] border-[#8c6a1d] shadow-[inset_0_0_50px_rgba(0,0,0,0.9)] rounded-l-md">
-                    <div className="h-full w-full flex flex-col items-center justify-center text-[#fdf5d3] text-center px-4">
-                        <div className="w-16 h-16 rounded-full border-2 border-[#d4af37] flex items-center justify-center mb-10 opacity-70 shadow-[0_0_15px_rgba(212,175,55,0.4)]">
-                            <img src="/GFT/thinker.png" alt="Thinker" className="h-10 w-auto invert drop-shadow-md brightness-0 sepia opacity-80" />
+                    <div className="h-full w-full flex flex-col items-center justify-center text-[#fdf5d3] text-center px-4 relative">
+                        {/* Faint ambient graphical watermark of Thinker in the background */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-[0.15] pointer-events-none mix-blend-screen scale-110">
+                            <img src="/GFT/thinker.png" alt="Cover Art Background" className="w-[90%] h-auto drop-shadow-2xl" />
                         </div>
-                        <h1 className="font-cinzel-decorative text-4xl mb-8 text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-wide">Summary of Research</h1>
-                        <div className="h-1 w-24 bg-[#d4af37] mb-8 shadow-[0_0_10px_rgba(212,175,55,0.8)] opacity-80"></div>
-                        <h2 className="font-lora text-2xl mb-4 italic text-[#e2bc3b] drop-shadow-md">On the WFF 'N PROOF</h2>
-                        <h3 className="font-cinzel text-[1.1rem] text-[#fdf5d3] tracking-widest mt-6 opacity-90">Instructional Gaming Program</h3>
+                        
+                        {/* Central bold graphical logo */}
+                        <div className="relative w-28 h-28 rounded-full border-[3px] border-[#d4af37] flex items-center justify-center mb-10 shadow-[0_0_20px_rgba(212,175,55,0.6)] bg-black/60 backdrop-blur-sm z-10">
+                            <img src="/GFT/thinker.png" alt="Thinker Centerpiece" className="h-20 w-auto drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)] brightness-110 sepia-[0.4]" />
+                        </div>
+
+                        <h1 className="font-cinzel-decorative text-[2.5rem] mb-6 text-[#f3e5ab] drop-shadow-[0_4px_6px_rgba(0,0,0,1)] tracking-wide relative z-10 leading-tight">Summary of Research</h1>
+                        
+                        <div className="h-1 w-24 bg-[#d4af37] mb-8 shadow-[0_0_10px_rgba(212,175,55,0.8)] opacity-90 relative z-10"></div>
+                        
+                        <h2 className="font-lora text-2xl mb-4 italic text-[#e2bc3b] drop-shadow-md relative z-10">On the WFF 'N PROOF</h2>
+                        <h3 className="font-cinzel text-[1.1rem] text-[#fdf5d3] tracking-widest mt-6 opacity-90 relative z-10 bg-[#1a0f0a]/80 px-6 py-3 rounded border border-[#d4af37]/40 shadow-[0_4px_10px_rgba(0,0,0,0.5)]">Instructional Gaming Program</h3>
                     </div>
                 </Page>
 
-                {/* 2. TOC */}
+                {/* 2. TOC (Index 1) */}
                 <Page number="1">
                     <div className="h-full flex flex-col font-lora">
                         <h2 className="font-cinzel-decorative text-3xl text-center mb-8 font-bold border-b-2 border-[#8c6a1d] pb-4 text-[#5c3a21]">Table of Contents</h2>
                         <ul className="space-y-4 text-[0.95rem] md:text-[1rem] leading-relaxed relative z-10 font-bold text-[#3a1d10]">
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span>Research on the WFF 'N PROOF...</span> <span>2</span></li>
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span>Higher IQ Scores</span> <span>3</span></li>
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span>Increased Math Achievement</span> <span>4</span></li>
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span>Low Ability Students Improve the Most!</span> <span>5</span></li>
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span>Dramatically Improved Attendance</span> <span>6</span></li>
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span>Increased Skill in Applying Math Ideas</span> <span>7</span></li>
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span className="max-w-[85%]">Dramatic Success in Reinforcing Concepts...</span> <span>9</span></li>
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span className="max-w-[85%]">Future Directions for Research</span> <span>10</span></li>
-                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2"><span>Study and Beta Test Schools Welcome</span> <span>11</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(2)}><span>Research on the WFF 'N PROOF...</span> <span>2</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(3)}><span>Higher IQ Scores</span> <span>3</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(4)}><span>Increased Math Achievement</span> <span>4</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(5)}><span>Low Ability Students Improve the Most!</span> <span>5</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(6)}><span>Dramatically Improved Attendance</span> <span>6</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(7)}><span>Increased Skill in Applying Math Ideas</span> <span>7</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(9)}><span className="max-w-[85%]">Dramatic Success in Reinforcing Concepts...</span> <span>9</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(10)}><span className="max-w-[85%]">Future Directions for Research</span> <span>10</span></li>
+                            <li className="flex justify-between border-b border-[#8c6a1d]/30 pb-2 cursor-pointer hover:text-[#c64a22] transition-colors" onClick={() => goToPage(11)}><span>Study and Beta Test Schools Welcome</span> <span>11</span></li>
                         </ul>
                     </div>
                 </Page>
