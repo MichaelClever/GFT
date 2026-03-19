@@ -16,23 +16,25 @@ export function SignupFunnel() {
         setIsSubmitting(true);
         
         try {
-            await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    access_key: "e413ec97-023a-411d-a414-004ad1f333f9",
-                    subject: "New Webinar Registration!",
-                    from_name: "Webinar Portal", 
-                    name: name,
-                    email: email,
-                    date: date,
-                    time: time,
-                    timezone: timezone
-                })
+            const formData = new FormData();
+            formData.append("access_key", "e413ec97-023a-411d-a414-004ad1f333f9");
+            formData.append("subject", "New Webinar Registration!");
+            formData.append("from_name", "Webinar Portal");
+            formData.append("name", name);
+            formData.append("email", email);
+            formData.append("Date Selected", date);
+            formData.append("Time Selected", time);
+            formData.append("Timezone", timezone);
+
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
             });
+            
+            const data = await response.json();
+            if (!data.success) {
+                console.error("API Response Failure:", data.message);
+            }
         } catch (error) {
             console.error("API Transmission Failed:", error);
         }
