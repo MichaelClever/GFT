@@ -15,23 +15,27 @@ export function SignupFunnel() {
     const handleRegister = async () => {
         setIsSubmitting(true);
         
-        // Simulating the backend API POST request for standard UX validation.
-        // Once an API token for Resend or Web3Forms is injected, the payload below will be securely piped out!
-        /*
-          await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: JSON.stringify({
-              access_key: "YOUR_ACCESS_KEY_HERE",
-              subject: `Webinar Registration - ${name}`,
-              from_name: "Webinar Portal", // Must not spoof their email here!
-              replyto: email,             // This guarantees hitting "Reply" in Gmail replies to the user perfectly!
-              message: `New Webinar Registration!\n\nName: ${name}\nEmail: ${email}\nDate: ${date}\nTime: ${time}\nZone: ${timezone}`
-            })
-          });
-        */
+        try {
+            await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: "958ee4fc-f53e-4082-acf8-acdda542dfcb",
+                    subject: `Webinar Registration - ${name}`,
+                    from_name: "GFT Webinar Portal", 
+                    replyto: email,
+                    message: `New Webinar Registration received!\n\nName: ${name}\nEmail: ${email}\nSelected Date: ${date}\nSelected Time: ${time}\nTime Zone: ${timezone}`
+                })
+            });
+        } catch (error) {
+            console.error("API Transmission Failed:", error);
+        }
 
-        // Cinematic loading delay to give the user confidence that the server is crunching their payload
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        // Slight artificial buffer explicitly to let the cinematic loading spinner complete its first rotation gracefully before snapping to the UI success screen! 
+        await new Promise((resolve) => setTimeout(resolve, 600));
         
         setIsSubmitting(false);
         setIsSubmitted(true);
