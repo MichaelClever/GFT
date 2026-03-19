@@ -23,7 +23,7 @@ export function SignupFunnel() {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    access_key: "958ee4fc-f53e-4082-acf8-acdda542dfcb",
+                    access_key: "e413ec97-023a-411d-a414-004ad1f333f9",
                     subject: "New Webinar Registration!",
                     from_name: "Webinar Portal", 
                     name: name,
