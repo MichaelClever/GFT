@@ -33,9 +33,32 @@ export default function MathPage() {
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
                         <ProductCard 
+                            title="Real Numbers"
+                            imageSrc="/GFT/real.jpeg"
+                            description="The REAL NUMBERS game was designed as a prelude to EQUATIONS. It comes in a handy 5-game kit that can be clipped to a pen in your shirt pocket."
+                        />
+                    </div>
+                    
+                    {/* Row 2 */}
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
+                        <ProductCard 
                             title="Offline Bundle"
                             imageSrc="/GFT/bundle.jpeg"
                             description="The ultimate package combining both EQUATIONS and ON-SETS alongside exclusive offline resources. Perfect for classrooms and family game nights."
+                        />
+                    </div>
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
+                        <ProductCard 
+                            title="Classroom Set"
+                            imageSrc="/GFT/class.jpeg"
+                            description="A Classroom Set contains all the materials needed to conduct classroom tournaments with up to 36 students at a time. They can be made up for any of six chosen games."
+                        />
+                    </div>
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
+                        <ProductCard 
+                            title="EQUATIONS MASTERY COLLECTION CD"
+                            imageSrc="/GFT/eqmastery.jpeg"
+                            description="An encyclopedic anthology of early software programs that teach a broad range of math concepts using an expert computer system capable of playing and monitoring EQUATIONS matches."
                         />
                     </div>
                 </div>
