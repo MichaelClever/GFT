@@ -21,6 +21,7 @@ export default function MathPage() {
                             imageSrc="/GFT/equations.jpeg"
                             description="The renowned game that makes learning mathematics fun and challenging. Players form equations to explore mathematical concepts from basic arithmetic to complex algebraic expressions."
                             howToPlayVideoUrl="https://player.vimeo.com/video/72991096"
+                            detailsVideoUrl="https://player.vimeo.com/video/1176696375?autoplay=1&muted=0"
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
@@ -29,6 +30,7 @@ export default function MathPage() {
                             imageSrc="/GFT/onsets.jpg"
                             description="A captivating game of set theory where players use logic and reasoning to build sets and solve spatial puzzles. Highly effective for enhancing analytical thinking and problem-solving skills."
                             howToPlayVideoUrl="https://player.vimeo.com/video/78000358"
+                            detailsVideoUrl="https://player.vimeo.com/video/1176706242?autoplay=1&muted=0"
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">

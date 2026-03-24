@@ -7,22 +7,24 @@ interface ProductCardProps {
     imageSrc: string;
     description?: string;
     howToPlayVideoUrl?: string;
+    detailsVideoUrl?: string;
 }
 
-export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl }: ProductCardProps) {
+export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl }: ProductCardProps) {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
+    const [isDetailsVideoOpen, setIsDetailsVideoOpen] = useState(false);
     const [lightboxMounted, setLightboxMounted] = useState(false);
     const [quantity, setQuantity] = useState<number | string>(1);
 
     useEffect(() => {
-        if (isLightboxOpen || isVideoOpen) {
+        if (isLightboxOpen || isVideoOpen || isDetailsVideoOpen) {
             const timer = setTimeout(() => setLightboxMounted(true), 10);
             return () => clearTimeout(timer);
         } else {
             setLightboxMounted(false);
         }
-    }, [isLightboxOpen, isVideoOpen]);
+    }, [isLightboxOpen, isVideoOpen, isDetailsVideoOpen]);
 
     const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
@@ -97,7 +99,10 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl }:
                         >
                             How to Play
                         </button>
-                        <button className="py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide">
+                        <button 
+                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!detailsVideoUrl && "opacity-50 cursor-not-allowed"}`}
+                            onClick={() => { if (detailsVideoUrl) setIsDetailsVideoOpen(true); }}
+                        >
                             Details
                         </button>
                     </div>
@@ -148,7 +153,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl }:
                 </div>
             )}
 
-            {/* Video Lightbox Modal */}
+            {/* Video Lightbox Modal (How to Play) */}
             {isVideoOpen && howToPlayVideoUrl && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 lg:p-12">
                     <div 
@@ -167,6 +172,33 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl }:
                             <button 
                                 className={`absolute -top-12 right-0 md:-top-6 md:-right-12 w-12 h-12 bg-[#1a0f0a] border-2 border-[#d4af37] text-[#d4af37] rounded-full flex items-center justify-center text-2xl font-bold hover:bg-[#d4af37] hover:text-black transition-all duration-500 delay-300 pointer-events-auto shadow-[0_0_30px_rgba(212,175,55,0.4)] transform ${lightboxMounted ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
                                 onClick={() => setIsVideoOpen(false)}
+                            >
+                                ✕
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Video Lightbox Modal (Details) */}
+            {isDetailsVideoOpen && detailsVideoUrl && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 lg:p-12">
+                    <div 
+                        className={`absolute inset-0 bg-black/95 backdrop-blur-md cursor-pointer transition-opacity duration-500 ease-in-out ${lightboxMounted ? "opacity-100" : "opacity-0"}`}
+                        onClick={() => setIsDetailsVideoOpen(false)}
+                    />
+                    <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none">
+                        <div className="relative w-full max-w-5xl aspect-video flex items-center justify-center">
+                            <iframe 
+                                src={detailsVideoUrl} 
+                                className={`w-full h-full pointer-events-auto rounded shadow-[0_0_80px_rgba(212,175,55,0.25)] ring-1 ring-[#8c6a1d]/50 transition-all duration-700 ease-out transform ${lightboxMounted ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
+                                frameBorder="0" 
+                                allow="autoplay; fullscreen; picture-in-picture" 
+                                allowFullScreen
+                            />
+                            <button 
+                                className={`absolute -top-12 right-0 md:-top-6 md:-right-12 w-12 h-12 bg-[#1a0f0a] border-2 border-[#d4af37] text-[#d4af37] rounded-full flex items-center justify-center text-2xl font-bold hover:bg-[#d4af37] hover:text-black transition-all duration-500 delay-300 pointer-events-auto shadow-[0_0_30px_rgba(212,175,55,0.4)] transform ${lightboxMounted ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
+                                onClick={() => setIsDetailsVideoOpen(false)}
                             >
                                 ✕
                             </button>
