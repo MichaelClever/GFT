@@ -82,14 +82,6 @@ export function Navbar() {
                             <Link href="/" className="font-cinzel-decorative text-[1rem] md:text-[1.1rem] font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-wide pl-6 relative z-20 whitespace-nowrap">
                                 Games For Thinkers
                             </Link>
-                            
-                            {/* The Thinker Statue - Scaled to 3/4 of original 105px size */}
-                            <img 
-                                src="/GFT/thinker.png" 
-                                alt="The Thinker" 
-                                className="pointer-events-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)] filter transition-all hover:scale-105 ml-3 relative z-30" 
-                                style={{ height: '80px', width: 'auto', marginTop: '-28px' }}
-                            />
                         </div>
                     </div>
                 </div>
