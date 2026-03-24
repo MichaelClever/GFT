@@ -17,7 +17,7 @@ export default function MathPage() {
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
                         <ProductCard 
-                            title="EQUATIONS"
+                            title="EQUATIONS - The Game of Creative Mathematics"
                             imageSrc="/GFT/equations.jpeg"
                             description="The renowned game that makes learning mathematics fun and challenging. Players form equations to explore mathematical concepts from basic arithmetic to complex algebraic expressions."
                             howToPlayVideoUrl="https://player.vimeo.com/video/72991096"

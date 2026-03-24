@@ -47,9 +47,18 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl }:
         <div className="flex flex-col h-full bg-[#1a0f0a]/90 border-[2px] border-[#8c6a1d] rounded-xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.8)] font-lora">
             
             {/* Title Container (Top) */}
-            <div className="bg-[#0a0502] p-6 text-center shadow-inner">
-                <h3 className="font-cinzel text-xl md:text-2xl font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight">
-                    {title}
+            <div className="bg-[#0a0502] px-4 py-4 md:px-6 text-center shadow-inner flex flex-col justify-center items-center h-[5.5rem] md:h-[6.5rem]">
+                <h3 className="font-cinzel text-xl md:text-2xl font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight flex flex-col items-center justify-center">
+                    {title.includes(' - ') ? (
+                        <>
+                            <span>{title.split(' - ')[0]}</span>
+                            <span className="text-[0.65rem] md:text-[0.8rem] mt-1 font-lora italic tracking-wider opacity-90 block">
+                                - {title.split(' - ')[1]}
+                            </span>
+                        </>
+                    ) : (
+                        <span>{title}</span>
+                    )}
                 </h3>
             </div>
 
