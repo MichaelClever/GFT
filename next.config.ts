@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
         unoptimized: true,
     },
     basePath: '/GFT',
-    assetPrefix: '/GFT/',
 };
 
 export default nextConfig;
