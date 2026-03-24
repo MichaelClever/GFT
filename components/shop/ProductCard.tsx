@@ -84,7 +84,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl }:
                 
                 {description && (
                     <p className="text-[#f1e5d1] text-[1.05rem] mb-8 flex-1 opacity-90 leading-relaxed">
-                        <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{title}:</strong> {description}
+                        <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{title.split(' - ')[0]}:</strong> {description}
                     </p>
                 )}
 
