@@ -8,7 +8,7 @@ export default function MathPage() {
             
             <div className="flex-1 flex flex-col items-center p-8 md:p-16 max-w-[90rem] mx-auto w-full">
                 {/* Header */}
-                <div className="text-center mb-12 md:mb-16">
+                <div className="text-center mb-8 md:mb-12">
                     <h1 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold text-[#f3e5ab] tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] mb-6">
                         Math Games
                     </h1>
