@@ -8,23 +8,25 @@ interface ProductCardProps {
     description?: string;
     howToPlayVideoUrl?: string;
     detailsVideoUrl?: string;
+    titlePopupText?: string;
 }
 
-export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl }: ProductCardProps) {
+export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText }: ProductCardProps) {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const [isDetailsVideoOpen, setIsDetailsVideoOpen] = useState(false);
+    const [isTitlePopupOpen, setIsTitlePopupOpen] = useState(false);
     const [lightboxMounted, setLightboxMounted] = useState(false);
     const [quantity, setQuantity] = useState<number | string>(1);
 
     useEffect(() => {
-        if (isLightboxOpen || isVideoOpen || isDetailsVideoOpen) {
+        if (isLightboxOpen || isVideoOpen || isDetailsVideoOpen || isTitlePopupOpen) {
             const timer = setTimeout(() => setLightboxMounted(true), 10);
             return () => clearTimeout(timer);
         } else {
             setLightboxMounted(false);
         }
-    }, [isLightboxOpen, isVideoOpen, isDetailsVideoOpen]);
+    }, [isLightboxOpen, isVideoOpen, isDetailsVideoOpen, isTitlePopupOpen]);
 
     const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
@@ -49,7 +51,10 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         <div className="flex flex-col h-full bg-[#1a0f0a]/90 border-[2px] border-[#8c6a1d] rounded-xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.8)] font-lora">
             
             {/* Title Container (Top) */}
-            <div className="bg-[#0a0502] px-4 py-4 md:px-6 text-center shadow-inner flex flex-col justify-center items-center h-[5.5rem] md:h-[6.5rem]">
+            <div 
+                className={`bg-[#0a0502] px-4 py-4 md:px-6 text-center shadow-inner flex flex-col justify-center items-center h-[5.5rem] md:h-[6.5rem] ${titlePopupText ? 'cursor-pointer hover:bg-[#1a0f0a] transition-colors relative group' : ''}`}
+                onClick={() => { if (titlePopupText) setIsTitlePopupOpen(true); }}
+            >
                 <h3 className="font-cinzel text-xl md:text-2xl font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight flex flex-col items-center justify-center">
                     {title.includes(' - ') ? (
                         <>
@@ -94,16 +99,16 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                 <div className="flex flex-col space-y-4 mt-auto">
                     <div className="grid grid-cols-2 gap-4">
                         <button 
+                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!detailsVideoUrl && "opacity-50 cursor-not-allowed"}`}
+                            onClick={() => { if (detailsVideoUrl) setIsDetailsVideoOpen(true); }}
+                        >
+                            Introduction
+                        </button>
+                        <button 
                             className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!howToPlayVideoUrl && "opacity-50 cursor-not-allowed"}`}
                             onClick={() => { if (howToPlayVideoUrl) setIsVideoOpen(true); }}
                         >
                             How to Play
-                        </button>
-                        <button 
-                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!detailsVideoUrl && "opacity-50 cursor-not-allowed"}`}
-                            onClick={() => { if (detailsVideoUrl) setIsDetailsVideoOpen(true); }}
-                        >
-                            Details
                         </button>
                     </div>
                     
@@ -203,6 +208,40 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                                 ✕
                             </button>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Title Text Modal */}
+            {isTitlePopupOpen && titlePopupText && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 lg:p-12">
+                    <div 
+                        className={`absolute inset-0 bg-black/85 backdrop-blur-md cursor-pointer transition-opacity duration-500 ease-in-out ${lightboxMounted ? "opacity-100" : "opacity-0"}`}
+                        onClick={() => setIsTitlePopupOpen(false)}
+                    />
+                    <div className={`relative z-10 w-full max-w-3xl bg-[#0a0502]/85 backdrop-blur-xl border-2 border-[#d4af37]/40 rounded-xl shadow-[0_0_100px_rgba(212,175,55,0.15)] overflow-hidden transition-all duration-700 ease-out transform pointer-events-auto flex flex-col ${lightboxMounted ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-8"}`}>
+                        
+                        <div className="bg-[#1a0f0a] border-b border-[#d4af37]/30 px-6 py-5 flex justify-between items-center shadow-md">
+                            <div className="w-10 h-10 shrink-0"></div>
+                            <h2 className="font-cinzel text-xl md:text-2xl font-bold text-[#f3e5ab] tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-center flex-1">
+                                {title.split(' - ')[0]}
+                            </h2>
+                            <button 
+                                className="text-[#d4af37] hover:text-white transition-colors text-2xl leading-none w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 shrink-0"
+                                onClick={() => setIsTitlePopupOpen(false)}
+                            >
+                                ✕
+                            </button>
+                        </div>
+
+                        <div className="px-6 py-6 md:px-10 md:py-8 max-h-[70vh] overflow-y-auto w-full">
+                            <div className="text-[#f1e5d1] text-[1.05rem] md:text-lg leading-relaxed font-lora opacity-90 space-y-6">
+                                {titlePopupText.split('\n\n').map((paragraph, index) => (
+                                    <p key={index}>{paragraph}</p>
+                                ))}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             )}
