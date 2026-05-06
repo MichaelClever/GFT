@@ -99,13 +99,13 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                 <div className="flex flex-col space-y-4 mt-auto">
                     <div className="grid grid-cols-2 gap-4">
                         <button 
-                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!detailsVideoUrl && "opacity-50 cursor-not-allowed"}`}
+                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!detailsVideoUrl ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                             onClick={() => { if (detailsVideoUrl) setIsDetailsVideoOpen(true); }}
                         >
                             Introduction
                         </button>
                         <button 
-                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!howToPlayVideoUrl && "opacity-50 cursor-not-allowed"}`}
+                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!howToPlayVideoUrl ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                             onClick={() => { if (howToPlayVideoUrl) setIsVideoOpen(true); }}
                         >
                             How to Play
@@ -126,7 +126,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                                 className="w-20 md:w-24 bg-transparent text-[#fdf5d3] text-center font-bold text-xl focus:outline-none pb-1 [&::-webkit-outer-spin-button]:opacity-100 [&::-webkit-inner-spin-button]:opacity-100"
                             />
                         </div>
-                        <button className="flex-1 bg-gradient-to-b from-[#b58b29] to-[#8c6a1d] hover:from-[#d4af37] hover:to-[#a87d21] active:from-[#7a5c18] active:to-[#b58b29] text-[#1a0f0a] font-cinzel font-bold text-[1.1rem] md:text-xl py-3 px-4 rounded shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all flex items-center justify-center border-t border-[#f3e5ab]/30 tracking-wider">
+                        <button className="cursor-pointer flex-1 bg-gradient-to-b from-[#b58b29] to-[#8c6a1d] hover:from-[#d4af37] hover:to-[#a87d21] active:from-[#7a5c18] active:to-[#b58b29] text-[#1a0f0a] font-cinzel font-bold text-[1.1rem] md:text-xl py-3 px-4 rounded shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all flex items-center justify-center border-t border-[#f3e5ab]/30 tracking-wider">
                             Add to Cart
                         </button>
                     </div>
