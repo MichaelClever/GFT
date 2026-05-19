@@ -43,6 +43,13 @@ export default function LogicPage() {
                             titlePopupText="Hailed as “the granddaddy of educational games”, this is the original 1961 classic that teaches propositional logic and develops careful reasoning skills. Reviewers say WFF ‘N PROOF “has the complexity of chess and the excitement of poker”. It was the first resource allocation game – a format in which players explore diverse, creative ways of using fundamental concepts. WFF ‘N PROOF is a subtle sequence of twenty-one game levels with increasing challenge and sophistication. The beginning levels are speed games that can teach six-year olds how to recognize WFFs. (WFFs are Well Formed Formulas – expressions that are to symbolic logic what sentences are to English). Advanced games deal with the rules of inference, logical proof and the nature of formal systems, and will challenge intelligent adults.\n\nStudies have shown that summer school classes playing WFF ‘N PROOF intensively for three weeks experienced an average increase in IQ scores of 21 points. The game dramatically improves problem-solving skills, higher order thinking, and abstract reasoning. For people who like to think, WFF ‘N PROOF means fun for the whole family."
                         />
                     </div>
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
+                        <ProductCard 
+                            title="WFF - The Beginners Game of Modern Logic"
+                            imageSrc="/GFT/wff.jpg.jpeg"
+                            titlePopupText="WFF includes the first two games from the complete WFF ‘N PROOF series. Two engaging speed games allow players to learn to recognize WFF’s (Well Formed Formulas) in symbolic logic. Both Shake-a-WFF and Count-a-WFF are fast-paced, exciting games dealing with a unique symbolic system. They are an appealing exercise for all ages."
+                        />
+                    </div>
                 </div>
             </div>
         </main>
