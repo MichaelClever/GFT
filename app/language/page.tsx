@@ -39,6 +39,7 @@ export default function LanguagePage() {
                             title="LinguiSHTIK - A Creative Language Game"
                             imageSrc="/GFT/ling.jpeg"
                             howToPlayVideoUrl="https://player.vimeo.com/video/76225922?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
+                            detailsVideoUrl="https://player.vimeo.com/video/1193793956?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             titlePopupText="LinguiSHTIK is a multi-faceted resource allocation game focused on words, grammar and sentence structure. Players delve deeply into spelling, vocabulary, word functions, modern and traditional grammar, and the patterns and structure of sentences. Like other resource allocation games, LinguiSHITK can be played at many levels of sophistication from young children to intelligent adults. The complexity of the game is determined by the players, and the game graduates to the adventurous level in which players design new rules in each exciting and intriguing match."
                         />
                     </div>
