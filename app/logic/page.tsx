@@ -46,7 +46,7 @@ export default function LogicPage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
                         <ProductCard 
                             title="WFF - The Beginners Game of Modern Logic"
-                            imageSrc="/GFT/wff.jpg.jpeg"
+                            imageSrc="/GFT/wff.jpeg"
                             titlePopupText="WFF includes the first two games from the complete WFF ‘N PROOF series. Two engaging speed games allow players to learn to recognize WFF’s (Well Formed Formulas) in symbolic logic. Both Shake-a-WFF and Count-a-WFF are fast-paced, exciting games dealing with a unique symbolic system. They are an appealing exercise for all ages."
                         />
                     </div>
