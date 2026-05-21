@@ -64,7 +64,7 @@ export default function MathPage() {
                     {/* Row 2 */}
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
                         <ProductCard 
-                            title="Offline Bundle"
+                            title="Math Games Bundle"
                             imageSrc="/GFT/bundle.jpeg"
                             titlePopupText="The ultimate package combining both EQUATIONS and ON-SETS alongside exclusive offline resources. Perfect for classrooms and family game nights."
                         />
