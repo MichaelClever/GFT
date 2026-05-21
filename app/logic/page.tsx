@@ -50,6 +50,14 @@ export default function LogicPage() {
                             titlePopupText="WFF includes the first two games from the complete WFF ‘N PROOF series. Two engaging speed games allow players to learn to recognize WFF’s (Well Formed Formulas) in symbolic logic. Both Shake-a-WFF and Count-a-WFF are fast-paced, exciting games dealing with a unique symbolic system. They are an appealing exercise for all ages."
                         />
                     </div>
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
+                        <ProductCard 
+                            title="TAC-TICKLE"
+                            imageSrc="/GFT/tactickle.jpeg"
+                            howToPlayVideoUrl="https://player.vimeo.com/video/76225967?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
+                            titlePopupText="TAC-TICKLE is a sixteen-game kit that is as simple to learn as tic-tac-toe. The surface similarity ends quickly as learners discover the subtle and intricate sophistication of this deceptive little gem. TAC-TICKLE has been a favorite of computer programmers exploring the profound mathematical theory involved in adapting it to computerized play. The pocket-sized kit consists of a pair of playing boards, cubes, and directions. Cubes fit into a molded foam playing board that holds loose pieces tightly making it an ideal traveling game for children and adults."
+                        />
+                    </div>
                 </div>
             </div>
         </main>
