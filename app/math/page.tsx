@@ -83,6 +83,15 @@ export default function MathPage() {
                             titlePopupText="An encyclopedic anthology of early software programs that teach a broad range of math concepts using an expert computer system capable of playing and monitoring EQUATIONS matches."
                         />
                     </div>
+                    
+                    {/* Row 3 */}
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-700 fill-mode-both">
+                        <ProductCard 
+                            title="The Geometry of Incidence"
+                            imageSrc="/GFT/geometry.jpeg"
+                            titlePopupText="The Geometry of Incidence\n\nThe Geometry of Incidence was written to inspire interest in projective geometry. It focuses in detail on certain fundamental concepts and theorems and their historical perspective. This unique book will invoke a desire for greater knowledge of an intriguing subject and was the inspiration for the CONFIGURATIONS game."
+                        />
+                    </div>
                 </div>
             </div>
         </main>
