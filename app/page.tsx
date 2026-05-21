@@ -21,9 +21,9 @@ export default function Home() {
             
             {/* Attractive Divider */}
             <div className="w-full flex justify-center items-center py-8 px-4 opacity-80 max-w-[1000px] mx-auto">
-                <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-[#d4af37] shadow-[0_0_8px_rgba(212,175,55,0.8)] rounded-full"></div>
-                <div className="mx-6 text-[#d4af37] text-3xl drop-shadow-[0_0_8px_rgba(212,175,55,1)]">✧</div>
-                <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent via-[#d4af37] to-[#d4af37] shadow-[0_0_8px_rgba(212,175,55,0.8)] rounded-full"></div>
+                <div className="flex-1 h-[3px] bg-gradient-to-r from-transparent via-black to-black shadow-[0_0_12px_rgba(255,255,255,0.2)] rounded-full"></div>
+                <div className="mx-6 text-black text-3xl drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]">✧</div>
+                <div className="flex-1 h-[3px] bg-gradient-to-l from-transparent via-black to-black shadow-[0_0_12px_rgba(255,255,255,0.2)] rounded-full"></div>
             </div>
 
             <VideoGrid />
