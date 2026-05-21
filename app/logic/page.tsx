@@ -58,6 +58,14 @@ export default function LogicPage() {
                             titlePopupText="TAC-TICKLE is a sixteen-game kit that is as simple to learn as tic-tac-toe. The surface similarity ends quickly as learners discover the subtle and intricate sophistication of this deceptive little gem. TAC-TICKLE has been a favorite of computer programmers exploring the profound mathematical theory involved in adapting it to computerized play. The pocket-sized kit consists of a pair of playing boards, cubes, and directions. Cubes fit into a molded foam playing board that holds loose pieces tightly making it an ideal traveling game for children and adults."
                         />
                     </div>
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-700 fill-mode-both">
+                        <ProductCard 
+                            title="QWIK-SANE"
+                            imageSrc="/GFT/qwiksane.jpeg"
+                            howToPlayVideoUrl="https://player.vimeo.com/video/76225965?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
+                            titlePopupText="QWIK-SANE is a topological puzzle that will challenge and delight people devoted to solitaire games calling for careful reasoning. It is simple in both design and theme, yet calls for concentrated effort to achieve the precise objective. Almost anyone willing to apply careful attention and patience will be able to &quot;work&quot; this puzzle, but solving the problem in the specified manner required is a genuine challenge. QUIK-SANE was developed by James R. O'Neil, a retiree from the U.S. Treasury Department, after 39 years of government service. Throughout his working years, Mr. O'Neil pursued an avocation of inventing toys and games for which he holds several patents."
+                        />
+                    </div>
                 </div>
             </div>
         </main>
