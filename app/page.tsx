@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/marketing/HeroSection";
 import { CardDeck } from "@/components/marketing/CardDeck";
 import { ChatInput } from "@/components/marketing/ChatInput";
 import { VideoGrid } from "@/components/marketing/VideoGrid";
+import { SpecialsButton } from "@/components/marketing/SpecialsButton";
 
 export default function Home() {
     return (
@@ -15,8 +16,9 @@ export default function Home() {
             
             <HeroSection />
             <CardDeck />
-            <ChatInput />
+            <SpecialsButton />
             <VideoGrid />
+            <ChatInput />
         </main>
     );
 }
