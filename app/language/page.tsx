@@ -37,7 +37,7 @@ export default function LanguagePage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
                         <ProductCard 
                             title="LinguiSHTIK - A Creative Language Game"
-                            imageSrc="/GFT/ling.jpeg"
+                            imageSrc="/ling.jpeg"
                             howToPlayVideoUrl="https://player.vimeo.com/video/76225922?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             detailsVideoUrl="https://player.vimeo.com/video/1193793956?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             titlePopupText="LinguiSHTIK is a multi-faceted resource allocation game focused on words, grammar and sentence structure. Players delve deeply into spelling, vocabulary, word functions, modern and traditional grammar, and the patterns and structure of sentences. Like other resource allocation games, LinguiSHITK can be played at many levels of sophistication from young children to intelligent adults. The complexity of the game is determined by the players, and the game graduates to the adventurous level in which players design new rules in each exciting and intriguing match."
@@ -46,7 +46,7 @@ export default function LanguagePage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
                         <ProductCard 
                             title="ON-WORDS - The Game of Word Structures"
-                            imageSrc="/GFT/onwords.jpeg"
+                            imageSrc="/onwords.jpeg"
                             howToPlayVideoUrl="https://player.vimeo.com/video/78006062?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             detailsVideoUrl="https://player.vimeo.com/video/1193800361?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             titlePopupText="ON-WORDS has many exciting game levels and covers a broad spectrum of sophistication from teaching spelling to elementary school children up to levels that will challenge a linguistic specialist or connoisseur of word puzzles. The basic game level reinforces spelling and vocabulary, and sharpens perception of unusual combinations of letters in written English. It increases discrimination of both the regularities and inconsistencies in English spelling. In advanced game levels, players explore evolving problems based on networks of intersecting words as in crosswords puzzles. In Adventurous ON-WORDS, the word network problems can include further constraints such as grammar, phonetics, derivations, inflections or virtually any aspect of words a player can imagine.\n\nON-WORDS gives players a powerful motivation to delve deeply into the structure, meanings, and history of words as well as spelling and its ingredients. ON-WORDS uses the same resource allocation game format found in EQUATIONS, WFF ‘N PROOF, ON-SETS and LinguiSHTIK, so players who know any of these other games can easily pick up ON-WORDS and let their imagination fly."

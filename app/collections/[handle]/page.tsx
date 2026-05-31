@@ -23,7 +23,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ han
     return (
         <main className="relative w-full min-h-screen flex flex-col font-lora">
             <div className="absolute inset-0 z-[-1] pointer-events-none overflow-hidden">
-                <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] bg-[url('/GFT/bg_creative.jpg')] bg-cover bg-center opacity-40 mix-blend-overlay filter blur-[2px]"></div>
+                <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] bg-[url('/bg_creative.jpg')] bg-cover bg-center opacity-40 mix-blend-overlay filter blur-[2px]"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#050a14]/90 via-[#0a1118]/80 to-[#151e2b]/90"></div>
             </div>
 

@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "Games For Thinkers",
     description: "We Make Learning Fun!",
-    url: "https://michaelclever.github.io/GFT",
+    url: "http://dev.gamesforthinkers.org",
     organization: {
         name: "Accelerated Learning Foundation",
         type: "Non-Profit 501(c)(3) organization",

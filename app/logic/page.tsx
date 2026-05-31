@@ -37,7 +37,7 @@ export default function LogicPage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
                         <ProductCard 
                             title="WFF 'N PROOF - The Game of Modern Logic"
-                            imageSrc="/GFT/woofnproof.jpeg"
+                            imageSrc="/woofnproof.jpeg"
                             howToPlayVideoUrl="https://player.vimeo.com/video/76226006?fl=pl&fe=cm&autoplay=1&muted=0"
                             detailsVideoUrl="https://player.vimeo.com/video/1193778699?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             titlePopupText="Hailed as “the granddaddy of educational games”, this is the original 1961 classic that teaches propositional logic and develops careful reasoning skills. Reviewers say WFF ‘N PROOF “has the complexity of chess and the excitement of poker”. It was the first resource allocation game – a format in which players explore diverse, creative ways of using fundamental concepts. WFF ‘N PROOF is a subtle sequence of twenty-one game levels with increasing challenge and sophistication. The beginning levels are speed games that can teach six-year olds how to recognize WFFs. (WFFs are Well Formed Formulas – expressions that are to symbolic logic what sentences are to English). Advanced games deal with the rules of inference, logical proof and the nature of formal systems, and will challenge intelligent adults.\n\nStudies have shown that summer school classes playing WFF ‘N PROOF intensively for three weeks experienced an average increase in IQ scores of 21 points. The game dramatically improves problem-solving skills, higher order thinking, and abstract reasoning. For people who like to think, WFF ‘N PROOF means fun for the whole family."
@@ -46,14 +46,14 @@ export default function LogicPage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
                         <ProductCard 
                             title="WFF - The Beginners Game of Modern Logic"
-                            imageSrc="/GFT/wff.jpeg"
+                            imageSrc="/wff.jpeg"
                             titlePopupText="WFF includes the first two games from the complete WFF ‘N PROOF series. Two engaging speed games allow players to learn to recognize WFF’s (Well Formed Formulas) in symbolic logic. Both Shake-a-WFF and Count-a-WFF are fast-paced, exciting games dealing with a unique symbolic system. They are an appealing exercise for all ages."
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
                         <ProductCard 
                             title="TAC-TICKLE"
-                            imageSrc="/GFT/tactickle.jpeg"
+                            imageSrc="/tactickle.jpeg"
                             howToPlayVideoUrl="https://player.vimeo.com/video/76225967?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             titlePopupText="TAC-TICKLE is a sixteen-game kit that is as simple to learn as tic-tac-toe. The surface similarity ends quickly as learners discover the subtle and intricate sophistication of this deceptive little gem. TAC-TICKLE has been a favorite of computer programmers exploring the profound mathematical theory involved in adapting it to computerized play. The pocket-sized kit consists of a pair of playing boards, cubes, and directions. Cubes fit into a molded foam playing board that holds loose pieces tightly making it an ideal traveling game for children and adults."
                         />
@@ -61,7 +61,7 @@ export default function LogicPage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-700 fill-mode-both">
                         <ProductCard 
                             title="QWIK-SANE"
-                            imageSrc="/GFT/qwiksane.jpeg"
+                            imageSrc="/qwiksane.jpeg"
                             howToPlayVideoUrl="https://player.vimeo.com/video/76225965?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             titlePopupText="QWIK-SANE is a topological puzzle that will challenge and delight people devoted to solitaire games calling for careful reasoning. It is simple in both design and theme, yet calls for concentrated effort to achieve the precise objective. Almost anyone willing to apply careful attention and patience will be able to &quot;work&quot; this puzzle, but solving the problem in the specified manner required is a genuine challenge. QUIK-SANE was developed by James R. O'Neil, a retiree from the U.S. Treasury Department, after 39 years of government service. Throughout his working years, Mr. O'Neil pursued an avocation of inventing toys and games for which he holds several patents."
                         />

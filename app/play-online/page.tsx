@@ -28,7 +28,7 @@ export default function PlayOnlinePage() {
                         
                         <a href="https://propagandagame.org" target="_blank" rel="noopener noreferrer" className="relative flex w-full max-w-[350px] rounded-lg overflow-hidden border-[2px] border-[#d4af37] mb-8 group hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(212,175,55,0.3)] bg-black/60 items-center justify-center">
                             <img 
-                                src="/GFT/prop.jpg" 
+                                src="/prop.jpg" 
                                 alt="The Propaganda Game Thumbnail" 
                                 className="w-full h-auto object-contain"
                             />
@@ -57,7 +57,7 @@ export default function PlayOnlinePage() {
                         
                         <a href="http://msqmulti.org" target="_blank" rel="noopener noreferrer" className="relative flex w-full max-w-[350px] rounded-lg overflow-hidden border-[2px] border-[#d4af37] mb-8 group hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(212,175,55,0.3)] bg-black/60 items-center justify-center">
                             <img 
-                                src="/GFT/msq.jpg" 
+                                src="/msq.jpg" 
                                 alt="Math Science Quest Thumbnail" 
                                 className="w-full h-auto object-contain"
                             />
