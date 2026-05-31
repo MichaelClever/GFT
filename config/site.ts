@@ -1,6 +1,6 @@
 export const siteConfig = {
     name: "Games For Thinkers",
-    description: "We Make Learning Fun!",
+    description: "Make Learning Fun!",
     url: "http://dev.gamesforthinkers.org",
     organization: {
         name: "Accelerated Learning Foundation",

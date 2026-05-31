@@ -16,7 +16,7 @@ const commonIconClass = "text-[#f1e5d1]";
 
 export const homeContent = {
     hero: {
-        title: "We Make Learning\nFun!",
+        title: "Make Learning\nFun!",
     },
     subjects: [
         {
