@@ -39,7 +39,7 @@ const spectral = Spectral({
 
 export const metadata: Metadata = {
     title: "Games For Thinkers",
-    description: "We Make Learning Fun",
+    description: "Make Learning Fun",
 };
 
 export default function RootLayout({
