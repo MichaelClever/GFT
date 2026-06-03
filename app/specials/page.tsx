@@ -40,6 +40,12 @@ export default function SpecialsPage() {
                             imageSrc="/3game.jpeg"
                         />
                     </div>
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
+                        <ProductCard 
+                            title="7-Game Special"
+                            imageSrc="/7game.jpeg"
+                        />
+                    </div>
                 </div>
             </div>
         </main>
