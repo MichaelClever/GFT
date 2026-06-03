@@ -46,6 +46,12 @@ export default function SpecialsPage() {
                             imageSrc="/7game.jpeg"
                         />
                     </div>
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
+                        <ProductCard 
+                            title="Complete 14-Item Thinker's Library"
+                            imageSrc="/14game.jpeg"
+                        />
+                    </div>
                 </div>
             </div>
         </main>
