@@ -37,7 +37,7 @@ export default function SpecialsPage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
                         <ProductCard 
                             title="You Pick 3-Game Special"
-                            imageSrc="/3game.jpg"
+                            imageSrc="/3game.jpeg"
                         />
                     </div>
                 </div>
