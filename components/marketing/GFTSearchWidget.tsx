@@ -112,7 +112,7 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
     a, a *, .link, .citation, .source {
       color: #f8d36a !important;
     }
-  \`;
+  `;
 
   root.appendChild(style);
 }
