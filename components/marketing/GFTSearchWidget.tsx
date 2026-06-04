@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 
 function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
   if (!root || !('querySelector' in root)) return;
-  if (root.querySelector("#gft-deep-dark-theme-v2")) return;
+  
+  const existing = root.querySelector("#gft-deep-dark-theme-v2");
+  if (existing) {
+    existing.remove();
+  }
 
   const style = document.createElement("style");
   style.id = "gft-deep-dark-theme-v2";
