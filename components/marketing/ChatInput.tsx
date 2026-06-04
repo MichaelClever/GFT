@@ -3,13 +3,7 @@
 import Script from 'next/script';
 import { useRef, useEffect } from 'react';
 
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'gen-search-widget': any;
-        }
-    }
-}
+
 
 export function ChatInput() {
     const widgetRef = useRef<any>(null);
@@ -30,6 +24,8 @@ export function ChatInput() {
     //     fetchToken();
     // }, []);
 
+    const GenSearchWidget = 'gen-search-widget' as any;
+
     return (
         <section className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex justify-center">
             {/* Google Cloud AI Gen App Builder Script */}
@@ -39,11 +35,11 @@ export function ChatInput() {
             />
 
             {/* Hidden Widget Element */}
-            <gen-search-widget 
+            <GenSearchWidget 
                 ref={widgetRef}
                 configId="8679db35-833c-44d7-80ca-68ba87a3a72c" 
                 triggerId="searchWidgetTrigger"
-            ></gen-search-widget>
+            ></GenSearchWidget>
 
             {/* Chat Box */}
             <div className="w-full max-w-[600px] min-w-[300px]">
