@@ -2,18 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-// Add TypeScript definitions for the custom web component
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'gen-search-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-                configId?: string;
-                triggerId?: string;
-            };
-        }
-    }
-}
-
 export function GFTSearchWidget() {
     const [error, setError] = useState(false);
 
@@ -41,9 +29,12 @@ export function GFTSearchWidget() {
                 const data = await res.json();
                 
                 // Inject the token into the widget DOM element
-                const widget = document.querySelector('gen-search-widget') as any;
-                if (widget && data.token) {
-                    widget.authToken = data.token;
+                const searchWidget = document.querySelector("gen-search-widget") as
+                    | (HTMLElement & { authToken?: string })
+                    | null;
+
+                if (searchWidget && data.token) {
+                    searchWidget.authToken = data.token;
                 }
                 
                 // Calculate time until next refresh
