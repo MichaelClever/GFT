@@ -2,6 +2,146 @@
 
 import { useEffect, useState } from "react";
 
+function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
+  if (!root || !('querySelector' in root)) return;
+  if (root.querySelector("#gft-deep-dark-theme-v2")) return;
+
+  const style = document.createElement("style");
+  style.id = "gft-deep-dark-theme-v2";
+  style.textContent = `
+    :host {
+      color-scheme: dark !important;
+
+      --gm3-sys-color-background: #070502 !important;
+      --gm3-sys-color-surface: #070502 !important;
+      --gm3-sys-color-surface-container: #0b0703 !important;
+      --gm3-sys-color-surface-container-low: #070502 !important;
+      --gm3-sys-color-surface-container-lowest: #070502 !important;
+      --gm3-sys-color-surface-container-high: #160e07 !important;
+      --gm3-sys-color-surface-container-highest: #1f140a !important;
+      --gm3-sys-color-on-surface: #f8f1dc !important;
+      --gm3-sys-color-on-surface-variant: #e6d6ad !important;
+
+      --md-sys-color-background: #070502 !important;
+      --md-sys-color-surface: #070502 !important;
+      --md-sys-color-surface-bright: #120b05 !important;
+      --md-sys-color-surface-container: #0b0703 !important;
+      --md-sys-color-surface-container-low: #070502 !important;
+      --md-sys-color-surface-container-lowest: #070502 !important;
+      --md-sys-color-surface-container-high: #160e07 !important;
+      --md-sys-color-surface-container-highest: #1f140a !important;
+      --md-sys-color-surface-variant: #1f140a !important;
+      --md-sys-color-on-surface: #f8f1dc !important;
+      --md-sys-color-on-surface-variant: #e6d6ad !important;
+      --md-sys-color-primary: #d8a847 !important;
+      --md-sys-color-secondary: #d8a847 !important;
+
+      --ucs-color-global-container: #070502 !important;
+      --ucs-color-preview-session-bg: #070502 !important;
+      --card-content-card: #120b05 !important;
+      --color-menu-background: #120b05 !important;
+
+      background: #070502 !important;
+      color: #f8f1dc !important;
+    }
+
+    :host,
+    :host > *,
+    [role="dialog"],
+    .content,
+    .inner-dialog,
+    .inner-dialog > *,
+    .search-bar-container,
+    .results,
+    .result,
+    .results-container,
+    .result-container,
+    .answer,
+    .answer-container,
+    .summary,
+    .summary-container,
+    .main,
+    .main-content,
+    .body,
+    .page,
+    .surface,
+    .container,
+    ucs-results,
+    ucs-search-bar,
+    ucs-search-toolbar,
+    ucs-answer,
+    ucs-summary,
+    ucs-result,
+    ucs-result-card,
+    ucs-answer-card,
+    ucs-search-result,
+    md-list,
+    md-list-item,
+    md-card,
+    md-dialog,
+    md-menu {
+      background: #070502 !important;
+      background-color: #070502 !important;
+      color: #f8f1dc !important;
+      border-color: rgba(216, 168, 71, 0.25) !important;
+    }
+
+    .content,
+    .white-background .content,
+    .white-background ucs-search-bar,
+    ucs-search-bar {
+      background: #070502 !important;
+      background-color: #070502 !important;
+    }
+
+    input,
+    textarea,
+    [contenteditable="true"] {
+      background: #1a1108 !important;
+      background-color: #1a1108 !important;
+      color: #f8f1dc !important;
+      caret-color: #f8d36a !important;
+      border-color: rgba(216, 168, 71, 0.5) !important;
+    }
+
+    p, span, div, section, article, main, li, h1, h2, h3, h4, h5, h6,
+    button, md-icon, md-icon-button, md-filled-button, md-outlined-button, md-text-button {
+      color: #f8f1dc !important;
+    }
+
+    a, a *, .link, .citation, .source {
+      color: #f8d36a !important;
+    }
+  \`;
+
+  root.appendChild(style);
+}
+
+function walkAndInject(node: Document | ShadowRoot | Element = document) {
+  const seen = new Set<Node>();
+
+  function walk(current: Document | ShadowRoot | Element | null) {
+    if (!current || seen.has(current)) return;
+    seen.add(current);
+
+    if ("shadowRoot" in current && current.shadowRoot) {
+      injectGFTDeepDarkTheme(current.shadowRoot);
+      walk(current.shadowRoot);
+    }
+
+    if ("querySelectorAll" in current) {
+      current.querySelectorAll("*").forEach((el) => {
+        if (el.shadowRoot) {
+          injectGFTDeepDarkTheme(el.shadowRoot);
+          walk(el.shadowRoot);
+        }
+      });
+    }
+  }
+
+  walk(node);
+}
+
 export function GFTSearchWidget() {
     const [error, setError] = useState(false);
 
@@ -35,6 +175,25 @@ export function GFTSearchWidget() {
 
                 if (searchWidget && data.token) {
                     searchWidget.authToken = data.token;
+
+                    walkAndInject();
+
+                    if (searchWidget.shadowRoot) {
+                        const observer = new MutationObserver(() => {
+                            walkAndInject(searchWidget.shadowRoot!);
+                        });
+
+                        observer.observe(searchWidget.shadowRoot, {
+                            childList: true,
+                            subtree: true,
+                            attributes: true,
+                        });
+
+                        setTimeout(() => walkAndInject(searchWidget.shadowRoot!), 500);
+                        setTimeout(() => walkAndInject(searchWidget.shadowRoot!), 1500);
+                        setTimeout(() => walkAndInject(searchWidget.shadowRoot!), 3000);
+                        setTimeout(() => walkAndInject(searchWidget.shadowRoot!), 5000);
+                    }
                 }
                 
                 // Calculate time until next refresh
