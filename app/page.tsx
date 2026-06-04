@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/marketing/HeroSection";
 import { CardDeck } from "@/components/marketing/CardDeck";
-import { ChatInput } from "@/components/marketing/ChatInput";
+import { GFTSearchWidget } from "@/components/marketing/GFTSearchWidget";
 import { VideoGrid } from "@/components/marketing/VideoGrid";
 import { SpecialsButton } from "@/components/marketing/SpecialsButton";
 
@@ -17,7 +17,7 @@ export default function Home() {
             <HeroSection />
             <CardDeck />
             <SpecialsButton />
-            <ChatInput />
+            <GFTSearchWidget />
             
             {/* Attractive Divider */}
             <div className="w-full flex justify-center items-center py-8 px-4 opacity-80 max-w-[1000px] mx-auto">
