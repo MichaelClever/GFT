@@ -68,6 +68,16 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
       --md-select-text-field-supporting-text-color: #e6d6ad !important;
       --md-select-text-field-container-color: #120b05 !important;
 
+      --md-filled-text-field-container-color: #1a1108 !important;
+      --md-filled-text-field-input-text-color: #f8f1dc !important;
+      --md-filled-text-field-input-text-size: 1.125rem !important;
+      --md-filled-text-field-caret-color: #f8d36a !important;
+
+      --md-outlined-text-field-container-color: #1a1108 !important;
+      --md-outlined-text-field-input-text-color: #f8f1dc !important;
+      --md-outlined-text-field-input-text-size: 1.125rem !important;
+      --md-outlined-text-field-caret-color: #f8d36a !important;
+
       --gm3-sys-color-background: #070502 !important;
       --gm3-sys-color-surface: #070502 !important;
       --gm3-sys-color-surface-container: #0b0703 !important;
@@ -150,6 +160,14 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
       background-color: #070502 !important;
     }
 
+    ucs-search-bar {
+      min-height: 64px !important;
+    }
+
+    ucs-search-bar * {
+      font-size: 1.125rem !important;
+    }
+
     input,
     textarea,
     [contenteditable="true"] {
@@ -158,6 +176,18 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
       color: #f8f1dc !important;
       caret-color: #f8d36a !important;
       border-color: rgba(216, 168, 71, 0.5) !important;
+      font-size: 1.125rem !important;
+      line-height: 1.5 !important;
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+      min-height: 48px !important;
+    }
+
+    input::placeholder,
+    textarea::placeholder,
+    [contenteditable="true"]:empty::before {
+      color: rgba(230, 214, 173, 0.7) !important;
+      font-size: 1.125rem !important;
     }
 
     p, span, div, section, article, main, li, h1, h2, h3, h4, h5, h6,
