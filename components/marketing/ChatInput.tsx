@@ -6,21 +6,28 @@ import { useRef, useEffect } from 'react';
 
 
 export function ChatInput() {
-    const widgetRef = useRef<any>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const searchWidget = document.querySelector('gen-search-widget') as any;
-        if (searchWidget) {
-            // 1. Inject the token while the widget is completely idle
-            searchWidget.authToken = process.env.NEXT_PUBLIC_TEMPORARY_GCP_TOKEN;
-            
-            // 2. Now wake it up by setting the configuration ID
-            searchWidget.configId = "8679db35-833c-44d7-80ca-68ba87a3a72c";
-            console.log("Widget authenticated and lazily activated.");
-        }
-    }, []);
+        if (!containerRef.current) return;
+        
+        // Prevent duplicate injections in React strict mode
+        if (containerRef.current.querySelector('gen-search-widget')) return;
 
-    const GenSearchWidget = 'gen-search-widget' as any;
+        // 1. Create the element in memory first
+        const searchWidget = document.createElement('gen-search-widget') as any;
+        
+        // 2. Inject the token while completely detached from DOM
+        searchWidget.authToken = process.env.NEXT_PUBLIC_TEMPORARY_GCP_TOKEN;
+        
+        // 3. Set required attributes
+        searchWidget.setAttribute('configId', '8679db35-833c-44d7-80ca-68ba87a3a72c');
+        searchWidget.setAttribute('triggerId', 'searchWidgetTrigger');
+        
+        // 4. Finally, attach to DOM so Google's script sees it fully configured
+        containerRef.current.appendChild(searchWidget);
+        console.log("Widget authenticated and constructed programmatically.");
+    }, []);
 
     return (
         <section className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex justify-center">
@@ -30,11 +37,8 @@ export function ChatInput() {
                 strategy="lazyOnload" 
             />
 
-            {/* Hidden Widget Element */}
-            <GenSearchWidget 
-                ref={widgetRef}
-                triggerId="searchWidgetTrigger"
-            ></GenSearchWidget>
+            {/* Hidden Widget Element Container */}
+            <div ref={containerRef}></div>
 
             {/* Chat Box */}
             <div className="w-full max-w-[600px] min-w-[300px]">
