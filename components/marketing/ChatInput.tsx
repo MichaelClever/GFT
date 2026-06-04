@@ -8,21 +8,17 @@ import { useRef, useEffect } from 'react';
 export function ChatInput() {
     const widgetRef = useRef<any>(null);
 
-    // TODO: Future Backend Security Auth Implementation
-    // useEffect(() => {
-    //     async function fetchToken() {
-    //         try {
-    //             const response = await fetch('YOUR_NODE_ENDPOINT_ON_LINODE');
-    //             const data = await response.json();
-    //             if (widgetRef.current) {
-    //                 widgetRef.current.authToken = data.token;
-    //             }
-    //         } catch (error) {
-    //             console.error("Failed to fetch Google Auth Token", error);
-    //         }
-    //     }
-    //     fetchToken();
-    // }, []);
+    useEffect(() => {
+        const searchWidget = document.querySelector('gen-search-widget') as any;
+        if (searchWidget) {
+            // 1. Inject the token while the widget is completely idle
+            searchWidget.authToken = process.env.NEXT_PUBLIC_TEMPORARY_GCP_TOKEN;
+            
+            // 2. Now wake it up by setting the configuration ID
+            searchWidget.configId = "8679db35-833c-44d7-80ca-68ba87a3a72c";
+            console.log("Widget authenticated and lazily activated.");
+        }
+    }, []);
 
     const GenSearchWidget = 'gen-search-widget' as any;
 
@@ -37,7 +33,6 @@ export function ChatInput() {
             {/* Hidden Widget Element */}
             <GenSearchWidget 
                 ref={widgetRef}
-                configId="8679db35-833c-44d7-80ca-68ba87a3a72c" 
                 triggerId="searchWidgetTrigger"
             ></GenSearchWidget>
 
