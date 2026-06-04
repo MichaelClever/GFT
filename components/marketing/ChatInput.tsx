@@ -1,44 +1,42 @@
 'use client';
 
 import Script from 'next/script';
-import { useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
 export function ChatInput() {
-    const containerRef = useRef<HTMLDivElement>(null);
+    const [token, setToken] = useState<string | null>(null);
 
     useEffect(() => {
-        if (!containerRef.current) return;
-        
-        // Prevent duplicate injections in React strict mode
-        if (containerRef.current.querySelector('gen-search-widget')) return;
-
-        // 1. Create the element in memory first
-        const searchWidget = document.createElement('gen-search-widget') as any;
-        
-        // 2. Inject the token while completely detached from DOM
-        searchWidget.authToken = process.env.NEXT_PUBLIC_TEMPORARY_GCP_TOKEN;
-        
-        // 3. Set required attributes
-        searchWidget.setAttribute('configId', '8679db35-833c-44d7-80ca-68ba87a3a72c');
-        searchWidget.setAttribute('triggerId', 'searchWidgetTrigger');
-        
-        // 4. Finally, attach to DOM so Google's script sees it fully configured
-        containerRef.current.appendChild(searchWidget);
-        console.log("Widget authenticated and constructed programmatically.");
+        const envToken = process.env.NEXT_PUBLIC_TEMPORARY_GCP_TOKEN;
+        if (envToken) {
+            setToken(envToken);
+        }
     }, []);
+
+    const GenSearchWidget = 'gen-search-widget' as any;
 
     return (
         <section className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex justify-center">
             {/* Google Cloud AI Gen App Builder Script */}
             <Script 
                 src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US" 
-                strategy="lazyOnload" 
+                strategy="afterInteractive" 
             />
 
-            {/* Hidden Widget Element Container */}
-            <div ref={containerRef}></div>
+            {/* Only drop the element into the DOM once the token is ready */}
+            {token && (
+                <GenSearchWidget
+                    configId="8679db35-833c-44d7-80ca-68ba87a3a72c"
+                    triggerId="searchWidgetTrigger"
+                    ref={(el: any) => {
+                        if (el) {
+                            el.authToken = token;
+                        }
+                    }}
+                />
+            )}
 
             {/* Chat Box */}
             <div className="w-full max-w-[600px] min-w-[300px]">
