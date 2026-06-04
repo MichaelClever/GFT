@@ -142,6 +142,35 @@ function walkAndInject(node: Document | ShadowRoot | Element = document) {
   walk(node);
 }
 
+let shadowRootObserved = false;
+
+function runThemeInjectionPass() {
+  const widget = document.querySelector("gen-search-widget") as HTMLElement | null;
+  if (!widget) return;
+
+  walkAndInject(widget);
+
+  if (widget.shadowRoot) {
+    walkAndInject(widget.shadowRoot);
+
+    if (!shadowRootObserved) {
+      shadowRootObserved = true;
+      const observer = new MutationObserver(() => {
+        runThemeInjectionPass();
+      });
+      observer.observe(widget.shadowRoot, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+      });
+    }
+  }
+
+  if (process.env.NODE_ENV !== "production") {
+    console.log("GFT Google widget theme injection pass ran");
+  }
+}
+
 export function GFTSearchWidget() {
     const [error, setError] = useState(false);
 
@@ -175,25 +204,6 @@ export function GFTSearchWidget() {
 
                 if (searchWidget && data.token) {
                     searchWidget.authToken = data.token;
-
-                    walkAndInject();
-
-                    if (searchWidget.shadowRoot) {
-                        const observer = new MutationObserver(() => {
-                            walkAndInject(searchWidget.shadowRoot!);
-                        });
-
-                        observer.observe(searchWidget.shadowRoot, {
-                            childList: true,
-                            subtree: true,
-                            attributes: true,
-                        });
-
-                        setTimeout(() => walkAndInject(searchWidget.shadowRoot!), 500);
-                        setTimeout(() => walkAndInject(searchWidget.shadowRoot!), 1500);
-                        setTimeout(() => walkAndInject(searchWidget.shadowRoot!), 3000);
-                        setTimeout(() => walkAndInject(searchWidget.shadowRoot!), 5000);
-                    }
                 }
                 
                 // Calculate time until next refresh
@@ -219,6 +229,47 @@ export function GFTSearchWidget() {
 
         return () => {
             clearTimeout(timeoutId);
+        };
+    }, []);
+
+    // Handle aggressive theme injection timings
+    useEffect(() => {
+        const retryTimes = [100, 300, 700, 1200, 2000, 3000, 5000, 8000, 12000, 15000];
+        const timeouts: NodeJS.Timeout[] = [];
+
+        // 1. Initial burst on mount
+        retryTimes.forEach((ms) => {
+            timeouts.push(setTimeout(runThemeInjectionPass, ms));
+        });
+
+        // 2. Click listener on trigger
+        const trigger = document.getElementById("searchWidgetTrigger");
+        const handleTriggerClick = () => {
+            [100, 300, 700, 1200, 2000, 3000, 5000].forEach((ms) => {
+                timeouts.push(setTimeout(runThemeInjectionPass, ms));
+            });
+        };
+
+        if (trigger) {
+            trigger.addEventListener("click", handleTriggerClick);
+        }
+
+        // 3. Global DOM observer
+        const observer = new MutationObserver(() => {
+            runThemeInjectionPass();
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+        });
+
+        return () => {
+            timeouts.forEach(clearTimeout);
+            if (trigger) {
+                trigger.removeEventListener("click", handleTriggerClick);
+            }
+            observer.disconnect();
         };
     }, []);
 
