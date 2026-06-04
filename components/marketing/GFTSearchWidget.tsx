@@ -499,7 +499,7 @@ export function GFTSearchWidget() {
                 <div className="bg-gradient-to-r from-[#8c6a1d] via-[#d4af37] to-[#8c6a1d] p-[3px] rounded-full shadow-[0_5px_20px_rgba(0,0,0,0.6)]">
                     <div 
                         id="searchWidgetTrigger" 
-                        className="bg-[#2a1b12] rounded-full pl-4 pr-3 py-3 flex items-center gap-4 cursor-pointer hover:bg-[#322015] transition-colors"
+                        className="bg-[#2a1b12] rounded-full pl-4 pr-3 py-3 flex items-center gap-4 cursor-pointer hover:bg-[#322015] transition-colors [&>*]:pointer-events-none"
                     >
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1a2d48] to-[#0a1526] border-2 border-[#d4af37] flex items-center justify-center shrink-0 shadow-inner text-xl">
                             💬
