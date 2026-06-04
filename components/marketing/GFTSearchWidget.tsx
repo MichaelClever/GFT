@@ -2,8 +2,22 @@
 
 import { useEffect, useState } from "react";
 
+const styledRoots = new WeakSet<ShadowRoot>();
+const observedRoots = new WeakSet<ShadowRoot>();
+
+const globalObserver = typeof window !== "undefined" ? new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+      if (node instanceof HTMLElement || node instanceof Element) {
+         walkAndInject(node);
+      }
+    });
+  });
+}) : null;
+
 function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
   if (!root || !('querySelector' in root)) return;
+  if (root instanceof ShadowRoot && styledRoots.has(root)) return;
   if (root.querySelector("#gft-deep-dark-theme-v2")) return;
 
   const style = document.createElement("style");
@@ -115,9 +129,13 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
   `;
 
   root.appendChild(style);
+  if (root instanceof ShadowRoot) {
+    styledRoots.add(root);
+  }
 }
 
-function walkAndInject(node: Document | ShadowRoot | Element = document) {
+function walkAndInject(node: Document | ShadowRoot | Element | null = typeof document !== 'undefined' ? document : null) {
+  if (!node) return;
   const seen = new Set<Node>();
 
   function walk(current: Document | ShadowRoot | Element | null) {
@@ -126,6 +144,13 @@ function walkAndInject(node: Document | ShadowRoot | Element = document) {
 
     if ("shadowRoot" in current && current.shadowRoot) {
       injectGFTDeepDarkTheme(current.shadowRoot);
+      if (globalObserver && !observedRoots.has(current.shadowRoot)) {
+        observedRoots.add(current.shadowRoot);
+        globalObserver.observe(current.shadowRoot, {
+          childList: true,
+          subtree: true
+        });
+      }
       walk(current.shadowRoot);
     }
 
@@ -133,6 +158,13 @@ function walkAndInject(node: Document | ShadowRoot | Element = document) {
       current.querySelectorAll("*").forEach((el) => {
         if (el.shadowRoot) {
           injectGFTDeepDarkTheme(el.shadowRoot);
+          if (globalObserver && !observedRoots.has(el.shadowRoot)) {
+            observedRoots.add(el.shadowRoot);
+            globalObserver.observe(el.shadowRoot, {
+              childList: true,
+              subtree: true
+            });
+          }
           walk(el.shadowRoot);
         }
       });
@@ -142,29 +174,11 @@ function walkAndInject(node: Document | ShadowRoot | Element = document) {
   walk(node);
 }
 
-let shadowRootObserved = false;
-
 function runThemeInjectionPass() {
   const widget = document.querySelector("gen-search-widget") as HTMLElement | null;
   if (!widget) return;
 
   walkAndInject(widget);
-
-  if (widget.shadowRoot) {
-    walkAndInject(widget.shadowRoot);
-
-    if (!shadowRootObserved) {
-      shadowRootObserved = true;
-      const observer = new MutationObserver(() => {
-        runThemeInjectionPass();
-      });
-      observer.observe(widget.shadowRoot, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-      });
-    }
-  }
 
   if (process.env.NODE_ENV !== "production") {
     console.log("GFT Google widget theme injection pass ran");
@@ -255,21 +269,21 @@ export function GFTSearchWidget() {
         }
 
         // 3. Global DOM observer
-        const observer = new MutationObserver(() => {
-            runThemeInjectionPass();
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-        });
+        if (globalObserver) {
+            globalObserver.observe(document.body, {
+                childList: true,
+                subtree: true,
+            });
+        }
 
         return () => {
             timeouts.forEach(clearTimeout);
             if (trigger) {
                 trigger.removeEventListener("click", handleTriggerClick);
             }
-            observer.disconnect();
+            if (globalObserver) {
+                globalObserver.disconnect();
+            }
         };
     }, []);
 
