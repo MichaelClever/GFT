@@ -29,16 +29,44 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
       z-index: 2147483000 !important;
       pointer-events: auto !important;
 
+      --md-sys-color-on-surface: #f8f1dc !important;
+      --md-sys-color-on-surface-variant: #e6d6ad !important;
+      --md-sys-color-primary: #d8a847 !important;
+      --md-sys-color-secondary: #d8a847 !important;
+
       --md-menu-container-color: #120b05 !important;
       --md-menu-item-container-color: #120b05 !important;
       --md-menu-item-label-text-color: #f8f1dc !important;
       --md-menu-item-supporting-text-color: #e6d6ad !important;
       --md-menu-item-leading-icon-color: #f8d36a !important;
       --md-menu-item-trailing-icon-color: #f8d36a !important;
-      --md-menu-item-hover-state-layer-color: rgba(216, 168, 71, 0.16) !important;
-      --md-menu-item-focus-state-layer-color: rgba(216, 168, 71, 0.22) !important;
-      --md-menu-item-selected-container-color: #2a1b0d !important;
       --md-menu-item-selected-label-text-color: #f8f1dc !important;
+      --md-menu-item-selected-container-color: #2a1b0d !important;
+
+      --md-list-container-color: #120b05 !important;
+      --md-list-item-label-text-color: #f8f1dc !important;
+      --md-list-item-supporting-text-color: #e6d6ad !important;
+      --md-list-item-leading-icon-color: #f8d36a !important;
+      --md-list-item-trailing-icon-color: #f8d36a !important;
+      --md-list-item-selected-container-color: #2a1b0d !important;
+
+      --md-filter-chip-label-text-color: #f8f1dc !important;
+      --md-filter-chip-selected-label-text-color: #f8f1dc !important;
+      --md-filter-chip-container-color: #120b05 !important;
+      --md-filter-chip-selected-container-color: #2a1b0d !important;
+      --md-filter-chip-outline-color: rgba(216, 168, 71, 0.5) !important;
+      --md-filter-chip-icon-color: #f8d36a !important;
+      --md-filter-chip-selected-icon-color: #f8d36a !important;
+
+      --md-outlined-button-label-text-color: #f8f1dc !important;
+      --md-outlined-button-hover-label-text-color: #f8d36a !important;
+      --md-text-button-label-text-color: #f8f1dc !important;
+      --md-filled-button-label-text-color: #120b05 !important;
+
+      --md-select-text-field-label-text-color: #f8f1dc !important;
+      --md-select-text-field-input-text-color: #f8f1dc !important;
+      --md-select-text-field-supporting-text-color: #e6d6ad !important;
+      --md-select-text-field-container-color: #120b05 !important;
 
       --gm3-sys-color-background: #070502 !important;
       --gm3-sys-color-surface: #070502 !important;
@@ -145,6 +173,16 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
     md-menu *,
     md-menu-item,
     md-menu-item *,
+    md-list,
+    md-list *,
+    md-list-item,
+    md-list-item *,
+    md-filter-chip,
+    md-filter-chip *,
+    md-outlined-button,
+    md-outlined-button *,
+    md-text-button,
+    md-text-button *,
     [role="menu"],
     [role="menu"] *,
     [role="menuitem"],
@@ -153,26 +191,57 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
     [role="listbox"] *,
     [role="option"],
     [role="option"] *,
-    .mdc-list-item,
-    .mdc-list-item *,
-    .mat-mdc-menu-item,
-    .mat-mdc-menu-item *,
+    [aria-haspopup],
+    [aria-haspopup] *,
     .menu,
     .menu *,
     .dropdown,
-    .dropdown * {
-      background-color: #120b05 !important;
+    .dropdown *,
+    .type,
+    .type * {
       color: #f8f1dc !important;
       fill: #f8f1dc !important;
+      -webkit-text-fill-color: #f8f1dc !important;
+    }
+
+    md-menu,
+    [role="menu"],
+    [role="listbox"],
+    .menu,
+    .dropdown {
+      background: #120b05 !important;
+      background-color: #120b05 !important;
     }
 
     md-menu-item:hover,
+    md-list-item:hover,
     [role="menuitem"]:hover,
-    [role="option"]:hover,
-    .mdc-list-item:hover,
-    .mat-mdc-menu-item:hover {
+    [role="option"]:hover {
+      background: #2a1b0d !important;
       background-color: #2a1b0d !important;
       color: #f8d36a !important;
+      -webkit-text-fill-color: #f8d36a !important;
+    }
+
+    :host,
+    :host > div,
+    [role="dialog"] {
+      max-height: 100dvh !important;
+      overflow: hidden !important;
+    }
+
+    .content,
+    .inner-dialog,
+    .inner-dialog > *,
+    ucs-results {
+      max-height: calc(100dvh - 90px) !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      overscroll-behavior: contain !important;
+    }
+
+    ucs-results {
+      display: block !important;
     }
 
     .backdrop,
@@ -255,6 +324,26 @@ function runThemeInjectionPass() {
 
 export function GFTSearchWidget() {
     const [error, setError] = useState(false);
+    const [widgetOpen, setWidgetOpen] = useState(false);
+    const [widgetMounted, setWidgetMounted] = useState(true);
+
+    function closeGoogleWidget() {
+        const widget = document.querySelector("gen-search-widget") as HTMLElement | null;
+
+        const closeButton =
+            widget?.shadowRoot?.querySelector('button[aria-label="Close"]') as HTMLElement | null
+            || widget?.shadowRoot?.querySelector('md-icon-button[data-aria-label="Close"]') as HTMLElement | null
+            || widget?.shadowRoot?.querySelector('.backdrop md-icon-button') as HTMLElement | null
+            || widget?.shadowRoot?.querySelector('.backdrop button') as HTMLElement | null;
+
+        if (closeButton) {
+            closeButton.click();
+        } else {
+            setWidgetMounted(false);
+        }
+
+        setWidgetOpen(false);
+    }
 
     // Dynamically load the Google script on mount
     useEffect(() => {
@@ -327,6 +416,8 @@ export function GFTSearchWidget() {
         // 2. Click listener on trigger
         const trigger = document.getElementById("searchWidgetTrigger");
         const handleTriggerClick = () => {
+            setWidgetOpen(true);
+            setWidgetMounted(true);
             [100, 300, 700, 1200, 2000, 3000, 5000].forEach((ms) => {
                 timeouts.push(setTimeout(runThemeInjectionPass, ms));
             });
@@ -356,12 +447,52 @@ export function GFTSearchWidget() {
     }, []);
 
     return (
-        <section className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex justify-center">
-            {/* The Invisible Search Widget */}
-            <gen-search-widget 
-                configId="8679db35-833c-44d7-80ca-68ba87a3a72c" 
-                triggerId="searchWidgetTrigger">
-            </gen-search-widget>
+        <>
+            <style id="gft-google-widget-global-menu-theme">{`
+                gen-search-widget {
+                    z-index: 2147483000 !important;
+                }
+
+                md-menu,
+                md-menu *,
+                md-menu-item,
+                md-menu-item *,
+                [role="menu"],
+                [role="menu"] *,
+                [role="listbox"],
+                [role="listbox"] *,
+                [role="option"],
+                [role="option"] * {
+                    color: #f8f1dc !important;
+                    -webkit-text-fill-color: #f8f1dc !important;
+                }
+
+                md-menu,
+                [role="menu"],
+                [role="listbox"] {
+                    background: #120b05 !important;
+                    background-color: #120b05 !important;
+                }
+            `}</style>
+
+            {widgetOpen && (
+                <button
+                    onClick={closeGoogleWidget}
+                    className="fixed top-4 right-4 z-[2147483647] bg-[#120b05] border-2 border-[#d8a847] text-[#f8f1dc] hover:bg-[#2a1b0d] hover:text-[#f8d36a] rounded-full w-12 h-12 flex items-center justify-center shadow-[0_5px_15px_rgba(0,0,0,0.8)] transition-all cursor-pointer font-bold text-xl"
+                    aria-label="Close Search Widget"
+                >
+                    ✕
+                </button>
+            )}
+
+            <section className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex justify-center">
+                {/* The Invisible Search Widget */}
+                {widgetMounted && (
+                    <gen-search-widget 
+                        configId="8679db35-833c-44d7-80ca-68ba87a3a72c" 
+                        triggerId="searchWidgetTrigger">
+                    </gen-search-widget>
+                )}
 
             <div className="w-full max-w-[600px] min-w-[300px]">
                 {/* Visual Trigger Area */}
@@ -392,5 +523,6 @@ export function GFTSearchWidget() {
                 </div>
             </div>
         </section>
+        </>
     );
 }
