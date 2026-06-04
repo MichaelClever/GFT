@@ -39,3 +39,7 @@ body {
   background-color: #050a14;
   color: var(--color-parchment);
 }
+
+gen-search-widget {
+  z-index: 2147483000 !important;
+}

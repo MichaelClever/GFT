@@ -26,6 +26,20 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
     :host {
       color-scheme: dark !important;
 
+      z-index: 2147483000 !important;
+      pointer-events: auto !important;
+
+      --md-menu-container-color: #120b05 !important;
+      --md-menu-item-container-color: #120b05 !important;
+      --md-menu-item-label-text-color: #f8f1dc !important;
+      --md-menu-item-supporting-text-color: #e6d6ad !important;
+      --md-menu-item-leading-icon-color: #f8d36a !important;
+      --md-menu-item-trailing-icon-color: #f8d36a !important;
+      --md-menu-item-hover-state-layer-color: rgba(216, 168, 71, 0.16) !important;
+      --md-menu-item-focus-state-layer-color: rgba(216, 168, 71, 0.22) !important;
+      --md-menu-item-selected-container-color: #2a1b0d !important;
+      --md-menu-item-selected-label-text-color: #f8f1dc !important;
+
       --gm3-sys-color-background: #070502 !important;
       --gm3-sys-color-surface: #070502 !important;
       --gm3-sys-color-surface-container: #0b0703 !important;
@@ -125,6 +139,60 @@ function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
 
     a, a *, .link, .citation, .source {
       color: #f8d36a !important;
+    }
+
+    md-menu,
+    md-menu *,
+    md-menu-item,
+    md-menu-item *,
+    [role="menu"],
+    [role="menu"] *,
+    [role="menuitem"],
+    [role="menuitem"] *,
+    [role="listbox"],
+    [role="listbox"] *,
+    [role="option"],
+    [role="option"] *,
+    .mdc-list-item,
+    .mdc-list-item *,
+    .mat-mdc-menu-item,
+    .mat-mdc-menu-item *,
+    .menu,
+    .menu *,
+    .dropdown,
+    .dropdown * {
+      background-color: #120b05 !important;
+      color: #f8f1dc !important;
+      fill: #f8f1dc !important;
+    }
+
+    md-menu-item:hover,
+    [role="menuitem"]:hover,
+    [role="option"]:hover,
+    .mdc-list-item:hover,
+    .mat-mdc-menu-item:hover {
+      background-color: #2a1b0d !important;
+      color: #f8d36a !important;
+    }
+
+    .backdrop,
+    .backdrop *,
+    .backdrop button,
+    .backdrop md-icon-button,
+    button[aria-label="Close"],
+    md-icon-button[data-aria-label="Close"],
+    [aria-label="Close"] {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      z-index: 2147483001 !important;
+      color: #f8f1dc !important;
+      fill: #f8f1dc !important;
+    }
+
+    .backdrop md-icon-button,
+    button[aria-label="Close"],
+    md-icon-button[data-aria-label="Close"] {
+      position: relative !important;
     }
   `;
 
