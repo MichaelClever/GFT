@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { navLinks } from '@/content/site-nav';
+import { CartNavIcon } from './CartNavIcon';
 
 export function Navbar() {
     return (
@@ -78,10 +79,11 @@ export function Navbar() {
                         <div className="absolute left-[0px] top-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         <div className="absolute left-[0px] bottom-[12px] w-[5px] h-[5px] rounded-full bg-gradient-to-br from-[#e2bc3b] to-[#7a5a15] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         
-                        <div className="flex items-center relative">
-                            <Link href="/" className="font-cinzel-decorative text-[1rem] md:text-[1.1rem] font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-wide pl-6 relative z-20 whitespace-nowrap">
+                        <div className="flex items-center relative gap-4 pr-6">
+                            <Link href="/" className="font-cinzel-decorative text-[1rem] md:text-[1.1rem] font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-wide relative z-20 whitespace-nowrap">
                                 Games For Thinkers
                             </Link>
+                            <CartNavIcon />
                         </div>
                     </div>
                 </div>

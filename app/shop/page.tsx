@@ -1,14 +1,25 @@
-import { Navbar } from "@/components/layout/Navbar";
+import { products } from "@/lib/shopify/productMap";
+import { ProductCard } from "@/components/shop/ProductCard";
 
 export default function ShopPage() {
     return (
-        <main className="relative w-full flex-1 flex flex-col font-lora">
-            <Navbar />
-            <div className="flex-1 flex items-center justify-center p-8">
-                <div className="bg-[#1a0f0a]/90 border-[3px] border-[#d4af37] p-12 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.8),inset_0_0_20px_rgba(0,0,0,0.9)] text-center max-w-2xl w-full">
-                    <h1 className="font-cinzel-decorative text-4xl md:text-5xl font-bold text-[#f3e5ab] mb-6 drop-shadow-md">Shop</h1>
-                    <p className="text-[#f1e5d1] text-2xl font-lora">Shop Page Coming Soon</p>
-                </div>
+        <main className="flex-1 w-full max-w-[1400px] mx-auto px-4 md:px-8 py-12">
+            <h1 className="text-4xl md:text-5xl font-cinzel-decorative font-bold text-[#f3e5ab] text-center mb-12 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                Shop Math Games
+            </h1>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {products.map((product) => (
+                    <ProductCard
+                        key={product.id}
+                        title={product.title}
+                        imageSrc={product.image}
+                        shopifyMerchandiseId={product.id}
+                        price={product.price}
+                        requiresSelections={product.requiresSelections}
+                        selections={product.selections}
+                    />
+                ))}
             </div>
         </main>
     );

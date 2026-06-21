@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { AddToCartButton } from './AddToCartButton';
+import { ProductSelection } from '@/lib/shopify/productMap';
 
 interface ProductCardProps {
     title: string;
@@ -9,15 +11,28 @@ interface ProductCardProps {
     howToPlayVideoUrl?: string;
     detailsVideoUrl?: string;
     titlePopupText?: string;
+    shopifyMerchandiseId?: string;
+    requiresSelections?: boolean;
+    selections?: ProductSelection[];
+    price?: string;
 }
 
-export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText }: ProductCardProps) {
+export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText, shopifyMerchandiseId, requiresSelections, selections, price }: ProductCardProps) {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const [isDetailsVideoOpen, setIsDetailsVideoOpen] = useState(false);
     const [isTitlePopupOpen, setIsTitlePopupOpen] = useState(false);
     const [lightboxMounted, setLightboxMounted] = useState(false);
     const [quantity, setQuantity] = useState<number | string>(1);
+    
+    // Manage state for custom selections (e.g., Pick 3)
+    const [selectedAttributes, setSelectedAttributes] = useState<{key: string, value: string}[]>([]);
+
+    useEffect(() => {
+        if (requiresSelections && selections) {
+            setSelectedAttributes(selections.map(s => ({ key: s.name, value: "" })));
+        }
+    }, [requiresSelections, selections]);
 
     useEffect(() => {
         if (isLightboxOpen || isVideoOpen || isDetailsVideoOpen || isTitlePopupOpen) {
@@ -67,6 +82,11 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                         <span>{title}</span>
                     )}
                 </h3>
+                {price && (
+                    <div className="text-[#d4af37] font-lora font-bold text-lg mt-1 tracking-wide">
+                        ${price}
+                    </div>
+                )}
             </div>
 
             {/* Image Container */}
@@ -112,6 +132,36 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                         </button>
                     </div>
                     
+                    {/* Render Custom Selections (e.g. Pick 3 Special) */}
+                    {requiresSelections && selections && (
+                        <div className="flex flex-col space-y-3 mb-2">
+                            {selections.map((sel, idx) => (
+                                <div key={sel.name} className="flex flex-col bg-[#2a1b12] border border-[#8c6a1d] rounded p-2">
+                                    <label className="text-[0.65rem] uppercase tracking-wider text-[#d4af37] font-bold mb-1">
+                                        {sel.name}
+                                    </label>
+                                    <select 
+                                        className="bg-[#1a0f0a] text-[#f1e5d1] border border-[#d4af37]/50 rounded p-1 text-sm focus:outline-none focus:border-[#d4af37]"
+                                        value={selectedAttributes.find(a => a.key === sel.name)?.value || ""}
+                                        onChange={(e) => {
+                                            setSelectedAttributes(prev => {
+                                                const newAttrs = [...prev];
+                                                const attrIdx = newAttrs.findIndex(a => a.key === sel.name);
+                                                if (attrIdx > -1) newAttrs[attrIdx].value = e.target.value;
+                                                return newAttrs;
+                                            });
+                                        }}
+                                    >
+                                        <option value="" disabled>Select a game...</option>
+                                        {sel.options.map(opt => (
+                                            <option key={opt} value={opt}>{opt}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
                     <div className="flex items-stretch gap-3 w-full pt-2">
                         <div className="flex flex-col justify-center bg-[#2a1b12] border-2 border-[#8c6a1d] rounded overflow-hidden shadow-inner focus-within:border-[#d4af37] transition-colors">
                             <label className="text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-[#d4af37] px-2 pt-1 font-bold text-center">
@@ -126,9 +176,19 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                                 className="w-20 md:w-24 bg-transparent text-[#fdf5d3] text-center font-bold text-xl focus:outline-none pb-1 [&::-webkit-outer-spin-button]:opacity-100 [&::-webkit-inner-spin-button]:opacity-100"
                             />
                         </div>
-                        <button className="cursor-pointer flex-1 bg-gradient-to-b from-[#b58b29] to-[#8c6a1d] hover:from-[#d4af37] hover:to-[#a87d21] active:from-[#7a5c18] active:to-[#b58b29] text-[#1a0f0a] font-cinzel font-bold text-[1.1rem] md:text-xl py-3 px-4 rounded shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all flex items-center justify-center border-t border-[#f3e5ab]/30 tracking-wider">
-                            Add to Cart
-                        </button>
+                        {shopifyMerchandiseId ? (
+                            <AddToCartButton 
+                                merchandiseId={shopifyMerchandiseId} 
+                                quantity={typeof quantity === 'number' ? quantity : 1}
+                                attributes={selectedAttributes.filter(a => a.value)}
+                                disabled={requiresSelections ? selectedAttributes.some(a => !a.value) : false}
+                                className="flex-1 font-cinzel text-[1.1rem] md:text-xl py-3 px-4 rounded"
+                            />
+                        ) : (
+                            <button className="cursor-not-allowed opacity-50 flex-1 bg-[#1a0f0a] border border-[#8c6a1d] text-[#8c6a1d] font-cinzel font-bold text-[1.1rem] md:text-xl py-3 px-4 rounded">
+                                Coming Soon
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
