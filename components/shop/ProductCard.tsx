@@ -15,9 +15,10 @@ interface ProductCardProps {
     requiresSelections?: boolean;
     selections?: ProductSelection[];
     price?: string;
+    hideInfoButtons?: boolean;
 }
 
-export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText, shopifyMerchandiseId, requiresSelections, selections, price }: ProductCardProps) {
+export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText, shopifyMerchandiseId, requiresSelections, selections, price, hideInfoButtons }: ProductCardProps) {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const [isDetailsVideoOpen, setIsDetailsVideoOpen] = useState(false);
@@ -117,20 +118,22 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
 
                 {/* Buttons Container */}
                 <div className="flex flex-col space-y-4 mt-auto">
-                    <div className="grid grid-cols-2 gap-4">
-                        <button 
-                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!detailsVideoUrl ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
-                            onClick={() => { if (detailsVideoUrl) setIsDetailsVideoOpen(true); }}
-                        >
-                            Introduction
-                        </button>
-                        <button 
-                            className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!howToPlayVideoUrl ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
-                            onClick={() => { if (howToPlayVideoUrl) setIsVideoOpen(true); }}
-                        >
-                            How to Play
-                        </button>
-                    </div>
+                    {!hideInfoButtons && (
+                        <div className="grid grid-cols-2 gap-4">
+                            <button 
+                                className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!detailsVideoUrl ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+                                onClick={() => { if (detailsVideoUrl) setIsDetailsVideoOpen(true); }}
+                            >
+                                Introduction
+                            </button>
+                            <button 
+                                className={`py-3 px-4 bg-[#1a0f0a] border border-[#d4af37] text-[#d4af37] font-bold rounded hover:bg-[#d4af37]/20 transition-colors shadow-inner text-sm md:text-base border-b-2 tracking-wide ${!howToPlayVideoUrl ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+                                onClick={() => { if (howToPlayVideoUrl) setIsVideoOpen(true); }}
+                            >
+                                How to Play
+                            </button>
+                        </div>
+                    )}
                     
                     {/* Render Custom Selections (e.g. Pick 3 Special) */}
                     {requiresSelections && selections && (

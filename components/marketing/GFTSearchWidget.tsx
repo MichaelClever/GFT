@@ -419,7 +419,7 @@ export function GFTSearchWidget() {
                 timeoutId = setTimeout(loadToken, refreshMs);
                 
             } catch (e) {
-                console.error("Search token fetch failed.");
+                // Silently handle token fetch failure (likely an expired temporary token)
                 setError(true);
                 // On failure, retry in 5 minutes
                 timeoutId = setTimeout(loadToken, 5 * 60 * 1000);

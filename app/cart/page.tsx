@@ -2,37 +2,46 @@
 
 import { useCart } from "@/features/cart/cart-context";
 import Link from "next/link";
+import { Navbar } from "@/components/layout/Navbar";
 
 export default function CartPage() {
     const { cart, items, updateQuantity, removeFromCart, isLoading } = useCart();
 
     if (isLoading && !cart) {
         return (
-            <main className="flex-1 w-full max-w-[1200px] mx-auto px-4 py-16 text-center">
-                <h1 className="text-3xl font-cinzel text-[#f3e5ab]">Loading Cart...</h1>
+            <main className="relative w-full min-h-screen flex flex-col font-lora">
+                <Navbar />
+                <div className="flex-1 w-full max-w-[1200px] mx-auto px-4 py-16 text-center">
+                    <h1 className="text-3xl font-cinzel text-[#f3e5ab]">Loading Cart...</h1>
+                </div>
             </main>
         );
     }
 
     if (!items.length) {
         return (
-            <main className="flex-1 w-full max-w-[1200px] mx-auto px-4 py-16 text-center">
-                <h1 className="text-4xl md:text-5xl font-cinzel-decorative font-bold text-[#f3e5ab] mb-8">Your Cart</h1>
-                <div className="bg-[#1a0f0a]/90 border-[2px] border-[#8c6a1d] rounded-xl p-12 shadow-[0_8px_30px_rgba(0,0,0,0.8)] max-w-2xl mx-auto">
-                    <p className="text-xl text-[#f1e5d1] font-lora mb-8">Your cart is currently empty.</p>
-                    <Link href="/shop" className="inline-block bg-gradient-to-b from-[#b58b29] to-[#8c6a1d] hover:from-[#d4af37] hover:to-[#a87d21] text-[#1a0f0a] font-cinzel font-bold text-xl py-3 px-8 rounded shadow-[0_0_15px_rgba(212,175,55,0.2)]">
-                        Continue Shopping
-                    </Link>
+            <main className="relative w-full min-h-screen flex flex-col font-lora">
+                <Navbar />
+                <div className="flex-1 w-full max-w-[1200px] mx-auto px-4 py-16 text-center">
+                    <h1 className="text-4xl md:text-5xl font-cinzel-decorative font-bold text-[#f3e5ab] mb-8">Your Cart</h1>
+                    <div className="bg-[#1a0f0a]/90 border-[2px] border-[#8c6a1d] rounded-xl p-12 shadow-[0_8px_30px_rgba(0,0,0,0.8)] max-w-2xl mx-auto">
+                        <p className="text-xl text-[#f1e5d1] font-lora mb-8">Your cart is currently empty.</p>
+                        <Link href="/shop" className="inline-block bg-gradient-to-b from-[#b58b29] to-[#8c6a1d] hover:from-[#d4af37] hover:to-[#a87d21] text-[#1a0f0a] font-cinzel font-bold text-xl py-3 px-8 rounded shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                            Continue Shopping
+                        </Link>
+                    </div>
                 </div>
             </main>
         );
     }
 
     return (
-        <main className="flex-1 w-full max-w-[1200px] mx-auto px-4 py-12">
-            <h1 className="text-4xl md:text-5xl font-cinzel-decorative font-bold text-[#f3e5ab] text-center mb-12 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                Your Cart
-            </h1>
+        <main className="relative w-full min-h-screen flex flex-col font-lora">
+            <Navbar />
+            <div className="flex-1 w-full max-w-[1200px] mx-auto px-4 py-12">
+                <h1 className="text-4xl md:text-5xl font-cinzel-decorative font-bold text-[#f3e5ab] text-center mb-12 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                    Your Cart
+                </h1>
 
             <div className="flex flex-col lg:flex-row gap-8">
                 {/* Cart Items List */}
@@ -124,6 +133,7 @@ export default function CartPage() {
                         </Link>
                     </div>
                 </div>
+            </div>
             </div>
         </main>
     );
