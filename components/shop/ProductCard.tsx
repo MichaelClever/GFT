@@ -35,7 +35,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
 
     useEffect(() => {
         if (requiresSelections && selections) {
-            setSelectedAttributes(selections.map(s => ({ key: s.name, value: "" })));
+            setSelectedAttributes(selections.map(s => ({ key: s.name, value: s.defaultOption || "" })));
         }
     }, [requiresSelections, selections]);
 
@@ -159,7 +159,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                                             });
                                         }}
                                     >
-                                        <option value="" disabled>Select a game...</option>
+                                        <option value="" disabled>Select a {sel.name.toLowerCase() === 'format' ? 'format' : 'game'}...</option>
                                         {sel.options.map(opt => (
                                             <option key={opt} value={opt}>{opt}</option>
                                         ))}

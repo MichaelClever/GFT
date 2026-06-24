@@ -1,6 +1,7 @@
 export type ProductSelection = {
   name: string;
   options: string[];
+  defaultOption?: string;
 };
 
 export type ProductVariant = {
@@ -124,7 +125,8 @@ export const products: Product[] = [
     selections: [
       {
         name: "Format",
-        options: ["PC", "MAC"]
+        options: ["PC", "MAC"],
+        defaultOption: "PC"
       }
     ]
   },
