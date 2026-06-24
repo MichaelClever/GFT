@@ -173,7 +173,7 @@ export const products: Product[] = [
     handle: "the-propaganda-game",
     price: "30.00",
     category: "Social Studies",
-    image: "/prop2.jpeg",
+    image: "/propagandagame.jpeg",
     description: "The PROPAGANDA GAME: the hilarious but effective antidote for the daily barrage from advertising, public relations, politics and the mass media – all seeking to manipulate our attitudes and behavior. Inoculate yourself, your family and students by learning to identify the many blatant and subtle persuasion techniques used by professionals. Soon you’ll be seeing them everywhere and, in the process, learn to stand firmly outside their insidious grip.\n\nPROPAGANDA is a delightful, highly social game in which players first learn to identify techniques such as: prejudice, casual oversimplification, faulty analogy, tabloid and wishful thinking, hasty generalization, attacking a straw man, appeals to ignorance, emotion, flattery, pity, prestige, folksiness, joining the bandwagon and many, many more. Once players become adept at identifying the techniques exemplified in the humorous examples provided with the game, they graduate to the “expert” level where they gather and create their own examples from the real world or their imagination.\n\nThe PROPAGANDA GAME is a truly wonderful experience in which “who is right” is ultimately less important than the power of your arguments and the assessment of how convinced your fellow players are. Based on the book “Thinking Straighter” by George Henry Moulds, The PROPAGANDA GAME strikes a joyful blow for clearer social thinking."
   },
   {
