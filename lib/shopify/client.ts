@@ -1,5 +1,5 @@
-const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
-const storefrontAccessToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN;
+import { SHOPIFY_STORE_DOMAIN as domain, SHOPIFY_STOREFRONT_ACCESS_TOKEN as storefrontAccessToken } from './env';
+
 const API_VERSION = '2024-04';
 
 export async function shopifyFetch<T>({ query, variables }: { query: string; variables?: any }): Promise<{ status: number; body: T } | never> {
