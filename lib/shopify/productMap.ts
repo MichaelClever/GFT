@@ -15,6 +15,16 @@ export type Product = {
   selections?: ProductSelection[];
 };
 
+export const CATEGORIES = [
+  "All",
+  "Math",
+  "Logic",
+  "Language",
+  "Scientific Reasoning",
+  "Social Studies",
+  "Specials / Bundles"
+];
+
 export const products: Product[] = [
   {
     id: "gid://shopify/ProductVariant/51294304764124",
@@ -39,7 +49,7 @@ export const products: Product[] = [
     title: "You Pick 3 Game Special",
     handle: "you-pick-3",
     price: "70.00",
-    category: "Specials",
+    category: "Specials / Bundles",
     image: "/3game.jpeg",
     description: "Build your own custom bundle! Select any three of our classic educational games to create the perfect challenging curriculum for your classroom or home.",
     requiresSelections: true,
