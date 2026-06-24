@@ -99,6 +99,8 @@ export default function MathPage() {
                             titlePopupText="An encyclopedic anthology of early software programs that teach a broad range of math concepts using an expert computer system capable of playing and monitoring EQUATIONS matches."
                             shopifyMerchandiseId={eqMasteryProduct?.id}
                             price={eqMasteryProduct?.price}
+                            requiresSelections={eqMasteryProduct?.requiresSelections}
+                            selections={eqMasteryProduct?.selections}
                         />
                     </div>
                     

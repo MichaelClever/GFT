@@ -119,7 +119,14 @@ export const products: Product[] = [
     price: "49.00",
     category: "Math",
     image: "/eqmastery.jpeg",
-    description: "An encyclopedic anthology of early software programs that teach a broad range of math concepts using an expert computer system capable of playing and monitoring EQUATIONS matches."
+    description: "An encyclopedic anthology of early software programs that teach a broad range of math concepts using an expert computer system capable of playing and monitoring EQUATIONS matches.",
+    requiresSelections: true,
+    selections: [
+      {
+        name: "Format",
+        options: ["PC", "MAC"]
+      }
+    ]
   },
   {
     id: "gid://shopify/ProductVariant/51294304862428",
