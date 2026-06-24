@@ -72,11 +72,11 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                 onClick={() => { if (titlePopupText) setIsTitlePopupOpen(true); }}
             >
                 <h3 className="font-cinzel text-xl md:text-2xl font-bold text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight flex flex-col items-center justify-center">
-                    {title.includes(' - ') ? (
+                    {(title.includes(' - ') || title.includes(': ')) ? (
                         <>
-                            <span>{title.split(' - ')[0]}</span>
+                            <span>{title.includes(' - ') ? title.split(' - ')[0] : title.split(': ')[0] + ':'}</span>
                             <span className="text-[0.65rem] md:text-[0.8rem] mt-1 font-lora italic tracking-wider opacity-90 block">
-                                - {title.split(' - ')[1]}
+                                {title.includes(' - ') ? `- ${title.split(' - ')[1]}` : title.split(': ')[1]}
                             </span>
                         </>
                     ) : (
@@ -112,7 +112,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                 
                 {description && (
                     <p className="text-[#f1e5d1] text-[1.05rem] mb-8 flex-1 opacity-90 leading-relaxed">
-                        <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{title.split(' - ')[0]}:</strong> {description}
+                        <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{title.includes(' - ') ? title.split(' - ')[0] : title.split(': ')[0]}:</strong> {description}
                     </p>
                 )}
 
@@ -287,7 +287,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                         <div className="bg-[#1a0f0a] border-b border-[#d4af37]/30 px-6 py-5 flex justify-between items-center shadow-md">
                             <div className="w-10 h-10 shrink-0"></div>
                             <h2 className="font-cinzel text-xl md:text-2xl font-bold text-[#f3e5ab] tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-center flex-1">
-                                {title.split(' - ')[0]}
+                                {title.includes(' - ') ? title.split(' - ')[0] : title.split(': ')[0]}
                             </h2>
                             <button 
                                 className="text-[#d4af37] hover:text-white transition-colors text-2xl leading-none w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 shrink-0"
