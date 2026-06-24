@@ -93,10 +93,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
                 localStorage.setItem('gft_shopify_cart_id', currentCartId!);
             }
 
-            const updatedCart = await shopifyAddToCart(currentCartId!, [{ merchandiseId, quantity, attributes }]);
+            const lineItem: any = { merchandiseId, quantity };
+            if (attributes && attributes.length > 0) {
+                lineItem.attributes = attributes;
+            }
+
+            const updatedCart = await shopifyAddToCart(currentCartId!, [lineItem]);
             setCart(updatedCart);
         } catch (e) {
             console.error("Failed to add to cart", e);
+            throw e;
         } finally {
             setIsLoading(false);
         }

@@ -8,6 +8,7 @@ export async function shopifyFetch<T>({ query, variables }: { query: string; var
   try {
     const result = await fetch(endpoint, {
       method: 'POST',
+      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
         'X-Shopify-Storefront-Access-Token': storefrontAccessToken!,
@@ -132,7 +133,8 @@ export async function addToCart(cartId: string, lines: { merchandiseId: string; 
   `;
   const res = await shopifyFetch<any>({ query, variables: { cartId, lines } });
   if (res.body.data.cartLinesAdd.userErrors && res.body.data.cartLinesAdd.userErrors.length > 0) {
-      console.error(res.body.data.cartLinesAdd.userErrors);
+      console.error('Shopify API User Errors:', res.body.data.cartLinesAdd.userErrors);
+      throw new Error(res.body.data.cartLinesAdd.userErrors[0].message);
   }
   return res.body.data.cartLinesAdd.cart;
 }
@@ -152,6 +154,10 @@ export async function updateCartLine(cartId: string, lines: { id: string; quanti
     }
   `;
   const res = await shopifyFetch<any>({ query, variables: { cartId, lines } });
+  if (res.body.data.cartLinesUpdate.userErrors && res.body.data.cartLinesUpdate.userErrors.length > 0) {
+      console.error('Shopify API User Errors:', res.body.data.cartLinesUpdate.userErrors);
+      throw new Error(res.body.data.cartLinesUpdate.userErrors[0].message);
+  }
   return res.body.data.cartLinesUpdate.cart;
 }
 
@@ -170,5 +176,9 @@ export async function removeCartLine(cartId: string, lineIds: string[]) {
     }
   `;
   const res = await shopifyFetch<any>({ query, variables: { cartId, lineIds } });
+  if (res.body.data.cartLinesRemove.userErrors && res.body.data.cartLinesRemove.userErrors.length > 0) {
+      console.error('Shopify API User Errors:', res.body.data.cartLinesRemove.userErrors);
+      throw new Error(res.body.data.cartLinesRemove.userErrors[0].message);
+  }
   return res.body.data.cartLinesRemove.cart;
 }

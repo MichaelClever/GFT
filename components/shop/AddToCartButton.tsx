@@ -17,9 +17,14 @@ export function AddToCartButton({ merchandiseId, quantity = 1, attributes = [], 
 
     const handleAdd = async () => {
         if (disabled || isLoading) return;
-        await addToCart(merchandiseId, quantity, attributes);
-        setIsAdded(true);
-        setTimeout(() => setIsAdded(false), 2000);
+        try {
+            await addToCart(merchandiseId, quantity, attributes);
+            setIsAdded(true);
+            setTimeout(() => setIsAdded(false), 2000);
+        } catch (e) {
+            // Error was thrown, do not show success state
+            console.error(e);
+        }
     };
 
     const baseStyle = "cursor-pointer transition-all shadow-md font-bold tracking-wider flex items-center justify-center ";
