@@ -45,6 +45,7 @@ export default function SpecialsPage() {
                         <ProductCard 
                             title="7-Game Special"
                             imageSrc="/7game.jpeg"
+                            titlePopupText="SAVE $46.00 on this special assortment of our most important and popular games. These revolutionary learning materials have brought joy and skyrocketing performance to significant areas of study. A $225.00 value for only $179.00.\nIncludes:\n\nEQUATIONS: The Game of Creative Mathematics (Deluxe version including “Learning to Play” DVD)\nWFF ‘N PROOF: The Game of Modern Logic, ON-SETS: The Game of Set Theory, ON-WORDS: The Game of Word Structures, LinguiSHTIK: A Creative Language Game, QUERIES ‘N THEORIES: The Game of Science and Language, and The PROPAGANDA Game\n\nFor 2 or more players Ages: 6 through adults"
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
