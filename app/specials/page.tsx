@@ -38,6 +38,7 @@ export default function SpecialsPage() {
                         <ProductCard 
                             title="You Pick 3-Game Special"
                             imageSrc="/3game.jpeg"
+                            titlePopupText="The U-Pick 3-game special allows you to order any three games from our site for the sale price of $79. You specify which three games you want in the drop down menu. They can be different games or 2 or 3 of the same game. This is our best special and very popular when one must choose between many good options."
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
