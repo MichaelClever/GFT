@@ -1,7 +1,9 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
+import { getProductByHandle } from "@/lib/shopify/productMap";
 
 export default function SocialStudiesPage() {
+    const propProduct = getProductByHandle("the-propaganda-game");
     return (
         <main className="relative w-full flex-1 flex flex-col font-lora min-h-screen">
             <Navbar />
@@ -41,6 +43,8 @@ export default function SocialStudiesPage() {
                             howToPlayVideoUrl="https://player.vimeo.com/video/78006063?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             detailsVideoUrl="https://player.vimeo.com/video/1193822541?share=copy&fl=sv&fe=ci&autoplay=1&muted=0"
                             titlePopupText="The PROPAGANDA GAME: the hilarious but effective antidote for the daily barrage from advertising, public relations, politics and the mass media – all seeking to manipulate our attitudes and behavior. Inoculate yourself, your family and students by learning to identify the many blatant and subtle persuasion techniques used by professionals. Soon you’ll be seeing them everywhere and, in the process, learn to stand firmly outside their insidious grip.\n\nPROPAGANDA is a delightful, highly social game in which players first learn to identify techniques such as: prejudice, casual oversimplification, faulty analogy, tabloid and wishful thinking, hasty generalization, attacking a straw man, appeals to ignorance, emotion, flattery, pity, prestige, folksiness, joining the bandwagon and many, many more. Once players become adept at identifying the techniques exemplified in the humorous examples provided with the game, they graduate to the “expert” level where they gather and create their own examples from the real world or their imagination.\n\nThe PROPAGANDA GAME is a truly wonderful experience in which “who is right” is ultimately less important than the power of your arguments and the assessment of how convinced your fellow players are. Based on the book “Thinking Straighter” by George Henry Moulds, The PROPAGANDA GAME strikes a joyful blow for clearer social thinking."
+                            shopifyMerchandiseId={propProduct?.id}
+                            price={propProduct?.price}
                         />
                     </div>
                 </div>

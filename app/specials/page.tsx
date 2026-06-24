@@ -1,7 +1,11 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
+import { getProductByHandle } from "@/lib/shopify/productMap";
 
 export default function SpecialsPage() {
+    const pick3Product = getProductByHandle("you-pick-3-game-special");
+    const pick7Product = getProductByHandle("7-game-special");
+    const library14Product = getProductByHandle("complete-14-item-thinkers-library");
     return (
         <main className="relative w-full flex-1 flex flex-col font-lora min-h-screen">
             <Navbar />
@@ -39,6 +43,10 @@ export default function SpecialsPage() {
                             title="You Pick 3-Game Special"
                             imageSrc="/3game.jpeg"
                             titlePopupText="The U-Pick 3-game special allows you to order any three games from our site for the sale price of $79. You specify which three games you want in the drop down menu. They can be different games or 2 or 3 of the same game. This is our best special and very popular when one must choose between many good options."
+                            shopifyMerchandiseId={pick3Product?.id}
+                            price={pick3Product?.price}
+                            requiresSelections={pick3Product?.requiresSelections}
+                            selections={pick3Product?.selections}
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
@@ -46,6 +54,8 @@ export default function SpecialsPage() {
                             title="7-Game Special"
                             imageSrc="/7game.jpeg"
                             titlePopupText="SAVE $46.00 on this special assortment of our most important and popular games. These revolutionary learning materials have brought joy and skyrocketing performance to significant areas of study. A $225.00 value for only $179.00.\nIncludes:\n\nEQUATIONS: The Game of Creative Mathematics (Deluxe version including “Learning to Play” DVD)\nWFF ‘N PROOF: The Game of Modern Logic, ON-SETS: The Game of Set Theory, ON-WORDS: The Game of Word Structures, LinguiSHTIK: A Creative Language Game, QUERIES ‘N THEORIES: The Game of Science and Language, and The PROPAGANDA Game\n\nFor 2 or more players Ages: 6 through adults"
+                            shopifyMerchandiseId={pick7Product?.id}
+                            price={pick7Product?.price}
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
@@ -53,6 +63,8 @@ export default function SpecialsPage() {
                             title="Complete 14-Item Thinker's Library"
                             imageSrc="/14game.jpeg"
                             titlePopupText="A complete library of thinking games and intellectual challenge. Regular retail price for this unique collection is $386. The library is available here at the special price of $299 – a savings of $87. Minds encountered by the master of this collection will never be the same. Includes:\nEQUATIONS: The Game of Creative Mathematics (with “Learning to Play” DVD), WFF ‘N PROOF: The Game of Modern Logic, ON-SETS: The Game of Set Theory, The PROPAGANDA Game, ON-WORDS: The Game of Word Structures, LinguiSHTIK: A Creative Language Game, QUERIES ‘N THEORIES: The Game of Science of Language, The REAL NUMBERS Game, The MEDITATION Game, The EQUATIONS Mastery Collection Software (The DIG Math Computer Program and EQUATIONS Challenge Matches), TRI NIM: The Game for Compete Strategists, CONFIGURATIONS: Number Puzzles for All Ages, TAC-TICKLE: A Challenging Game of Pure Strategy, QUICK-SANE: An Intriguing Topological Puzzle."
+                            shopifyMerchandiseId={library14Product?.id}
+                            price={library14Product?.price}
                         />
                     </div>
                 </div>
