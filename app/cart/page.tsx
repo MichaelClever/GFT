@@ -3,6 +3,7 @@
 import { useCart } from "@/features/cart/cart-context";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { CHECKOUT_ENABLED } from "@/lib/shopify/env";
 
 export default function CartPage() {
     const { cart, items, updateQuantity, removeFromCart, isLoading } = useCart();
@@ -121,12 +122,26 @@ export default function CartPage() {
                         </div>
 
                         {cart?.checkoutUrl && (
-                            <a 
-                                href={cart.checkoutUrl}
-                                className="block w-full text-center bg-gradient-to-b from-[#b58b29] to-[#8c6a1d] hover:from-[#d4af37] hover:to-[#a87d21] text-[#1a0f0a] font-cinzel font-bold text-xl py-4 rounded shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all"
-                            >
-                                Proceed to Checkout
-                            </a>
+                            CHECKOUT_ENABLED ? (
+                                <a 
+                                    href={cart.checkoutUrl}
+                                    className="block w-full text-center bg-gradient-to-b from-[#b58b29] to-[#8c6a1d] hover:from-[#d4af37] hover:to-[#a87d21] text-[#1a0f0a] font-cinzel font-bold text-xl py-4 rounded shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all"
+                                >
+                                    Proceed to Checkout
+                                </a>
+                            ) : (
+                                <div className="text-center">
+                                    <button 
+                                        disabled
+                                        className="w-full text-center bg-[#2a1b12] text-gray-500 font-cinzel font-bold text-[1.1rem] py-4 rounded border border-[#3a2a20] cursor-not-allowed opacity-80"
+                                    >
+                                        Checkout temporarily disabled
+                                    </button>
+                                    <p className="text-[#e6d6ad] text-xs mt-3 font-lora italic opacity-90">
+                                        Checkout is currently disabled while the new store is being tested.
+                                    </p>
+                                </div>
+                            )
                         )}
                         <Link href="/shop" className="block text-center w-full mt-4 text-[#d4af37] hover:text-[#f3e5ab] underline font-lora">
                             Continue Shopping
