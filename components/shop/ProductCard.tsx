@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { AddToCartButton } from './AddToCartButton';
-import { ProductSelection } from '@/lib/shopify/productMap';
+import { ProductSelection, ProductVariant } from '@/lib/shopify/productMap';
 
 interface ProductCardProps {
     title: string;
@@ -16,15 +16,19 @@ interface ProductCardProps {
     selections?: ProductSelection[];
     price?: string;
     hideInfoButtons?: boolean;
+    variants?: ProductVariant[];
 }
 
-export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText, shopifyMerchandiseId, requiresSelections, selections, price, hideInfoButtons }: ProductCardProps) {
+export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText, shopifyMerchandiseId, requiresSelections, selections, price, hideInfoButtons, variants }: ProductCardProps) {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const [isDetailsVideoOpen, setIsDetailsVideoOpen] = useState(false);
     const [isTitlePopupOpen, setIsTitlePopupOpen] = useState(false);
     const [lightboxMounted, setLightboxMounted] = useState(false);
     const [quantity, setQuantity] = useState<number | string>(1);
+    
+    // Manage state for Shopify Variants
+    const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(variants && variants.length > 0 ? variants[0] : null);
     
     // Manage state for custom selections (e.g., Pick 3)
     const [selectedAttributes, setSelectedAttributes] = useState<{key: string, value: string}[]>([]);
@@ -83,9 +87,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                         <span>{title}</span>
                     )}
                 </h3>
-                {price && (
+                {(selectedVariant?.price || price) && (
                     <div className="text-[#d4af37] font-lora font-bold text-lg mt-1 tracking-wide">
-                        ${price}
+                        ${selectedVariant ? selectedVariant.price : price}
                     </div>
                 )}
             </div>
@@ -165,6 +169,27 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                         </div>
                     )}
 
+                    {/* Render Variants Dropdown (e.g. Classroom Set) */}
+                    {variants && variants.length > 0 && (
+                        <div className="flex flex-col bg-[#2a1b12] border border-[#8c6a1d] rounded p-2 mb-2">
+                            <label className="text-[0.65rem] uppercase tracking-wider text-[#d4af37] font-bold mb-1">
+                                Choose {title.includes(' - ') ? title.split(' - ')[0] : title.split(': ')[0]} Game
+                            </label>
+                            <select 
+                                className="bg-[#1a0f0a] text-[#f1e5d1] border border-[#d4af37]/50 rounded p-1 text-sm focus:outline-none focus:border-[#d4af37]"
+                                value={selectedVariant?.id || ""}
+                                onChange={(e) => {
+                                    const variant = variants.find(v => v.id === e.target.value);
+                                    if (variant) setSelectedVariant(variant);
+                                }}
+                            >
+                                {variants.map(v => (
+                                    <option key={v.id} value={v.id}>{v.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                    )}
+
                     <div className="flex items-stretch gap-3 w-full pt-2">
                         <div className="flex flex-col justify-center bg-[#2a1b12] border-2 border-[#8c6a1d] rounded overflow-hidden shadow-inner focus-within:border-[#d4af37] transition-colors">
                             <label className="text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-[#d4af37] px-2 pt-1 font-bold text-center">
@@ -179,9 +204,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                                 className="w-20 md:w-24 bg-transparent text-[#fdf5d3] text-center font-bold text-xl focus:outline-none pb-1 [&::-webkit-outer-spin-button]:opacity-100 [&::-webkit-inner-spin-button]:opacity-100"
                             />
                         </div>
-                        {shopifyMerchandiseId ? (
+                        {(selectedVariant?.id || shopifyMerchandiseId) ? (
                             <AddToCartButton 
-                                merchandiseId={shopifyMerchandiseId} 
+                                merchandiseId={selectedVariant ? selectedVariant.id : shopifyMerchandiseId!} 
                                 quantity={typeof quantity === 'number' ? quantity : 1}
                                 attributes={selectedAttributes.filter(a => a.value)}
                                 disabled={requiresSelections ? selectedAttributes.some(a => !a.value) : false}

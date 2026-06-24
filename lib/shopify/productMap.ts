@@ -3,6 +3,12 @@ export type ProductSelection = {
   options: string[];
 };
 
+export type ProductVariant = {
+  id: string;
+  name: string;
+  price: string;
+};
+
 export type Product = {
   id: string; // The variant ID used for addToCart
   title: string;
@@ -13,6 +19,8 @@ export type Product = {
   description?: string;
   requiresSelections?: boolean;
   selections?: ProductSelection[];
+  hasVariants?: boolean;
+  variants?: ProductVariant[];
 };
 
 export const CATEGORIES = [
@@ -78,13 +86,22 @@ export const products: Product[] = [
     description: "SAVE $46.00 on this special assortment of our most important and popular games. These revolutionary learning materials have brought joy and skyrocketing performance to significant areas of study. A $225.00 value for only $179.00.\nIncludes:\n\nEQUATIONS: The Game of Creative Mathematics (Deluxe version including “Learning to Play” DVD)\nWFF ‘N PROOF: The Game of Modern Logic, ON-SETS: The Game of Set Theory, ON-WORDS: The Game of Word Structures, LinguiSHTIK: A Creative Language Game, QUERIES ‘N THEORIES: The Game of Science and Language, and The PROPAGANDA Game\n\nFor 2 or more players Ages: 6 through adults"
   },
   {
-    id: "gid://shopify/ProductVariant/51294301356252",
+    id: "gid://shopify/ProductVariant/51796837138652",
     title: "Classroom Set",
     handle: "classroom-set",
     price: "299.00",
     category: "Specials / Bundles",
     image: "/class.jpeg",
-    description: "A Classroom Set contains all the materials needed to conduct classroom tournaments with up to 36 students at a time. They can be made up for any of six chosen games."
+    description: "A Classroom Set contains all the materials needed to conduct classroom tournaments with up to 36 students at a time. They can be made up for any of six chosen games.",
+    hasVariants: true,
+    variants: [
+      { name: "ON-WORDS", id: "gid://shopify/ProductVariant/51796837138652", price: "299.00" },
+      { name: "LinguiSHTIK", id: "gid://shopify/ProductVariant/51796837171420", price: "299.00" },
+      { name: "EQUATIONS", id: "gid://shopify/ProductVariant/51796837204188", price: "299.00" },
+      { name: "ON-SETS", id: "gid://shopify/ProductVariant/51796837236956", price: "299.00" },
+      { name: "Propaganda Game", id: "gid://shopify/ProductVariant/51796837269724", price: "299.00" },
+      { name: "WFF ’N PROOF", id: "gid://shopify/ProductVariant/51796837302492", price: "349.00" }
+    ]
   },
   {
     id: "gid://shopify/ProductVariant/51294301389020",

@@ -89,6 +89,7 @@ export default function MathPage() {
                             titlePopupText="A Classroom Set contains all the materials needed to conduct classroom tournaments with up to 36 students at a time. They can be made up for any of six chosen games."
                             shopifyMerchandiseId={classProduct?.id}
                             price={classProduct?.price}
+                            variants={classProduct?.variants}
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">

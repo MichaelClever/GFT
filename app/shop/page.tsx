@@ -56,6 +56,7 @@ export default function ShopPage() {
                             selections={product.selections}
                             hideInfoButtons={true}
                             titlePopupText={product.description}
+                            variants={product.variants}
                         />
                     ))}
                 </div>
