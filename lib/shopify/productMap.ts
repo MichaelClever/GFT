@@ -100,7 +100,7 @@ export const products: Product[] = [
   },
   {
     id: "gid://shopify/ProductVariant/51294315315420",
-    title: "WFF- The Beginners game of modern logic",
+    title: "WFF - The Beginners game of modern logic",
     handle: "wff-the-beginners-game-of-modern-logic",
     price: "3.50",
     category: "Logic",
