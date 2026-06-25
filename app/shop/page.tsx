@@ -4,9 +4,12 @@ import { useState } from "react";
 import { products, CATEGORIES } from "@/lib/shopify/productMap";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { Navbar } from "@/components/layout/Navbar";
+import { useCart } from "@/features/cart/cart-context";
+import { CartPreviewPanel } from "@/components/shop/CartPreviewPanel";
 
 export default function ShopPage() {
     const [selectedCategory, setSelectedCategory] = useState("All");
+    const { items } = useCart();
 
     const getDynamicTitle = () => {
         if (selectedCategory === "All") return "Shop Games For Thinkers";
@@ -22,7 +25,8 @@ export default function ShopPage() {
         <main className="relative w-full min-h-screen flex flex-col font-lora">
             <Navbar />
             
-            <div className="flex-1 w-full max-w-[1400px] mx-auto px-4 md:px-8 py-12">
+            <div className="flex-1 w-full max-w-[1400px] mx-auto px-4 md:px-8 py-12 flex flex-col xl:flex-row gap-8 items-start">
+                <div className="flex-1 w-full">
                 <h1 className="text-4xl md:text-5xl font-cinzel-decorative font-bold text-[#f3e5ab] text-center mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                     {getDynamicTitle()}
                 </h1>
@@ -66,6 +70,21 @@ export default function ShopPage() {
                         <p className="text-xl text-[#f1e5d1] font-lora opacity-80">
                             Products for this category are coming soon.
                         </p>
+                    </div>
+                )}
+                </div>
+                
+                {/* Cart Preview Panel */}
+                {items && items.length > 0 && (
+                    <div className="hidden xl:block w-[380px] shrink-0">
+                        <CartPreviewPanel />
+                    </div>
+                )}
+                
+                {/* Mobile/Tablet view for Cart Preview (if needed) - placed below products for smaller screens */}
+                {items && items.length > 0 && (
+                    <div className="xl:hidden w-full mt-8">
+                        <CartPreviewPanel />
                     </div>
                 )}
             </div>
