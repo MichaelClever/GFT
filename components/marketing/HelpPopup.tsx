@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
 export function HelpPopup() {
     const [isOpen, setIsOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     return (
         <div className="relative inline-block">
@@ -18,9 +24,9 @@ export function HelpPopup() {
             </button>
 
             {/* Popup Modal */}
-            {isOpen && (
-                <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-                    <div className="relative w-full max-w-md bg-[#0a0502]/95 border-[2px] border-[#8c6a1d] rounded-xl p-8 shadow-[0_10px_40px_rgba(0,0,0,0.9)] text-left font-lora text-[#f1e5d1]">
+            {mounted && isOpen && createPortal(
+                <div className="fixed inset-0 z-[9999] flex items-start justify-center p-4 bg-black/60 backdrop-blur-sm pt-[180px] overflow-y-auto">
+                    <div className="relative w-full max-w-md bg-[#0a0502]/95 border-[2px] border-[#8c6a1d] rounded-xl p-8 shadow-[0_10px_40px_rgba(0,0,0,0.9)] text-left font-lora text-[#f1e5d1] mb-8">
                         <button 
                             onClick={() => setIsOpen(false)}
                             className="absolute top-4 right-4 text-[#d4af37] hover:text-white transition-colors"
@@ -51,7 +57,8 @@ export function HelpPopup() {
                             </button>
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </div>
     );
