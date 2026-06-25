@@ -7,7 +7,7 @@ export function HelpPopup() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="relative inline-block mb-4">
+        <div className="relative inline-block">
             {/* Tooltip Trigger */}
             <button 
                 onClick={() => setIsOpen(true)}
@@ -19,7 +19,7 @@ export function HelpPopup() {
 
             {/* Popup Modal */}
             {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
                     <div className="relative w-full max-w-md bg-[#0a0502]/95 border-[2px] border-[#8c6a1d] rounded-xl p-8 shadow-[0_10px_40px_rgba(0,0,0,0.9)] text-left font-lora text-[#f1e5d1]">
                         <button 
                             onClick={() => setIsOpen(false)}
