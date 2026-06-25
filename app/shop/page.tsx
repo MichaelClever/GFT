@@ -25,7 +25,7 @@ export default function ShopPage() {
         <main className="relative w-full min-h-screen flex flex-col font-lora">
             <Navbar />
             
-            <div className="flex-1 w-full max-w-[1400px] mx-auto px-4 md:px-8 py-12 flex flex-col xl:flex-row gap-8 items-start">
+            <div className="flex-1 w-full max-w-[1400px] mx-auto px-4 md:px-8 py-12 flex flex-col xl:flex-row gap-8 items-stretch">
                 <div className="flex-1 w-full">
                 <h1 className="text-4xl md:text-5xl font-cinzel-decorative font-bold text-[#f3e5ab] text-center mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                     {getDynamicTitle()}
@@ -76,7 +76,7 @@ export default function ShopPage() {
                 
                 {/* Cart Preview Panel */}
                 {items && items.length > 0 && (
-                    <div className="hidden xl:block w-[380px] shrink-0">
+                    <div className="hidden xl:block w-[220px] shrink-0">
                         <CartPreviewPanel />
                     </div>
                 )}
