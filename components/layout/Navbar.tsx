@@ -5,7 +5,7 @@ import { HelpPopup } from '../marketing/HelpPopup';
 
 export function Navbar() {
     return (
-        <header className="w-full flex justify-center pt-2 px-4 z-[90] sticky top-4">
+        <header className="w-full flex justify-center px-4 z-[90] sticky top-0">
             <div className="w-full max-w-[1400px] flex justify-center relative drop-shadow-[0_15px_15px_rgba(0,0,0,0.6)] h-[85px]">
 
                 {/* Unified Wood Background Bar */}
