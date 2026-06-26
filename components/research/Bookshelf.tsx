@@ -8,7 +8,6 @@ const books = [
     {
         id: "summary-of-research",
         title: "Summary of Research",
-        subtitle: "Instructional Gaming Program",
         href: "/research/summary-of-research",
         color: "bg-[#7d2f1d]",
         borderColor: "border-[#8c6a1d]",
@@ -19,7 +18,6 @@ const books = [
     {
         id: "volume-2",
         title: "Math Education in America",
-        subtitle: "Why Technology Can't Fix It",
         href: "/research/math-education-in-america",
         color: "bg-[#253f75]",
         borderColor: "border-[#a3b1c6]",
@@ -30,7 +28,6 @@ const books = [
     {
         id: "volume-3",
         title: "Naked Math",
-        subtitle: "Are you ready?",
         href: "/research/naked-math",
         color: "bg-[#593d26]",
         borderColor: "border-[#d4af37]",
@@ -41,7 +38,6 @@ const books = [
     {
         id: "volume-4",
         title: "Online Games",
-        subtitle: "What do they teach?",
         href: "/research/online-games",
         color: "bg-[#355e39]",
         borderColor: "border-[#b59a6d]",
@@ -51,8 +47,7 @@ const books = [
     },
     {
         id: "volume-5",
-        title: "Games, Gods and Grades",
-        subtitle: "Fred Goodman",
+        title: "Games, Gods, and Grades",
         href: "/research/games-gods-grades",
         color: "bg-[#702931]",
         borderColor: "border-[#e0a2a5]",
