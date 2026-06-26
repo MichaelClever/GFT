@@ -116,11 +116,6 @@ export function Bookshelf() {
                                                 <h3 className={`font-cinzel-decorative font-bold text-xs sm:text-sm md:text-base uppercase tracking-widest ${book.textColor} drop-shadow-md leading-tight`}>
                                                     {book.title}
                                                 </h3>
-                                                {book.subtitle && (
-                                                    <p className={`font-lora italic text-[0.5rem] sm:text-[0.6rem] md:text-xs opacity-90 ${book.textColor} leading-tight`}>
-                                                        {book.subtitle}
-                                                    </p>
-                                                )}
                                             </div>
 
                                             {/* Bottom of Spine (Left side when rotated) */}
