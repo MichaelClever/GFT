@@ -51,14 +51,14 @@ const books = [
     },
     {
         id: "volume-5",
-        title: "Research Volume V",
-        subtitle: "Advanced Pedagogy",
-        href: "#",
+        title: "Games, Gods and Grades",
+        subtitle: "Fred Goodman",
+        href: "/research/games-gods-grades",
         color: "bg-[#702931]",
         borderColor: "border-[#e0a2a5]",
         textColor: "text-[#fce8e9]",
         hasIcon: false,
-        disabled: true
+        disabled: false
     }
 ];
 
