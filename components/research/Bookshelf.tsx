@@ -91,13 +91,13 @@ export function Bookshelf() {
                             <>
                                 {/* The Book Spine (3D Object) */}
                                 <div 
-                                    className={`absolute inset-0 rounded-l-sm rounded-r-xl transform-style-3d transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-bottom ${book.disabled ? '' : 'group-hover:-translate-y-6 group-hover:-rotate-y-12 group-hover:scale-105 z-20 group-hover:shadow-[-25px_25px_40px_rgba(0,0,0,0.9)]'} shadow-[-10px_10px_25px_rgba(0,0,0,0.9)] border-l-[1px] border-r-[3px] border-y-[2px] border-black/80 bg-[url('/leather_spine.png')] bg-cover bg-center`}
+                                    className={`absolute inset-0 rounded-l-sm rounded-r-xl transform-style-3d transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-bottom ${book.disabled ? '' : 'group-hover:-translate-y-6 group-hover:-rotate-y-12 group-hover:scale-105 z-20 group-hover:shadow-[-25px_25px_40px_rgba(0,0,0,0.9)]'} shadow-[-10px_10px_25px_rgba(0,0,0,0.9)] border-l-[1px] border-r-[3px] border-y-[2px] border-black/80 ${book.color}`}
                                 >
-                                    {/* Color Tint Overlay - Uses color-burn for richer leather texture */}
-                                    <div className={`absolute inset-0 ${book.color} opacity-90 mix-blend-color-burn rounded-[inherit]`}></div>
+                                    {/* Photorealistic Leather Texture Overlay (luminosity preserves the vibrant base color) */}
+                                    <div className="absolute inset-0 bg-[url('/leather_spine.png')] bg-cover bg-center opacity-75 mix-blend-luminosity rounded-[inherit] pointer-events-none"></div>
 
-                                    {/* Softer Leather 3D Cylindrical Lighting (removed white glare) */}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/80 rounded-[inherit] shadow-[inset_2px_0_5px_rgba(255,255,255,0.1),inset_-12px_0_30px_rgba(0,0,0,0.8)] pointer-events-none"></div>
+                                    {/* Softer Leather 3D Cylindrical Lighting */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/70 rounded-[inherit] shadow-[inset_2px_0_5px_rgba(255,255,255,0.1),inset_-12px_0_30px_rgba(0,0,0,0.8)] pointer-events-none"></div>
 
                                     {/* Spine Inner Texture / Binding grooves (with real depth) */}
                                     <div className="absolute top-[10%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/10 z-10 pointer-events-none shadow-[0_2px_5px_rgba(0,0,0,0.6)]"></div>
@@ -108,7 +108,7 @@ export function Bookshelf() {
                                     
                                     {/* Spine Content Wrapper (Rotated sideways) */}
                                     <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                                        <div className="flex flex-row items-center justify-between w-[280px] md:w-[320px] px-4 rotate-90 transform origin-center">
+                                        <div className="flex flex-row items-center justify-between w-[250px] md:w-[290px] px-4 rotate-90 transform origin-center">
                                             
                                             {/* Top of Spine (Right side when rotated) */}
                                             {book.hasIcon && (
@@ -118,11 +118,11 @@ export function Bookshelf() {
                                             )}
                                             
                                             <div className="flex flex-col items-center justify-center flex-1 space-y-0.5 md:space-y-1 px-2 text-center">
-                                                <h3 className={`font-cinzel-decorative font-bold text-[0.65rem] sm:text-xs md:text-sm uppercase tracking-widest ${book.textColor} drop-shadow-md leading-tight`}>
+                                                <h3 className={`font-cinzel-decorative font-bold text-xs sm:text-sm md:text-base uppercase tracking-widest ${book.textColor} drop-shadow-md leading-tight`}>
                                                     {book.title}
                                                 </h3>
                                                 {book.subtitle && (
-                                                    <p className={`font-lora italic text-[0.45rem] sm:text-[0.55rem] md:text-xs opacity-80 ${book.textColor} leading-tight`}>
+                                                    <p className={`font-lora italic text-[0.5rem] sm:text-[0.6rem] md:text-xs opacity-90 ${book.textColor} leading-tight`}>
                                                         {book.subtitle}
                                                     </p>
                                                 )}
