@@ -12,7 +12,7 @@ export function CartPreviewPanel() {
     }
 
     return (
-        <div className="w-full xl:w-[220px] sticky top-[100px] flex flex-col bg-[#1a0f0a]/95 border-[2px] border-[#8c6a1d] rounded-xl p-4 shadow-[0_8px_30px_rgba(0,0,0,0.8)] z-10 max-h-[calc(100vh-120px)]">
+        <div className="w-full xl:w-[220px] sticky top-[130px] flex flex-col bg-[#1a0f0a]/95 border-[2px] border-[#8c6a1d] rounded-xl p-4 shadow-[0_8px_30px_rgba(0,0,0,0.8)] z-10 max-h-[calc(100vh-150px)]">
             {/* Header */}
             <div className="border-b border-[#8c6a1d]/50 pb-3 mb-3 shrink-0 text-center">
                 <h2 className="text-base font-cinzel font-bold text-[#f3e5ab] mb-1">Subtotal</h2>
