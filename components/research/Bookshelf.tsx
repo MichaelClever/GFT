@@ -10,7 +10,7 @@ const books = [
         title: "Summary of Research",
         subtitle: "Instructional Gaming Program",
         href: "/research/summary-of-research",
-        color: "bg-gradient-to-r from-[#110500] via-[#2a1309] to-[#110500]",
+        color: "bg-[#4a1c10]",
         borderColor: "border-[#8c6a1d]",
         textColor: "text-[#f3e5ab]",
         hasIcon: true,
@@ -21,7 +21,7 @@ const books = [
         title: "Research Volume II",
         subtitle: "Cognitive Development",
         href: "#",
-        color: "bg-gradient-to-r from-[#0a1128] via-[#1c2a4f] to-[#0a1128]",
+        color: "bg-[#16274a]",
         borderColor: "border-[#a3b1c6]",
         textColor: "text-[#e2e8f0]",
         hasIcon: false,
@@ -32,7 +32,7 @@ const books = [
         title: "Research Volume III",
         subtitle: "Curriculum Integration",
         href: "#",
-        color: "bg-gradient-to-r from-[#1a0f0a] via-[#3d2417] to-[#1a0f0a]",
+        color: "bg-[#332418]",
         borderColor: "border-[#d4af37]",
         textColor: "text-[#fdf5d3]",
         hasIcon: false,
@@ -43,7 +43,7 @@ const books = [
         title: "Research Volume IV",
         subtitle: "Social Dynamics",
         href: "#",
-        color: "bg-gradient-to-r from-[#1c140a] via-[#4a3b22] to-[#1c140a]",
+        color: "bg-[#253f28]",
         borderColor: "border-[#b59a6d]",
         textColor: "text-[#f1e5d1]",
         hasIcon: false,
@@ -54,7 +54,7 @@ const books = [
         title: "Research Volume V",
         subtitle: "Advanced Pedagogy",
         href: "#",
-        color: "bg-gradient-to-r from-[#21090a] via-[#4d1618] to-[#21090a]",
+        color: "bg-[#421b20]",
         borderColor: "border-[#e0a2a5]",
         textColor: "text-[#fce8e9]",
         hasIcon: false,
@@ -91,17 +91,20 @@ export function Bookshelf() {
                             <>
                                 {/* The Book Spine (3D Object) */}
                                 <div 
-                                    className={`absolute inset-0 rounded-l-[4px] rounded-r-[8px] transform-style-3d transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-bottom ${book.disabled ? '' : 'group-hover:-translate-y-4 group-hover:-rotate-y-12 group-hover:scale-105 z-20 group-hover:shadow-[-20px_20px_30px_rgba(0,0,0,0.8)]'} shadow-[-10px_10px_20px_rgba(0,0,0,0.7)] border-l-[3px] border-r-2 border-y-2 ${book.color} ${book.borderColor}`}
+                                    className={`absolute inset-0 rounded-l-sm rounded-r-xl transform-style-3d transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-bottom ${book.disabled ? '' : 'group-hover:-translate-y-6 group-hover:-rotate-y-12 group-hover:scale-105 z-20 group-hover:shadow-[-25px_25px_40px_rgba(0,0,0,0.9)]'} shadow-[-10px_10px_25px_rgba(0,0,0,0.9)] border-l-[1px] border-r-[3px] border-y-[2px] border-black/80 bg-[url('/leather_spine.png')] bg-cover bg-center`}
                                 >
-                                    {/* Photorealistic Leather Texture Overlay */}
-                                    <div className="absolute inset-0 bg-[url('/leather_spine.png')] bg-cover bg-center opacity-90 mix-blend-multiply rounded-[inherit] pointer-events-none"></div>
+                                    {/* Color Tint Overlay */}
+                                    <div className={`absolute inset-0 ${book.color} opacity-85 mix-blend-multiply rounded-[inherit]`}></div>
 
-                                    {/* Spine Inner Texture / Binding grooves */}
-                                    <div className="absolute top-[10%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10 z-10 pointer-events-none"></div>
-                                    <div className="absolute top-[12%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10 z-10 pointer-events-none"></div>
+                                    {/* Intense 3D Cylindrical Lighting & Shadows */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-white/20 to-black/95 rounded-[inherit] shadow-[inset_6px_0_15px_rgba(255,255,255,0.25),inset_-12px_0_35px_rgba(0,0,0,1)] pointer-events-none"></div>
+
+                                    {/* Spine Inner Texture / Binding grooves (with real depth) */}
+                                    <div className="absolute top-[10%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/20 z-10 pointer-events-none shadow-[0_2px_5px_rgba(0,0,0,0.6)]"></div>
+                                    <div className="absolute top-[13%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/20 z-10 pointer-events-none shadow-[0_2px_5px_rgba(0,0,0,0.6)]"></div>
                                     
-                                    <div className="absolute bottom-[10%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10"></div>
-                                    <div className="absolute bottom-[12%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10"></div>
+                                    <div className="absolute bottom-[10%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/20 z-10 pointer-events-none shadow-[0_-2px_5px_rgba(0,0,0,0.6)]"></div>
+                                    <div className="absolute bottom-[13%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/20 z-10 pointer-events-none shadow-[0_-2px_5px_rgba(0,0,0,0.6)]"></div>
                                     
                                     {/* Spine Content Wrapper (Rotated sideways) */}
                                     <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
