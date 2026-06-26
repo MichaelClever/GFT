@@ -18,14 +18,14 @@ const books = [
     },
     {
         id: "volume-2",
-        title: "Research Volume II",
-        subtitle: "Cognitive Development",
-        href: "#",
+        title: "Math Education in America",
+        subtitle: "Why Technology Can't Fix It",
+        href: "/research/math-education-in-america",
         color: "bg-[#253f75]",
         borderColor: "border-[#a3b1c6]",
         textColor: "text-[#e2e8f0]",
         hasIcon: false,
-        disabled: true
+        disabled: false
     },
     {
         id: "volume-3",
