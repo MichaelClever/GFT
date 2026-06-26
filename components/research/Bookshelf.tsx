@@ -29,14 +29,14 @@ const books = [
     },
     {
         id: "volume-3",
-        title: "Research Volume III",
-        subtitle: "Curriculum Integration",
-        href: "#",
+        title: "Naked Math",
+        subtitle: "Are you ready?",
+        href: "/research/naked-math",
         color: "bg-[#593d26]",
         borderColor: "border-[#d4af37]",
         textColor: "text-[#fdf5d3]",
         hasIcon: false,
-        disabled: true
+        disabled: false
     },
     {
         id: "volume-4",
