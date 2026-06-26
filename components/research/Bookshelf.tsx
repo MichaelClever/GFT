@@ -40,14 +40,14 @@ const books = [
     },
     {
         id: "volume-4",
-        title: "Research Volume IV",
-        subtitle: "Social Dynamics",
-        href: "#",
+        title: "Online Games",
+        subtitle: "What do they teach?",
+        href: "/research/online-games",
         color: "bg-[#355e39]",
         borderColor: "border-[#b59a6d]",
         textColor: "text-[#f1e5d1]",
         hasIcon: false,
-        disabled: true
+        disabled: false
     },
     {
         id: "volume-5",
