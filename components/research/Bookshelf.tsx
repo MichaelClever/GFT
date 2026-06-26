@@ -85,15 +85,10 @@ export function Bookshelf() {
                 {/* Books Container */}
                 <div className="relative z-10 flex flex-wrap justify-center items-end gap-2 sm:gap-4 md:gap-6 lg:gap-8 px-4 md:px-10 pb-4">
                     {books.map((book, index) => {
-                        const BookWrapper = book.disabled ? "div" : Link;
+                        const wrapperClassName = `relative group h-[320px] md:h-[380px] w-[70px] sm:w-[90px] md:w-[110px] perspective-1000 ${book.disabled ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`;
                         
-                        return (
-                            // @ts-ignore
-                            <BookWrapper 
-                                key={book.id}
-                                href={book.disabled ? undefined : book.href}
-                                className={`relative group h-[320px] md:h-[380px] w-[70px] sm:w-[90px] md:w-[110px] perspective-1000 ${book.disabled ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`}
-                            >
+                        const innerContent = (
+                            <>
                                 {/* The Book Spine (3D Object) */}
                                 <div 
                                     className={`absolute inset-0 rounded-l-[4px] rounded-r-[8px] transform-style-3d transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-bottom ${book.disabled ? '' : 'group-hover:-translate-y-4 group-hover:-rotate-y-12 group-hover:scale-105 z-20 group-hover:shadow-[-20px_20px_30px_rgba(0,0,0,0.8)]'} shadow-[-10px_10px_20px_rgba(0,0,0,0.7)] border-l-[3px] border-r-2 border-y-2 ${book.color} ${book.borderColor}`}
@@ -146,7 +141,25 @@ export function Bookshelf() {
                                         Coming Soon
                                     </div>
                                 )}
-                            </BookWrapper>
+                            </>
+                        );
+                        
+                        if (book.disabled) {
+                            return (
+                                <div key={book.id} className={wrapperClassName}>
+                                    {innerContent}
+                                </div>
+                            );
+                        }
+
+                        return (
+                            <Link 
+                                key={book.id}
+                                href={book.href}
+                                className={wrapperClassName}
+                            >
+                                {innerContent}
+                            </Link>
                         );
                     })}
                 </div>
