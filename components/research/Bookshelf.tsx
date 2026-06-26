@@ -93,9 +93,12 @@ export function Bookshelf() {
                                 <div 
                                     className={`absolute inset-0 rounded-l-[4px] rounded-r-[8px] transform-style-3d transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-bottom ${book.disabled ? '' : 'group-hover:-translate-y-4 group-hover:-rotate-y-12 group-hover:scale-105 z-20 group-hover:shadow-[-20px_20px_30px_rgba(0,0,0,0.8)]'} shadow-[-10px_10px_20px_rgba(0,0,0,0.7)] border-l-[3px] border-r-2 border-y-2 ${book.color} ${book.borderColor}`}
                                 >
+                                    {/* Photorealistic Leather Texture Overlay */}
+                                    <div className="absolute inset-0 bg-[url('/leather_spine.png')] bg-cover bg-center opacity-90 mix-blend-multiply rounded-[inherit] pointer-events-none"></div>
+
                                     {/* Spine Inner Texture / Binding grooves */}
-                                    <div className="absolute top-[10%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10"></div>
-                                    <div className="absolute top-[12%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10"></div>
+                                    <div className="absolute top-[10%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10 z-10 pointer-events-none"></div>
+                                    <div className="absolute top-[12%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10 z-10 pointer-events-none"></div>
                                     
                                     <div className="absolute bottom-[10%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10"></div>
                                     <div className="absolute bottom-[12%] left-0 right-0 h-[2px] bg-black/40 border-y border-white/10"></div>
@@ -168,30 +171,33 @@ export function Bookshelf() {
                 <div className="relative z-0">
                     {/* Top edge of the shelf */}
                     <div 
-                        className="w-[105%] h-6 mx-auto bg-gradient-to-b from-[#5c3a21] to-[#3a1d10] border-t-2 border-b border-[#8c6a1d]/60 shadow-[inset_0_2px_4px_rgba(255,255,255,0.1),0_5px_15px_rgba(0,0,0,0.8)] rounded-t-sm"
+                        className="w-[105%] h-6 mx-auto bg-[url('/mahogany_wood_shelf.png')] bg-cover bg-bottom border-t-2 border-b border-black/60 shadow-[inset_0_2px_4px_rgba(255,255,255,0.1),0_5px_15px_rgba(0,0,0,0.8)] rounded-t-sm"
                         style={{ transform: 'translateX(-2.5%)' }}
                     >
-                        {/* Wood grain highlight */}
-                        <div className="w-full h-full opacity-30 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')]"></div>
+                        <div className="w-full h-full bg-black/40"></div>
                     </div>
                     {/* Front facing edge (thickness of the wood) */}
                     <div 
-                        className="w-[105%] h-8 mx-auto bg-gradient-to-b from-[#2a1b12] to-[#110500] border-b-[4px] border-[#0a0502] shadow-[0_20px_30px_rgba(0,0,0,0.9)] rounded-b-sm"
+                        className="w-[105%] h-10 mx-auto bg-[url('/mahogany_wood_shelf.png')] bg-cover bg-center border-b-[4px] border-[#0a0502] shadow-[0_20px_30px_rgba(0,0,0,0.9)] rounded-b-sm"
                         style={{ transform: 'translateX(-2.5%)' }}
                     >
                         {/* Decorative Shelf Details */}
-                        <div className="w-full h-full flex justify-between items-center px-4">
-                            <div className="w-2 h-2 rounded-full bg-black/60 shadow-[inset_0_1px_1px_rgba(0,0,0,1),0_1px_0_rgba(255,255,255,0.1)]"></div>
-                            <div className="flex-1 border-t border-black/40 mx-4 h-0 shadow-[0_1px_0_rgba(255,255,255,0.05)]"></div>
-                            <div className="w-2 h-2 rounded-full bg-black/60 shadow-[inset_0_1px_1px_rgba(0,0,0,1),0_1px_0_rgba(255,255,255,0.1)]"></div>
+                        <div className="w-full h-full flex justify-between items-center px-4 bg-black/10">
+                            <div className="w-2 h-2 rounded-full bg-black/80 shadow-[inset_0_1px_1px_rgba(0,0,0,1),0_1px_0_rgba(255,255,255,0.3)]"></div>
+                            <div className="flex-1 border-t border-black/60 mx-4 h-0 shadow-[0_1px_0_rgba(255,255,255,0.1)]"></div>
+                            <div className="w-2 h-2 rounded-full bg-black/80 shadow-[inset_0_1px_1px_rgba(0,0,0,1),0_1px_0_rgba(255,255,255,0.3)]"></div>
                         </div>
                     </div>
                 </div>
 
                 {/* Shelf brackets (Supports under the shelf) */}
                 <div className="w-full max-w-4xl mx-auto flex justify-between px-[10%] relative -top-1 z-0">
-                    <div className="w-8 h-24 bg-gradient-to-br from-[#1a0f0a] to-black transform -skew-x-6 shadow-[10px_10px_20px_rgba(0,0,0,0.8)] rounded-bl-lg"></div>
-                    <div className="w-8 h-24 bg-gradient-to-bl from-[#1a0f0a] to-black transform skew-x-6 shadow-[-10px_10px_20px_rgba(0,0,0,0.8)] rounded-br-lg"></div>
+                    <div className="w-8 h-24 bg-[url('/mahogany_wood_shelf.png')] bg-cover bg-top transform -skew-x-6 shadow-[10px_10px_20px_rgba(0,0,0,0.8)] rounded-bl-lg overflow-hidden">
+                        <div className="w-full h-full bg-black/60"></div>
+                    </div>
+                    <div className="w-8 h-24 bg-[url('/mahogany_wood_shelf.png')] bg-cover bg-top transform skew-x-6 shadow-[-10px_10px_20px_rgba(0,0,0,0.8)] rounded-br-lg overflow-hidden">
+                        <div className="w-full h-full bg-black/60"></div>
+                    </div>
                 </div>
 
             </div>
