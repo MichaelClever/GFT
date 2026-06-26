@@ -10,7 +10,7 @@ const books = [
         title: "Summary of Research",
         subtitle: "Instructional Gaming Program",
         href: "/research/summary-of-research",
-        color: "bg-[#4a1c10]",
+        color: "bg-[#7d2f1d]",
         borderColor: "border-[#8c6a1d]",
         textColor: "text-[#f3e5ab]",
         hasIcon: true,
@@ -21,7 +21,7 @@ const books = [
         title: "Research Volume II",
         subtitle: "Cognitive Development",
         href: "#",
-        color: "bg-[#16274a]",
+        color: "bg-[#253f75]",
         borderColor: "border-[#a3b1c6]",
         textColor: "text-[#e2e8f0]",
         hasIcon: false,
@@ -32,7 +32,7 @@ const books = [
         title: "Research Volume III",
         subtitle: "Curriculum Integration",
         href: "#",
-        color: "bg-[#332418]",
+        color: "bg-[#593d26]",
         borderColor: "border-[#d4af37]",
         textColor: "text-[#fdf5d3]",
         hasIcon: false,
@@ -43,7 +43,7 @@ const books = [
         title: "Research Volume IV",
         subtitle: "Social Dynamics",
         href: "#",
-        color: "bg-[#253f28]",
+        color: "bg-[#355e39]",
         borderColor: "border-[#b59a6d]",
         textColor: "text-[#f1e5d1]",
         hasIcon: false,
@@ -54,7 +54,7 @@ const books = [
         title: "Research Volume V",
         subtitle: "Advanced Pedagogy",
         href: "#",
-        color: "bg-[#421b20]",
+        color: "bg-[#702931]",
         borderColor: "border-[#e0a2a5]",
         textColor: "text-[#fce8e9]",
         hasIcon: false,
@@ -83,7 +83,7 @@ export function Bookshelf() {
                 <div className="absolute top-0 left-[5%] right-[5%] bottom-10 bg-black/50 blur-2xl z-0"></div>
 
                 {/* Books Container */}
-                <div className="relative z-10 flex flex-wrap justify-center items-end gap-2 sm:gap-4 md:gap-6 lg:gap-8 px-4 md:px-10 pb-4">
+                <div className="relative z-10 flex flex-wrap justify-center items-end gap-2 sm:gap-4 md:gap-6 lg:gap-8 px-4 md:px-10">
                     {books.map((book, index) => {
                         const wrapperClassName = `relative group h-[320px] md:h-[380px] w-[70px] sm:w-[90px] md:w-[110px] perspective-1000 ${book.disabled ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`;
                         
@@ -93,44 +93,44 @@ export function Bookshelf() {
                                 <div 
                                     className={`absolute inset-0 rounded-l-sm rounded-r-xl transform-style-3d transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-bottom ${book.disabled ? '' : 'group-hover:-translate-y-6 group-hover:-rotate-y-12 group-hover:scale-105 z-20 group-hover:shadow-[-25px_25px_40px_rgba(0,0,0,0.9)]'} shadow-[-10px_10px_25px_rgba(0,0,0,0.9)] border-l-[1px] border-r-[3px] border-y-[2px] border-black/80 bg-[url('/leather_spine.png')] bg-cover bg-center`}
                                 >
-                                    {/* Color Tint Overlay */}
-                                    <div className={`absolute inset-0 ${book.color} opacity-85 mix-blend-multiply rounded-[inherit]`}></div>
+                                    {/* Color Tint Overlay - Uses color-burn for richer leather texture */}
+                                    <div className={`absolute inset-0 ${book.color} opacity-90 mix-blend-color-burn rounded-[inherit]`}></div>
 
-                                    {/* Intense 3D Cylindrical Lighting & Shadows */}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-white/20 to-black/95 rounded-[inherit] shadow-[inset_6px_0_15px_rgba(255,255,255,0.25),inset_-12px_0_35px_rgba(0,0,0,1)] pointer-events-none"></div>
+                                    {/* Softer Leather 3D Cylindrical Lighting (removed white glare) */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/80 rounded-[inherit] shadow-[inset_2px_0_5px_rgba(255,255,255,0.1),inset_-12px_0_30px_rgba(0,0,0,0.8)] pointer-events-none"></div>
 
                                     {/* Spine Inner Texture / Binding grooves (with real depth) */}
-                                    <div className="absolute top-[10%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/20 z-10 pointer-events-none shadow-[0_2px_5px_rgba(0,0,0,0.6)]"></div>
-                                    <div className="absolute top-[13%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/20 z-10 pointer-events-none shadow-[0_2px_5px_rgba(0,0,0,0.6)]"></div>
+                                    <div className="absolute top-[10%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/10 z-10 pointer-events-none shadow-[0_2px_5px_rgba(0,0,0,0.6)]"></div>
+                                    <div className="absolute top-[13%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/10 z-10 pointer-events-none shadow-[0_2px_5px_rgba(0,0,0,0.6)]"></div>
                                     
-                                    <div className="absolute bottom-[10%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/20 z-10 pointer-events-none shadow-[0_-2px_5px_rgba(0,0,0,0.6)]"></div>
-                                    <div className="absolute bottom-[13%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/20 z-10 pointer-events-none shadow-[0_-2px_5px_rgba(0,0,0,0.6)]"></div>
+                                    <div className="absolute bottom-[10%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/10 z-10 pointer-events-none shadow-[0_-2px_5px_rgba(0,0,0,0.6)]"></div>
+                                    <div className="absolute bottom-[13%] left-0 right-0 h-[3px] bg-black/80 border-y border-white/10 z-10 pointer-events-none shadow-[0_-2px_5px_rgba(0,0,0,0.6)]"></div>
                                     
                                     {/* Spine Content Wrapper (Rotated sideways) */}
                                     <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                                        <div className="flex flex-row items-center justify-between w-[300px] md:w-[340px] px-8 rotate-90 transform origin-center">
+                                        <div className="flex flex-row items-center justify-between w-[280px] md:w-[320px] px-4 rotate-90 transform origin-center">
                                             
                                             {/* Top of Spine (Right side when rotated) */}
                                             {book.hasIcon && (
-                                                <div className="w-8 h-8 rounded-full border border-[#d4af37] flex items-center justify-center bg-black/40 shadow-[0_0_10px_rgba(212,175,55,0.4)] shrink-0 mr-4 transform -rotate-90">
-                                                    <img src="/thinker.png" alt="Icon" className="w-5 h-auto sepia-[0.3] brightness-125" />
+                                                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-[#d4af37] flex items-center justify-center bg-black/40 shadow-[0_0_10px_rgba(212,175,55,0.4)] shrink-0 mr-3 transform -rotate-90">
+                                                    <img src="/thinker.png" alt="Icon" className="w-4 sm:w-5 h-auto sepia-[0.3] brightness-125" />
                                                 </div>
                                             )}
                                             
-                                            <div className="flex flex-col items-center justify-center flex-1 space-y-1">
-                                                <h3 className={`font-cinzel-decorative font-bold text-sm sm:text-lg md:text-xl whitespace-nowrap tracking-widest ${book.textColor} drop-shadow-md`}>
+                                            <div className="flex flex-col items-center justify-center flex-1 space-y-0.5 md:space-y-1 px-2 text-center">
+                                                <h3 className={`font-cinzel-decorative font-bold text-[0.65rem] sm:text-xs md:text-sm uppercase tracking-widest ${book.textColor} drop-shadow-md leading-tight`}>
                                                     {book.title}
                                                 </h3>
                                                 {book.subtitle && (
-                                                    <p className={`font-lora italic text-[0.55rem] sm:text-xs md:text-sm whitespace-nowrap opacity-80 ${book.textColor}`}>
+                                                    <p className={`font-lora italic text-[0.45rem] sm:text-[0.55rem] md:text-xs opacity-80 ${book.textColor} leading-tight`}>
                                                         {book.subtitle}
                                                     </p>
                                                 )}
                                             </div>
 
                                             {/* Bottom of Spine (Left side when rotated) */}
-                                            <div className="w-8 h-8 flex items-center justify-center shrink-0 ml-4">
-                                                <span className={`font-cinzel text-xs font-bold opacity-60 ${book.textColor} transform -rotate-90`}>
+                                            <div className="w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center shrink-0 ml-3">
+                                                <span className={`font-cinzel text-[0.5rem] sm:text-[0.65rem] md:text-xs font-bold opacity-70 ${book.textColor} transform -rotate-90 whitespace-nowrap`}>
                                                     VOL {index + 1}
                                                 </span>
                                             </div>
