@@ -1,12 +1,14 @@
 import { Navbar } from "@/components/layout/Navbar";
-import { Bookshelf } from "@/components/research/Bookshelf";
+import { ResearchBookWrapper } from "@/components/features/ResearchBookWrapper";
 
-export default function ResearchPage() {
+export default function SummaryOfResearchPage() {
     return (
         <main className="relative w-full flex flex-col font-lora min-h-screen">
             <Navbar />
-            <div className="flex-1 w-full flex flex-col items-center justify-center p-4 md:p-8 z-10 relative overflow-x-hidden pt-10 pb-20">
-                <Bookshelf />
+            <div className="flex-1 w-full flex flex-col items-center justify-center p-4 md:p-8 z-10 relative overflow-x-hidden pt-4 pb-20">
+                <div className="w-full max-w-[1400px] flex flex-col items-center justify-center">
+                    <ResearchBookWrapper />
+                </div>
             </div>
             
             {/* Decorative Ambient Background Elements for reading experience */}
