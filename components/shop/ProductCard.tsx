@@ -115,9 +115,14 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
             <div className="flex flex-col flex-1 p-6 md:p-8 bg-gradient-to-b from-[#1a0f0a] to-[#0a0502]">
                 
                 {description && (
-                    <p className="text-[#f1e5d1] text-[1.05rem] mb-8 flex-1 opacity-90 leading-relaxed">
-                        <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{title.includes(' - ') ? title.split(' - ')[0] : title.split(': ')[0]}:</strong> {description}
-                    </p>
+                    <div className="text-[#f1e5d1] text-[1.05rem] mb-8 flex-1 opacity-90 leading-relaxed space-y-4">
+                        {description.split(/\\n\\n|\n\n/).map((paragraph, index) => (
+                            <p key={index}>
+                                {index === 0 && <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{title.includes(' - ') ? title.split(' - ')[0] : title.split(': ')[0]}:</strong>}
+                                {paragraph}
+                            </p>
+                        ))}
+                    </div>
                 )}
 
                 {/* Buttons Container */}
@@ -324,7 +329,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
 
                         <div className="px-6 py-6 md:px-10 md:py-8 max-h-[70vh] overflow-y-auto w-full">
                             <div className="text-[#f1e5d1] text-[1.05rem] md:text-lg leading-relaxed font-lora opacity-90 space-y-6">
-                                {titlePopupText.split('\n\n').map((paragraph, index) => (
+                                {titlePopupText.split(/\\n\\n|\n\n/).map((paragraph, index) => (
                                     <p key={index}>{paragraph}</p>
                                 ))}
                             </div>
