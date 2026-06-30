@@ -1,558 +1,141 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-const styledRoots = new WeakSet<ShadowRoot>();
-const observedRoots = new WeakSet<ShadowRoot>();
-
-const globalObserver = typeof window !== "undefined" ? new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    mutation.addedNodes.forEach((node) => {
-      if (node instanceof HTMLElement || node instanceof Element) {
-         walkAndInject(node);
-      }
-    });
-  });
-}) : null;
-
-function injectGFTDeepDarkTheme(root: ShadowRoot | Document | Element | null) {
-  if (!root || !('querySelector' in root)) return;
-  if (root instanceof ShadowRoot && styledRoots.has(root)) return;
-  if (root.querySelector("#gft-deep-dark-theme-v2")) return;
-
-  const style = document.createElement("style");
-  style.id = "gft-deep-dark-theme-v2";
-  style.textContent = `
-    :host {
-      color-scheme: dark !important;
-
-      z-index: 2147483000 !important;
-      pointer-events: auto !important;
-
-      --md-sys-color-on-surface: #f8f1dc !important;
-      --md-sys-color-on-surface-variant: #e6d6ad !important;
-      --md-sys-color-primary: #d8a847 !important;
-      --md-sys-color-secondary: #d8a847 !important;
-
-      --md-menu-container-color: #120b05 !important;
-      --md-menu-item-container-color: #120b05 !important;
-      --md-menu-item-label-text-color: #f8f1dc !important;
-      --md-menu-item-supporting-text-color: #e6d6ad !important;
-      --md-menu-item-leading-icon-color: #f8d36a !important;
-      --md-menu-item-trailing-icon-color: #f8d36a !important;
-      --md-menu-item-selected-label-text-color: #f8f1dc !important;
-      --md-menu-item-selected-container-color: #2a1b0d !important;
-
-      --md-list-container-color: #120b05 !important;
-      --md-list-item-label-text-color: #f8f1dc !important;
-      --md-list-item-supporting-text-color: #e6d6ad !important;
-      --md-list-item-leading-icon-color: #f8d36a !important;
-      --md-list-item-trailing-icon-color: #f8d36a !important;
-      --md-list-item-selected-container-color: #2a1b0d !important;
-
-      --md-filter-chip-label-text-color: #f8f1dc !important;
-      --md-filter-chip-selected-label-text-color: #f8f1dc !important;
-      --md-filter-chip-container-color: #120b05 !important;
-      --md-filter-chip-selected-container-color: #2a1b0d !important;
-      --md-filter-chip-outline-color: rgba(216, 168, 71, 0.5) !important;
-      --md-filter-chip-icon-color: #f8d36a !important;
-      --md-filter-chip-selected-icon-color: #f8d36a !important;
-
-      --md-outlined-button-label-text-color: #f8f1dc !important;
-      --md-outlined-button-hover-label-text-color: #f8d36a !important;
-      --md-text-button-label-text-color: #f8f1dc !important;
-      --md-filled-button-label-text-color: #120b05 !important;
-
-      --md-select-text-field-label-text-color: #f8f1dc !important;
-      --md-select-text-field-input-text-color: #f8f1dc !important;
-      --md-select-text-field-supporting-text-color: #e6d6ad !important;
-      --md-select-text-field-container-color: #120b05 !important;
-
-      --md-filled-text-field-container-color: #1a1108 !important;
-      --md-filled-text-field-input-text-color: #f8f1dc !important;
-      --md-filled-text-field-input-text-size: 1.125rem !important;
-      --md-filled-text-field-caret-color: #f8d36a !important;
-
-      --md-outlined-text-field-container-color: #1a1108 !important;
-      --md-outlined-text-field-input-text-color: #f8f1dc !important;
-      --md-outlined-text-field-input-text-size: 1.125rem !important;
-      --md-outlined-text-field-caret-color: #f8d36a !important;
-
-      --gm3-sys-color-background: #070502 !important;
-      --gm3-sys-color-surface: #070502 !important;
-      --gm3-sys-color-surface-container: #0b0703 !important;
-      --gm3-sys-color-surface-container-low: #070502 !important;
-      --gm3-sys-color-surface-container-lowest: #070502 !important;
-      --gm3-sys-color-surface-container-high: #160e07 !important;
-      --gm3-sys-color-surface-container-highest: #1f140a !important;
-      --gm3-sys-color-on-surface: #f8f1dc !important;
-      --gm3-sys-color-on-surface-variant: #e6d6ad !important;
-
-      --md-sys-color-background: #070502 !important;
-      --md-sys-color-surface: #070502 !important;
-      --md-sys-color-surface-bright: #120b05 !important;
-      --md-sys-color-surface-container: #0b0703 !important;
-      --md-sys-color-surface-container-low: #070502 !important;
-      --md-sys-color-surface-container-lowest: #070502 !important;
-      --md-sys-color-surface-container-high: #160e07 !important;
-      --md-sys-color-surface-container-highest: #1f140a !important;
-      --md-sys-color-surface-variant: #1f140a !important;
-      --md-sys-color-on-surface: #f8f1dc !important;
-      --md-sys-color-on-surface-variant: #e6d6ad !important;
-      --md-sys-color-primary: #d8a847 !important;
-      --md-sys-color-secondary: #d8a847 !important;
-
-      --ucs-color-global-container: #070502 !important;
-      --ucs-color-preview-session-bg: #070502 !important;
-      --card-content-card: #120b05 !important;
-      --color-menu-background: #120b05 !important;
-
-      background: #070502 !important;
-      color: #f8f1dc !important;
-    }
-
-    :host,
-    :host > *,
-    [role="dialog"],
-    .content,
-    .inner-dialog,
-    .inner-dialog > *,
-    .search-bar-container,
-    .results,
-    .result,
-    .results-container,
-    .result-container,
-    .answer,
-    .answer-container,
-    .summary,
-    .summary-container,
-    .main,
-    .main-content,
-    .body,
-    .page,
-    .surface,
-    .container,
-    ucs-results,
-    ucs-search-bar,
-    ucs-search-toolbar,
-    ucs-answer,
-    ucs-summary,
-    ucs-result,
-    ucs-result-card,
-    ucs-answer-card,
-    ucs-search-result,
-    md-list,
-    md-list-item,
-    md-card,
-    md-dialog,
-    md-menu {
-      background: #070502 !important;
-      background-color: #070502 !important;
-      color: #f8f1dc !important;
-      border-color: rgba(216, 168, 71, 0.25) !important;
-    }
-
-    .content,
-    .white-background .content,
-    .white-background ucs-search-bar,
-    ucs-search-bar {
-      background: #070502 !important;
-      background-color: #070502 !important;
-    }
-
-    ucs-search-bar {
-      min-height: 64px !important;
-    }
-
-    ucs-search-bar * {
-      font-size: 1.125rem !important;
-    }
-
-    input,
-    textarea,
-    [contenteditable="true"] {
-      background: #1a1108 !important;
-      background-color: #1a1108 !important;
-      color: #f8f1dc !important;
-      caret-color: #f8d36a !important;
-      border-color: rgba(216, 168, 71, 0.5) !important;
-      font-size: 1.125rem !important;
-      line-height: 1.5 !important;
-      padding-top: 12px !important;
-      padding-bottom: 12px !important;
-      min-height: 48px !important;
-    }
-
-    input::placeholder,
-    textarea::placeholder,
-    [contenteditable="true"]:empty::before {
-      color: rgba(230, 214, 173, 0.7) !important;
-      font-size: 1.125rem !important;
-    }
-
-    p, span, div, section, article, main, li, h1, h2, h3, h4, h5, h6,
-    button, md-icon, md-icon-button, md-filled-button, md-outlined-button, md-text-button {
-      color: #f8f1dc !important;
-    }
-
-    a, a *, .link, .citation, .source {
-      color: #f8d36a !important;
-    }
-
-    md-menu,
-    md-menu *,
-    md-menu-item,
-    md-menu-item *,
-    md-list,
-    md-list *,
-    md-list-item,
-    md-list-item *,
-    md-filter-chip,
-    md-filter-chip *,
-    md-outlined-button,
-    md-outlined-button *,
-    md-text-button,
-    md-text-button *,
-    [role="menu"],
-    [role="menu"] *,
-    [role="menuitem"],
-    [role="menuitem"] *,
-    [role="listbox"],
-    [role="listbox"] *,
-    [role="option"],
-    [role="option"] *,
-    [aria-haspopup],
-    [aria-haspopup] *,
-    .menu,
-    .menu *,
-    .dropdown,
-    .dropdown *,
-    .type,
-    .type * {
-      color: #f8f1dc !important;
-      fill: #f8f1dc !important;
-      -webkit-text-fill-color: #f8f1dc !important;
-    }
-
-    md-menu,
-    [role="menu"],
-    [role="listbox"],
-    .menu,
-    .dropdown {
-      background: #120b05 !important;
-      background-color: #120b05 !important;
-    }
-
-    md-menu-item:hover,
-    md-list-item:hover,
-    [role="menuitem"]:hover,
-    [role="option"]:hover {
-      background: #2a1b0d !important;
-      background-color: #2a1b0d !important;
-      color: #f8d36a !important;
-      -webkit-text-fill-color: #f8d36a !important;
-    }
-
-    :host,
-    :host > div,
-    [role="dialog"] {
-      max-height: 100dvh !important;
-      overflow: hidden !important;
-    }
-
-    .content,
-    .inner-dialog,
-    .inner-dialog > *,
-    ucs-results {
-      max-height: calc(100dvh - 90px) !important;
-      overflow-y: auto !important;
-      overflow-x: hidden !important;
-      overscroll-behavior: contain !important;
-    }
-
-    ucs-results {
-      display: block !important;
-    }
-
-    .backdrop,
-    .backdrop *,
-    .backdrop button,
-    .backdrop md-icon-button,
-    button[aria-label="Close"],
-    md-icon-button[data-aria-label="Close"],
-    [aria-label="Close"] {
-      pointer-events: auto !important;
-      cursor: pointer !important;
-      z-index: 2147483001 !important;
-      color: #f8f1dc !important;
-      fill: #f8f1dc !important;
-    }
-
-    .backdrop md-icon-button,
-    button[aria-label="Close"],
-    md-icon-button[data-aria-label="Close"] {
-      position: relative !important;
-    }
-  `;
-
-  root.appendChild(style);
-  if (root instanceof ShadowRoot) {
-    styledRoots.add(root);
-  }
-}
-
-function walkAndInject(node: Document | ShadowRoot | Element | null = typeof document !== 'undefined' ? document : null) {
-  if (!node) return;
-  const seen = new Set<Node>();
-
-  function walk(current: Document | ShadowRoot | Element | null) {
-    if (!current || seen.has(current)) return;
-    seen.add(current);
-
-    if ("shadowRoot" in current && current.shadowRoot) {
-      injectGFTDeepDarkTheme(current.shadowRoot);
-      if (globalObserver && !observedRoots.has(current.shadowRoot)) {
-        observedRoots.add(current.shadowRoot);
-        globalObserver.observe(current.shadowRoot, {
-          childList: true,
-          subtree: true
-        });
-      }
-      walk(current.shadowRoot);
-    }
-
-    if ("querySelectorAll" in current) {
-      current.querySelectorAll("*").forEach((el) => {
-        if (el.shadowRoot) {
-          injectGFTDeepDarkTheme(el.shadowRoot);
-          if (globalObserver && !observedRoots.has(el.shadowRoot)) {
-            observedRoots.add(el.shadowRoot);
-            globalObserver.observe(el.shadowRoot, {
-              childList: true,
-              subtree: true
-            });
-          }
-          walk(el.shadowRoot);
-        }
-      });
-    }
-  }
-
-  walk(node);
-}
-
-function runThemeInjectionPass() {
-  const widget = document.querySelector("gen-search-widget") as HTMLElement | null;
-  if (!widget) return;
-
-  walkAndInject(widget);
-
-  if (process.env.NODE_ENV !== "production") {
-    console.log("GFT Google widget theme injection pass ran");
-  }
-}
+import { useState, useRef, useEffect } from "react";
 
 export function GFTSearchWidget() {
-    const [error, setError] = useState(false);
-    const [widgetOpen, setWidgetOpen] = useState(false);
-    const [widgetMounted, setWidgetMounted] = useState(true);
+    const [query, setQuery] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [answer, setAnswer] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
+    
+    // Auto-resize textarea or just use input. Let's use input for simplicity, or textarea if they type long questions.
+    // The previous design looked like a single line search bar, so input is best.
+    const inputRef = useRef<HTMLInputElement>(null);
 
-    function closeGoogleWidget() {
-        const widget = document.querySelector("gen-search-widget") as HTMLElement | null;
+    const handleSubmit = async (e?: React.FormEvent) => {
+        if (e) e.preventDefault();
+        
+        const trimmedQuery = query.trim();
+        if (!trimmedQuery || loading) return;
 
-        const closeButton =
-            widget?.shadowRoot?.querySelector('button[aria-label="Close"]') as HTMLElement | null
-            || widget?.shadowRoot?.querySelector('md-icon-button[data-aria-label="Close"]') as HTMLElement | null
-            || widget?.shadowRoot?.querySelector('.backdrop md-icon-button') as HTMLElement | null
-            || widget?.shadowRoot?.querySelector('.backdrop button') as HTMLElement | null;
+        setLoading(true);
+        setError(null);
+        setAnswer(null);
 
-        if (closeButton) {
-            closeButton.click();
-        } else {
-            setWidgetMounted(false);
-        }
-
-        setWidgetOpen(false);
-    }
-
-    // Dynamically load the Google script on mount
-    useEffect(() => {
-        const scriptId = 'google-search-widget-script';
-        if (!document.getElementById(scriptId)) {
-            const script = document.createElement('script');
-            script.id = scriptId;
-            script.src = 'https://cloud.google.com/ai/gen-app-builder/client?hl=en_US';
-            script.async = true;
-            document.body.appendChild(script);
-        }
-    }, []);
-
-    // Fetch and refresh the authentication token
-    useEffect(() => {
-        let timeoutId: NodeJS.Timeout;
-
-        const loadToken = async () => {
-            try {
-                const res = await fetch('/api/search-token');
-                if (!res.ok) throw new Error('Failed to fetch search token');
-                
-                const data = await res.json();
-                
-                // Inject the token into the widget DOM element
-                const searchWidget = document.querySelector("gen-search-widget") as
-                    | (HTMLElement & { authToken?: string })
-                    | null;
-
-                if (searchWidget && data.token) {
-                    searchWidget.authToken = data.token;
-                }
-                
-                // Calculate time until next refresh
-                let refreshMs = 45 * 60 * 1000; // default 45 minutes
-                if (data.expiresAt) {
-                    const timeUntilExpiry = data.expiresAt - Date.now();
-                    // Refresh 5 mins before expiry, or retry in 1 minute if it's already expired
-                    refreshMs = Math.max(timeUntilExpiry - (5 * 60 * 1000), 60 * 1000); 
-                }
-                
-                setError(false);
-                timeoutId = setTimeout(loadToken, refreshMs);
-                
-            } catch (e) {
-                // Silently handle token fetch failure (likely an expired temporary token)
-                setError(true);
-                // On failure, retry in 5 minutes
-                timeoutId = setTimeout(loadToken, 5 * 60 * 1000);
-            }
-        };
-
-        loadToken();
-
-        return () => {
-            clearTimeout(timeoutId);
-        };
-    }, []);
-
-    // Handle aggressive theme injection timings
-    useEffect(() => {
-        const retryTimes = [100, 300, 700, 1200, 2000, 3000, 5000, 8000, 12000, 15000];
-        const timeouts: NodeJS.Timeout[] = [];
-
-        // 1. Initial burst on mount
-        retryTimes.forEach((ms) => {
-            timeouts.push(setTimeout(runThemeInjectionPass, ms));
-        });
-
-        // 2. Click listener on trigger
-        const trigger = document.getElementById("searchWidgetTrigger");
-        const handleTriggerClick = () => {
-            setWidgetOpen(true);
-            setWidgetMounted(true);
-            [100, 300, 700, 1200, 2000, 3000, 5000].forEach((ms) => {
-                timeouts.push(setTimeout(runThemeInjectionPass, ms));
+        try {
+            const res = await fetch('/api/gft-chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: trimmedQuery }),
             });
-        };
 
-        if (trigger) {
-            trigger.addEventListener("click", handleTriggerClick);
-        }
-
-        // 3. Global DOM observer
-        if (globalObserver) {
-            globalObserver.observe(document.body, {
-                childList: true,
-                subtree: true,
-            });
-        }
-
-        return () => {
-            timeouts.forEach(clearTimeout);
-            if (trigger) {
-                trigger.removeEventListener("click", handleTriggerClick);
+            if (!res.ok) {
+                throw new Error('Failed to fetch answer');
             }
-            if (globalObserver) {
-                globalObserver.disconnect();
+
+            const data = await res.json();
+            
+            if (data.answerText) {
+                setAnswer(data.answerText);
+            } else {
+                setAnswer("I'm sorry, I couldn't find an answer to that question. Please try asking something else.");
             }
-        };
-    }, []);
+        } catch (err) {
+            console.error(err);
+            setError("We're having trouble connecting to the chat service right now. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
-        <>
-            <style id="gft-google-widget-global-menu-theme">{`
-                gen-search-widget {
-                    z-index: 2147483000 !important;
-                }
-
-                md-menu,
-                md-menu *,
-                md-menu-item,
-                md-menu-item *,
-                [role="menu"],
-                [role="menu"] *,
-                [role="listbox"],
-                [role="listbox"] *,
-                [role="option"],
-                [role="option"] * {
-                    color: #f8f1dc !important;
-                    -webkit-text-fill-color: #f8f1dc !important;
-                }
-
-                md-menu,
-                [role="menu"],
-                [role="listbox"] {
-                    background: #120b05 !important;
-                    background-color: #120b05 !important;
-                }
-            `}</style>
-
-            {widgetOpen && (
-                <button
-                    onClick={closeGoogleWidget}
-                    className="fixed top-4 right-4 z-[2147483647] bg-[#120b05] border-2 border-[#d8a847] text-[#f8f1dc] hover:bg-[#2a1b0d] hover:text-[#f8d36a] rounded-full w-12 h-12 flex items-center justify-center shadow-[0_5px_15px_rgba(0,0,0,0.8)] transition-all cursor-pointer font-bold text-xl"
-                    aria-label="Close Search Widget"
+        <section className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex flex-col items-center">
+            
+            {/* Search / Chat Input Box */}
+            <div className="w-full max-w-[700px] min-w-[300px] mb-6">
+                <form 
+                    onSubmit={handleSubmit}
+                    className="bg-gradient-to-r from-[#8c6a1d] via-[#d4af37] to-[#8c6a1d] p-[3px] rounded-full shadow-[0_5px_20px_rgba(0,0,0,0.6)] group focus-within:shadow-[0_5px_30px_rgba(212,175,55,0.4)] transition-shadow duration-300"
                 >
-                    ✕
-                </button>
-            )}
-
-            <section className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex justify-center">
-                {/* The Invisible Search Widget */}
-                {widgetMounted && (
-                    <gen-search-widget 
-                        configId="8679db35-833c-44d7-80ca-68ba87a3a72c" 
-                        triggerId="searchWidgetTrigger">
-                    </gen-search-widget>
-                )}
-
-            <div className="w-full max-w-[600px] min-w-[300px]">
-                {/* Visual Trigger Area */}
-                <div className="bg-gradient-to-r from-[#8c6a1d] via-[#d4af37] to-[#8c6a1d] p-[3px] rounded-full shadow-[0_5px_20px_rgba(0,0,0,0.6)]">
-                    <div 
-                        id="searchWidgetTrigger" 
-                        className="bg-[#2a1b12] rounded-full pl-4 pr-3 py-3 flex items-center gap-4 cursor-pointer hover:bg-[#322015] transition-colors [&>*]:pointer-events-none"
-                    >
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1a2d48] to-[#0a1526] border-2 border-[#d4af37] flex items-center justify-center shrink-0 shadow-inner text-xl">
+                    <div className="bg-[#2a1b12] rounded-full pl-4 pr-3 py-2 md:py-3 flex items-center gap-3 md:gap-4 transition-colors">
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#1a2d48] to-[#0a1526] border-2 border-[#d4af37] flex items-center justify-center shrink-0 shadow-inner text-lg md:text-xl">
                             💬
                         </div>
                         
-                        <div className="flex-1 flex flex-col">
-                            <span className="text-[#8c6a1d] italic text-lg font-lora select-none">
-                                Ask us any question...
-                            </span>
-                            {error && (
-                                <span className="text-red-400/80 text-xs font-sans absolute bottom-[-20px] left-8">
-                                    Search assistant is temporarily unavailable.
-                                </span>
-                            )}
+                        <div className="flex-1 flex flex-col justify-center">
+                            <input 
+                                ref={inputRef}
+                                type="text"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder="Ask us any question..."
+                                disabled={loading}
+                                className="bg-transparent border-none outline-none text-[#f1e5d1] placeholder-[#8c6a1d] text-base md:text-lg font-lora w-full disabled:opacity-50"
+                            />
                         </div>
 
-                        <button className="bg-gradient-to-b from-[#fdf5d3] via-[#d4af37] to-[#8c6a1d] hover:brightness-110 text-[#2a1b12] px-8 py-3 rounded-full font-bold shadow-md border border-[#d4af37] transition-all whitespace-nowrap drop-shadow-md tracking-wider pointer-events-none select-none">
-                            Chat
+                        <button 
+                            type="submit"
+                            disabled={loading || !query.trim()}
+                            className="bg-gradient-to-b from-[#fdf5d3] via-[#d4af37] to-[#8c6a1d] hover:brightness-110 disabled:opacity-50 disabled:hover:brightness-100 disabled:cursor-not-allowed text-[#2a1b12] px-6 md:px-8 py-2 md:py-3 rounded-full font-bold shadow-md border border-[#d4af37] transition-all whitespace-nowrap drop-shadow-md tracking-wider flex items-center justify-center min-w-[90px] md:min-w-[100px]"
+                        >
+                            {loading ? (
+                                <span className="flex items-center gap-2">
+                                    <span className="w-4 h-4 border-2 border-[#2a1b12]/30 border-t-[#2a1b12] rounded-full animate-spin"></span>
+                                    Wait
+                                </span>
+                            ) : (
+                                "Chat"
+                            )}
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
+
+            {/* Answer Display Area */}
+            {(answer || error || loading) && (
+                <div className="w-full max-w-[800px] animate-in fade-in slide-in-from-top-4 duration-500">
+                    <div className="bg-[#0a0502]/90 backdrop-blur-md border border-[#d4af37]/40 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden relative">
+                        
+                        {/* Decorative top border */}
+                        <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#d4af37] to-transparent opacity-50"></div>
+                        
+                        <div className="p-6 md:p-8">
+                            {loading && !answer && !error && (
+                                <div className="flex flex-col items-center justify-center py-8 space-y-4">
+                                    <div className="w-10 h-10 border-4 border-[#8c6a1d]/30 border-t-[#d4af37] rounded-full animate-spin shadow-[0_0_15px_rgba(212,175,55,0.2)]"></div>
+                                    <p className="text-[#d4af37] font-lora italic animate-pulse">Searching the Games For Thinkers library...</p>
+                                </div>
+                            )}
+
+                            {error && (
+                                <div className="flex items-start gap-4 p-4 bg-red-900/20 border border-red-500/30 rounded-xl">
+                                    <span className="text-red-400 text-xl">⚠️</span>
+                                    <p className="text-red-200/90 font-lora">{error}</p>
+                                </div>
+                            )}
+
+                            {answer && (
+                                <div className="flex flex-col space-y-4">
+                                    <div className="flex items-center gap-3 mb-2 border-b border-[#8c6a1d]/30 pb-4">
+                                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#1a2d48] to-[#0a1526] border border-[#d4af37]/50 flex items-center justify-center shrink-0">
+                                            <img src="/thinker.png" alt="GFT AI" className="w-4 h-auto sepia-[0.3] brightness-125" />
+                                        </div>
+                                        <h3 className="font-cinzel font-bold text-[#f3e5ab] tracking-wider text-lg">GFT Guide</h3>
+                                    </div>
+                                    
+                                    <div className="text-[#f1e5d1] text-[1.05rem] md:text-lg leading-relaxed font-lora opacity-95 space-y-4">
+                                        {/* Split by both actual newlines and escaped newlines to format paragraphs cleanly */}
+                                        {answer.split(/\\n\\n|\n\n/).map((paragraph, idx) => (
+                                            <p key={idx}>{paragraph}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
-        </>
     );
 }
