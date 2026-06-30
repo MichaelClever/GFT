@@ -8,9 +8,8 @@ export function GFTSearchWidget() {
     const [answer, setAnswer] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     
-    // Auto-resize textarea or just use input. Let's use input for simplicity, or textarea if they type long questions.
-    // The previous design looked like a single line search bar, so input is best.
     const inputRef = useRef<HTMLInputElement>(null);
+    const sectionRef = useRef<HTMLElement>(null);
 
     const handleSubmit = async (e?: React.FormEvent) => {
         if (e) e.preventDefault();
@@ -21,6 +20,14 @@ export function GFTSearchWidget() {
         setLoading(true);
         setError(null);
         setAnswer(null);
+
+        // Scroll into view so the chat input and response are fully visible (offset for navbar)
+        setTimeout(() => {
+            if (sectionRef.current) {
+                const y = sectionRef.current.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }, 50);
 
         try {
             const res = await fetch('/api/gft-chat', {
@@ -49,7 +56,7 @@ export function GFTSearchWidget() {
     };
 
     return (
-        <section className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex flex-col items-center">
+        <section ref={sectionRef} className="w-full max-w-[900px] mx-auto px-4 z-10 relative mb-16 pt-8 flex flex-col items-center">
             
             {/* Search / Chat Input Box */}
             <div className="w-full max-w-[700px] min-w-[300px] mb-6">
