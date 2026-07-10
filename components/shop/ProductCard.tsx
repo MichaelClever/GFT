@@ -20,6 +20,13 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText, shopifyMerchandiseId, requiresSelections, selections, price, hideInfoButtons, variants }: ProductCardProps) {
+    const getDisplayTitle = (t: string) => {
+        if (t === "EQUATIONS: The Game of Creative Mathematics" || t === "EQUATIONS - The Game of Creative Mathematics") {
+            return "EQUATIONS: The Game of Creative Mathematics by Layman E. Allen (University of Michigan)";
+        }
+        return t.includes(' - ') ? t.split(' - ')[0] : t.split(': ')[0];
+    };
+
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const [isDetailsVideoOpen, setIsDetailsVideoOpen] = useState(false);
@@ -118,7 +125,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                     <div className="text-[#f1e5d1] text-[1.05rem] mb-8 flex-1 opacity-90 leading-relaxed space-y-4">
                         {description.split(/\\n\\n|\n\n/).map((paragraph, index) => (
                             <p key={index}>
-                                {index === 0 && <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{title.includes(' - ') ? title.split(' - ')[0] : title.split(': ')[0]}:</strong>}
+                                {index === 0 && <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{getDisplayTitle(title)}:</strong>}
                                 {paragraph}
                             </p>
                         ))}
@@ -317,7 +324,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                         <div className="bg-[#1a0f0a] border-b border-[#d4af37]/30 px-6 py-5 flex justify-between items-center shadow-md">
                             <div className="w-10 h-10 shrink-0"></div>
                             <h2 className="font-cinzel text-xl md:text-2xl font-bold text-[#f3e5ab] tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-center flex-1">
-                                {title.includes(' - ') ? title.split(' - ')[0] : title.split(': ')[0]}
+                                {getDisplayTitle(title)}
                             </h2>
                             <button 
                                 className="text-[#d4af37] hover:text-white transition-colors text-2xl leading-none w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 shrink-0"
