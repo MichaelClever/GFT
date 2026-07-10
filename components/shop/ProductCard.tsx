@@ -27,6 +27,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         if (t === "ON-SETS: The Game of Set Theory" || t === "ON-SETS") {
             return "ON-SETS: The Game of Set Theory by Layman E. Allen (University of Michigan), Peter Kugel (M.I.T.) and Martin Owens (Mitre Corporation)";
         }
+        if (t.toUpperCase() === "EQUATIONS MASTERY COLLECTION CD") {
+            return "EQUATIONS CHALLENGE MATCHES: By the Instructional Gaming Group: Layman E. Allen, Layman G. Allen, Michael Clever, Joan Ross, and Cliff Stratton";
+        }
         if (t.toUpperCase() === "REAL NUMBERS") {
             return "REAL NUMBERS by Layman E. Allen (University of Michigan)";
         }
