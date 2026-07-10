@@ -24,6 +24,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         if (t === "EQUATIONS: The Game of Creative Mathematics" || t === "EQUATIONS - The Game of Creative Mathematics") {
             return "EQUATIONS: The Game of Creative Mathematics by Layman E. Allen (University of Michigan)";
         }
+        if (t === "ON-SETS: The Game of Set Theory" || t === "ON-SETS") {
+            return "ON-SETS: The Game of Set Theory by Layman E. Allen (University of Michigan), Peter Kugel (M.I.T.) and Martin Owens (Mitre Corporation)";
+        }
         return t.includes(' - ') ? t.split(' - ')[0] : t.split(': ')[0];
     };
 
@@ -123,12 +126,31 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                 
                 {description && (
                     <div className="text-[#f1e5d1] text-[1.05rem] mb-8 flex-1 opacity-90 leading-relaxed space-y-4">
-                        {description.split(/\\n\\n|\n\n/).map((paragraph, index) => (
-                            <p key={index}>
-                                {index === 0 && <strong className={`text-[#f3e5ab] font-cinzel tracking-wide mr-1 ${getDisplayTitle(title).length > 50 ? 'text-[0.9rem] md:text-[0.95rem]' : ''}`}>{getDisplayTitle(title)}:</strong>}
-                                {paragraph}
-                            </p>
-                        ))}
+                        {description.split(/\\n\\n|\n\n/).map((paragraph, index) => {
+                            let body = paragraph;
+                            let colon = ":";
+                            const prefix = getDisplayTitle(title);
+
+                            if (index === 0) {
+                                if (body.startsWith(prefix)) {
+                                    body = body.substring(prefix.length).trim();
+                                    if (body.startsWith("is a ")) {
+                                        colon = "";
+                                    } else if (body.startsWith(":")) {
+                                        body = body.substring(1).trim();
+                                    }
+                                }
+                                return (
+                                    <p key={index}>
+                                        <strong className={`text-[#f3e5ab] font-cinzel tracking-wide mr-1 ${prefix.length > 50 ? 'text-[0.9rem] md:text-[0.95rem]' : ''}`}>
+                                            {prefix}{colon}
+                                        </strong>
+                                        {body}
+                                    </p>
+                                );
+                            }
+                            return <p key={index}>{paragraph}</p>;
+                        })}
                     </div>
                 )}
 
