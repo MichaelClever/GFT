@@ -86,7 +86,7 @@ export default function MathPage() {
                         <ProductCard 
                             title="Classroom Set"
                             imageSrc="/class.jpeg"
-                            titlePopupText="A Classroom Set contains all the materials needed to conduct classroom tournaments with up to 36 students at a time. They can be made up for any of six chosen games."
+                            titlePopupText="A Classroom Set contains all the materials needed to conduct classroom tournaments with up to 36 students at a time. They can be made up for any of the following games: EQUATIONS, ON-SETS, ON-WORDS, LinguiSHTIK, PROPAGANDA or WFF ‘N PROOF.\n\nEach Classroom Set includes: 12 sets of game cubes, game boards, and timers, and several copies of the instruction manual.\n\nEverything fits in a sturdy 12″ x 9″ x 5″ box — compact and convenient. Save $61 off the regular retail price for $30 games and $70 off the retail price for WFF ‘N PROOF – a 17% discount."
                             shopifyMerchandiseId={classProduct?.id}
                             price={classProduct?.price}
                             variants={classProduct?.variants}
