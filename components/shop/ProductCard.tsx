@@ -125,7 +125,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                     <div className="text-[#f1e5d1] text-[1.05rem] mb-8 flex-1 opacity-90 leading-relaxed space-y-4">
                         {description.split(/\\n\\n|\n\n/).map((paragraph, index) => (
                             <p key={index}>
-                                {index === 0 && <strong className="text-[#f3e5ab] font-cinzel tracking-wide mr-1">{getDisplayTitle(title)}:</strong>}
+                                {index === 0 && <strong className={`text-[#f3e5ab] font-cinzel tracking-wide mr-1 ${getDisplayTitle(title).length > 50 ? 'text-[0.9rem] md:text-[0.95rem]' : ''}`}>{getDisplayTitle(title)}:</strong>}
                                 {paragraph}
                             </p>
                         ))}
@@ -323,7 +323,7 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                         
                         <div className="bg-[#1a0f0a] border-b border-[#d4af37]/30 px-6 py-5 flex justify-between items-center shadow-md">
                             <div className="w-10 h-10 shrink-0"></div>
-                            <h2 className="font-cinzel text-xl md:text-2xl font-bold text-[#f3e5ab] tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-center flex-1">
+                            <h2 className={`font-cinzel font-bold text-[#f3e5ab] tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-center flex-1 ${getDisplayTitle(title).length > 50 ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'}`}>
                                 {getDisplayTitle(title)}
                             </h2>
                             <button 
