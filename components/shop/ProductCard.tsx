@@ -39,6 +39,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         if (t.toUpperCase().includes("TAC-TICKLE")) {
             return "TAC-TICKLE: A Challenging Game of Pure Strategy By Harry D. Ruderman (Hunter College)";
         }
+        if (t.toUpperCase().includes("QWIK-SANE") || t.toUpperCase().includes("QUIK-SANE")) {
+            return "QUIK-SANE: An Intriguing Topological Puzzle by James R. O’Neal (U.S. Treasury Dept, retired)";
+        }
         if (t.toUpperCase() === "REAL NUMBERS") {
             return "REAL NUMBERS by Layman E. Allen (University of Michigan)";
         }
