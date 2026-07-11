@@ -48,6 +48,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         if (t.toUpperCase().includes("ON-WORDS")) {
             return "ON-WORDS: The Game of Word Structures By Professors Layman E. Allen, and Frederick L. Goodman, and Doris Humphrey and Joan Ross (Research Associates, University of Michigan).";
         }
+        if (t.toUpperCase().includes("QUERIES")) {
+            return "QUERIES 'N THEORIES: The Game of Science and Language By Layman E. Allen, Joan Ross (University of Michigan) and Peter Krugel (M.I.T.)";
+        }
         if (t.toUpperCase() === "REAL NUMBERS") {
             return "REAL NUMBERS by Layman E. Allen (University of Michigan)";
         }
