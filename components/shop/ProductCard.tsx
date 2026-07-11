@@ -45,6 +45,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         if (t.toUpperCase().includes("LINGUISHTIK")) {
             return "LinguiSHTIK: A Creative Language Game By Robert W. Allen (Director National Academic Games Project)";
         }
+        if (t.toUpperCase().includes("ON-WORDS")) {
+            return "ON-WORDS: The Game of Word Structures By Professors Layman E. Allen, and Frederick L. Goodman, and Doris Humphrey and Joan Ross (Research Associates, University of Michigan).";
+        }
         if (t.toUpperCase() === "REAL NUMBERS") {
             return "REAL NUMBERS by Layman E. Allen (University of Michigan)";
         }
