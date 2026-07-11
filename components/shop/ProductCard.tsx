@@ -175,11 +175,25 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                                         <strong className={`text-[#f3e5ab] font-cinzel tracking-wide mr-1 ${prefix.length > 50 ? 'text-[0.9rem] md:text-[0.95rem]' : ''}`}>
                                             {prefix}{colon}
                                         </strong>
-                                        {body}
+                                        {body.split(/\\n|\n/).map((line, i, arr) => (
+                                            <React.Fragment key={i}>
+                                                {line}
+                                                {i < arr.length - 1 && <br />}
+                                            </React.Fragment>
+                                        ))}
                                     </p>
                                 );
                             }
-                            return <p key={index}>{paragraph}</p>;
+                            return (
+                                <p key={index}>
+                                    {paragraph.split(/\\n|\n/).map((line, i, arr) => (
+                                        <React.Fragment key={i}>
+                                            {line}
+                                            {i < arr.length - 1 && <br />}
+                                        </React.Fragment>
+                                    ))}
+                                </p>
+                            );
                         })}
                     </div>
                 )}
