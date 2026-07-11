@@ -51,6 +51,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         if (t.toUpperCase().includes("QUERIES")) {
             return "QUERIES 'N THEORIES: The Game of Science and Language By Layman E. Allen, Joan Ross (University of Michigan) and Peter Krugel (M.I.T.)";
         }
+        if (t.toUpperCase().includes("PROPAGANDA")) {
+            return "THE PROPAGANDA GAME By Robert W. Allen (Director National Academic Games Project) and Lorne Greene (NBC, Paramount Studios).";
+        }
         if (t.toUpperCase() === "REAL NUMBERS") {
             return "REAL NUMBERS by Layman E. Allen (University of Michigan)";
         }
