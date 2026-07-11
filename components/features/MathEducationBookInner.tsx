@@ -93,6 +93,7 @@ export function MathEducationBookInner() {
                         <div className="h-1 w-24 bg-[#a3b1c6] mb-8 shadow-[0_0_10px_rgba(163,177,198,0.5)] opacity-90 relative z-10"></div>
                         
                         <h2 className="font-lora text-xl mb-4 italic text-[#cbd5e1] drop-shadow-md relative z-10">Why Technology Can't Fix It</h2>
+                        <h3 className="font-cinzel font-bold text-lg md:text-xl mt-2 text-[#f8fafc] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-widest relative z-10">By Buzz Allen</h3>
                     </div>
                 </Page>
 

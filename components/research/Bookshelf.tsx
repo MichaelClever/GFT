@@ -18,7 +18,6 @@ const books = [
     {
         id: "volume-2",
         title: "Math Education in America",
-        author: "Buzz Allen",
         href: "/research/math-education-in-america",
         color: "bg-[#253f75]",
         borderColor: "border-[#a3b1c6]",
@@ -29,7 +28,6 @@ const books = [
     {
         id: "volume-3",
         title: "Naked Math",
-        author: "Buzz Allen",
         href: "/research/naked-math",
         color: "bg-[#593d26]",
         borderColor: "border-[#d4af37]",
@@ -40,7 +38,6 @@ const books = [
     {
         id: "volume-4",
         title: "Online Games",
-        author: "Buzz Allen",
         href: "/research/online-games",
         color: "bg-[#355e39]",
         borderColor: "border-[#b59a6d]",
@@ -51,7 +48,6 @@ const books = [
     {
         id: "volume-5",
         title: "Games, Gods, and Grades",
-        author: "Buzz Allen",
         href: "/research/games-gods-grades",
         color: "bg-[#702931]",
         borderColor: "border-[#e0a2a5]",
@@ -120,11 +116,6 @@ export function Bookshelf() {
                                                 <h3 className={`font-cinzel-decorative font-bold text-xs sm:text-sm md:text-base uppercase tracking-widest ${book.textColor} drop-shadow-md leading-tight`}>
                                                     {book.title}
                                                 </h3>
-                                                {book.author && (
-                                                    <span className={`font-cinzel font-bold text-[0.45rem] sm:text-[0.55rem] md:text-[0.65rem] tracking-wider uppercase opacity-90 ${book.textColor}`}>
-                                                        {book.author}
-                                                    </span>
-                                                )}
                                             </div>
 
                                             {/* Bottom of Spine (Left side when rotated) */}

@@ -93,6 +93,7 @@ export function NakedMathBookInner() {
                         <div className="h-1 w-24 bg-[#d4af37] mb-8 shadow-[0_0_10px_rgba(212,175,55,0.8)] opacity-90 relative z-10"></div>
                         
                         <h2 className="font-lora text-xl mb-4 italic text-[#e2bc3b] drop-shadow-md relative z-10">Are you ready?</h2>
+                        <h3 className="font-cinzel font-bold text-lg md:text-xl mt-2 text-[#f3e5ab] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-widest relative z-10">By Buzz Allen</h3>
                     </div>
                 </Page>
 

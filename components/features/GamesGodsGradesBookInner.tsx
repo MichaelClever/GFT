@@ -93,6 +93,7 @@ export function GamesGodsGradesBookInner() {
                         <div className="h-1 w-24 bg-[#e0a2a5] mb-8 shadow-[0_0_10px_rgba(224,162,165,0.8)] opacity-90 relative z-10"></div>
                         
                         <h2 className="font-lora text-xl mb-4 italic text-[#f4d1d2] drop-shadow-md relative z-10">Fred Goodman</h2>
+                        <h3 className="font-cinzel font-bold text-lg md:text-xl mt-2 text-[#fce8e9] drop-shadow-[0_2px_4px_rgba(0,0,0,1)] tracking-widest relative z-10">By Buzz Allen</h3>
                     </div>
                 </Page>
 
