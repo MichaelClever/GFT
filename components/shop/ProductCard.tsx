@@ -403,7 +403,14 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
                         <div className="px-6 py-6 md:px-10 md:py-8 max-h-[70vh] overflow-y-auto w-full">
                             <div className="text-[#f1e5d1] text-[1.05rem] md:text-lg leading-relaxed font-lora opacity-90 space-y-6">
                                 {titlePopupText.split(/\\n\\n|\n\n/).map((paragraph, index) => (
-                                    <p key={index}>{paragraph}</p>
+                                    <p key={index}>
+                                        {paragraph.split(/\\n|\n/).map((line, i, arr) => (
+                                            <React.Fragment key={i}>
+                                                {line}
+                                                {i < arr.length - 1 && <br />}
+                                            </React.Fragment>
+                                        ))}
+                                    </p>
                                 ))}
                             </div>
                         </div>
