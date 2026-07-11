@@ -30,6 +30,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         if (t.toUpperCase() === "EQUATIONS MASTERY COLLECTION CD") {
             return "EQUATIONS CHALLENGE MATCHES: By the Instructional Gaming Group: Layman E. Allen, Layman G. Allen, Michael Clever, Joan Ross, and Cliff Stratton";
         }
+        if (t.toUpperCase().includes("WFF 'N PROOF - THE GAME OF MODERN LOGIC") || t.toUpperCase().includes("WFF N' PROOF - THE GAME OF MODERN LOGIC")) {
+            return "WFF ’N PROOF: The Game of Modern Logic by Layman E. Allen (University of Michigan)";
+        }
         if (t.toUpperCase() === "REAL NUMBERS") {
             return "REAL NUMBERS by Layman E. Allen (University of Michigan)";
         }
