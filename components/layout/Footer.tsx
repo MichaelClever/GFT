@@ -23,15 +23,12 @@ export function Footer() {
 
                 {/* Right Side: Contact */}
                 <div className="flex-1 md:text-right flex flex-col gap-2 text-lg">
-                    <p className="text-[#fdf5d3] font-bold tracking-wide">Layman G. (Buzz) Allen (President)</p>
+                    <p className="text-[#fdf5d3] font-bold tracking-wide">Layman G. (Buzz) Allen President</p>
                     <p>
                         <a href="mailto:enswell@gmail.com" className="text-[#f1e5d1] hover:text-white transition-colors">enswell@gmail.com</a>
                     </p>
                     <p className="text-[#f1e5d1]">
                         Phones: <a href="tel:641-954-5443" className="hover:text-white transition-colors">641-954-5443</a>, <a href="tel:800-289-2377" className="hover:text-white transition-colors">800-289-2377</a>
-                    </p>
-                    <p className="text-[#f1e5d1]">
-                        Fax: 641-954-5851
                     </p>
                     <p className="mt-4 text-[#8c6a1d] leading-snug">
                         Accelerated Learning Foundation<br />
