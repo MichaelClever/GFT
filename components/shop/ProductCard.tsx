@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AddToCartButton } from './AddToCartButton';
 import { ProductSelection, ProductVariant } from '@/lib/shopify/productMap';
 
