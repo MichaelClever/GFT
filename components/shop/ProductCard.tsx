@@ -33,6 +33,9 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
         if (t.toUpperCase().includes("WFF 'N PROOF - THE GAME OF MODERN LOGIC") || t.toUpperCase().includes("WFF N' PROOF - THE GAME OF MODERN LOGIC")) {
             return "WFF ’N PROOF: The Game of Modern Logic by Layman E. Allen (University of Michigan)";
         }
+        if (t.toUpperCase().includes("WFF - THE BEGINNERS GAME OF MODERN LOGIC")) {
+            return "WFF: The Beginners Game of Modern Logic by Layman E. Allen (University of Michigan)";
+        }
         if (t.toUpperCase() === "REAL NUMBERS") {
             return "REAL NUMBERS by Layman E. Allen (University of Michigan)";
         }
