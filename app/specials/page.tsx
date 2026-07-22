@@ -61,7 +61,7 @@ export default function SpecialsPage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
                         <ProductCard 
                             title="Complete 13-Game Thinkers Library"
-                            imageSrc="/14game.jpeg"
+                            imageSrc="/bundle.jpeg"
                             titlePopupText="A complete library of thinking games and intellectual challenge. Regular retail price for this unique collection is $386. The library is available here at the special price of $299 – a savings of $87. Minds encountered by the master of this collection will never be the same.\nIncludes:\n\nEQUATIONS: The Game of Creative Mathematics (with “Learning to Play” DVD), WFF ‘N PROOF: The Game of Modern Logic, WFF: The Beginners Game of Modern Logic, ON-SETS: The Game of Set Theory, The PROPAGANDA Game, ON-WORDS: The Game of Word Structures, LinguiSHTIK: A Creative Language Game, QUERIES ‘N THEORIES: The Game of Science of Language, The REAL NUMBERS Game, The EQUATIONS Mastery Collection Software (The DIG Math Computer Program and EQUATIONS Challenge Matches), CONFIGURATIONS: Number Puzzles for All Ages, TAC-TICKLE: A Challenging Game of Pure Strategy, QUICK-SANE: An Intriguing Topological Puzzle."
                             shopifyMerchandiseId={library14Product?.id}
                             price={library14Product?.price}
