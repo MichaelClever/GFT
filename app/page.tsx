@@ -17,7 +17,7 @@ export default function Home() {
             <HeroSection />
             <CardDeck />
             <SpecialsButton />
-            <GFTSearchWidget />
+            <VideoGrid />
             
             {/* Attractive Divider */}
             <div className="w-full flex justify-center items-center py-8 px-4 opacity-80 max-w-[1000px] mx-auto">
@@ -26,7 +26,7 @@ export default function Home() {
                 <div className="flex-1 h-[3px] bg-gradient-to-l from-transparent via-black to-black shadow-[0_0_12px_rgba(255,255,255,0.2)] rounded-full"></div>
             </div>
 
-            <VideoGrid />
+            <GFTSearchWidget />
         </main>
     );
 }
