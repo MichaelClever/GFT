@@ -7,6 +7,7 @@ export default function LogicPage() {
     const wffProduct = getProductByHandle("wff-the-beginners-game-of-modern-logic");
     const tacTickleProduct = getProductByHandle("tac-tickle-a-challenging-game-of-pure-strategy");
     const qwikSaneProduct = getProductByHandle("qwik-sane-an-intriguing-topological-puzzle");
+    const configurationsProduct = getProductByHandle("configurations");
     return (
         <main className="relative w-full flex-1 flex flex-col font-lora min-h-screen">
             <Navbar />
@@ -77,6 +78,16 @@ export default function LogicPage() {
                             titlePopupText="QWIK-SANE is a topological puzzle that will challenge and delight people devoted to solitaire games calling for careful reasoning. It is simple in both design and theme, yet calls for concentrated effort to achieve the precise objective. Almost anyone willing to apply careful attention and patience will be able to &quot;work&quot; this puzzle, but solving the problem in the specified manner required is a genuine challenge. QUIK-SANE was developed by James R. O'Neil, a retiree from the U.S. Treasury Department, after 39 years of government service. Throughout his working years, Mr. O'Neil pursued an avocation of inventing toys and games for which he holds several patents."
                             shopifyMerchandiseId={qwikSaneProduct?.id}
                             price={qwikSaneProduct?.price}
+                        />
+                    </div>
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-900 fill-mode-both">
+                        <ProductCard 
+                            title="Configurations"
+                            imageSrc="/configurations.jpeg"
+                            howToPlayVideoUrl="https://player.vimeo.com/video/76225920?fl=pl&fe=sh&autoplay=1&muted=0"
+                            titlePopupText="CONFIGURATIONS is a series of geometric puzzles based on Harold L. Dorwart's book, &quot;The Geometry of Incidence&quot;. Mr. Dorwart was the Seabury Professor and Chairman of the Mathematics Department at Trinity College in Hartford, Connecticut. One reviewer declared: &quot;Professor Dorwart employs his high competence as a mathematician and as a teacher to guide the willing and diligent traveler along a simple yet elegant road through geometric country that is rich in rewards of beauty, excitement, surprise, amusement, delight, and illumination.&quot; It is the perfect gift for those who are intrigued by solitaire games involving careful reasoning."
+                            shopifyMerchandiseId={configurationsProduct?.id}
+                            price={configurationsProduct?.price}
                         />
                     </div>
                 </div>
