@@ -233,7 +233,7 @@ export const products: Product[] = [
     id: "gid://shopify/ProductVariant/52095156158684",
     title: "Configurations",
     handle: "configurations",
-    price: "29.00",
+    price: "25.00",
     category: "Logic",
     image: "/configurations.jpeg",
     description: "CONFIGURATIONS is a series of geometric puzzles based on Harold L. Dorwart's book, \"The Geometry of Incidence\". Mr. Dorwart was the Seabury Professor and Chairman of the Mathematics Department at Trinity College in Hartford, Connecticut. One reviewer declared: \"Professor Dorwart employs his high competence as a mathematician and as a teacher to guide the willing and diligent traveler along a simple yet elegant road through geometric country that is rich in rewards of beauty, excitement, surprise, amusement, delight, and illumination.\" It is the perfect gift for those who are intrigued by solitaire games involving careful reasoning."
