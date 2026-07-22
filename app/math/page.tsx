@@ -9,6 +9,7 @@ export default function MathPage() {
     const classProduct = getProductByHandle("classroom-set");
     const eqMasteryProduct = getProductByHandle("equations-mastery-collection-cd");
     const geometryProduct = getProductByHandle("the-geometry-of-incidence");
+    const mathBundleProduct = getProductByHandle("math-games-bundle");
     return (
         <main className="relative w-full flex-1 flex flex-col font-lora min-h-screen">
             <Navbar />
@@ -78,8 +79,10 @@ export default function MathPage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
                         <ProductCard 
                             title="Math Games Bundle"
-                            imageSrc="/bundle.jpeg"
-                            titlePopupText="The ultimate package combining both EQUATIONS and ON-SETS alongside exclusive offline resources. Perfect for classrooms and family game nights."
+                            imageSrc="/mathbundle.jpeg"
+                            titlePopupText="Math Games Bundle\nThis Bundle includes the deluxe version of EQUATIONS: The Game of Creative Mathematics (including the “Learning to Play EQUATIONS” DVD), ON-SETS: The Game of Set Theory, and The Real Numbers Game - Special Discount offer $59.00."
+                            shopifyMerchandiseId={mathBundleProduct?.id}
+                            price={mathBundleProduct?.price}
                         />
                     </div>
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">

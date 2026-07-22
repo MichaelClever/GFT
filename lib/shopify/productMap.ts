@@ -219,6 +219,15 @@ export const products: Product[] = [
         options: ["ON-SETS", "EQUATIONS", "The Propaganda Game", "LinguiSHTIK", "ON-WORDS", "QUERIES ’N THEORIES", "WFF ’N PROOF"]
       }
     ]
+  },
+  {
+    id: "gid://shopify/ProductVariant/51294304895196",
+    title: "Math Games Bundle",
+    handle: "math-games-bundle",
+    price: "59.00",
+    category: "Specials / Bundles",
+    image: "/mathbundle.jpeg",
+    description: "Math Games Bundle\nThis Bundle includes the deluxe version of EQUATIONS: The Game of Creative Mathematics (including the “Learning to Play EQUATIONS” DVD), ON-SETS: The Game of Set Theory, and The Real Numbers Game - Special Discount offer $59.00."
   }
 ];
 
