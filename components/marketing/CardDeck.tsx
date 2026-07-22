@@ -8,7 +8,7 @@ export function CardDeck() {
                 {homeContent.subjects.map((sub) => (
                     <Link href={`/${sub.route}`} key={sub.name} 
                             className="relative flex-1 group flex justify-center" style={{maxWidth: '260px'}}>
-                        <div className="relative w-full transition-transform duration-300 group-hover:-translate-y-4 group-hover:drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)] filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]">
+                        <div className="relative w-full transition-all duration-300 group-hover:-translate-y-4 [filter:drop-shadow(0_10px_20px_rgba(0,0,0,0.6))] group-hover:[filter:drop-shadow(0_0_20px_rgba(212,175,55,0.95))_drop-shadow(0_20px_35px_rgba(0,0,0,0.8))]">
                             <img 
                                 src={sub.imagePath} 
                                 alt={sub.name} 
