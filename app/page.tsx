@@ -17,6 +17,14 @@ export default function Home() {
             <HeroSection />
             <CardDeck />
             <SpecialsButton />
+
+            {/* Attractive Black Divider */}
+            <div className="w-full flex justify-center items-center py-6 px-4 opacity-80 max-w-[1000px] mx-auto mb-8">
+                <div className="flex-1 h-[3px] bg-gradient-to-r from-transparent via-black to-black shadow-[0_0_12px_rgba(255,255,255,0.15)] rounded-full"></div>
+                <div className="mx-6 text-black text-3xl drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]">✧</div>
+                <div className="flex-1 h-[3px] bg-gradient-to-l from-transparent via-black to-black shadow-[0_0_12px_rgba(255,255,255,0.15)] rounded-full"></div>
+            </div>
+
             <VideoGrid />
             
             {/* Attractive Divider */}
