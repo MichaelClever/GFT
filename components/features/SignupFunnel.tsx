@@ -34,21 +34,31 @@ export function SignupFunnel() {
                 })
             });
             
-            const data = await response.json();
-            if (!data.success) {
-                console.error("Registration Failure:", data.message);
-                setErrorMessage(data.message || "Registration could not be completed. Please check your information and try again.");
+            let data;
+            try {
+                data = await response.json();
+            } catch {
+                data = null;
             }
+
+            if (!response.ok || !data || !data.success) {
+                console.error("Registration Failure:", data?.message);
+                setErrorMessage(data?.message || "Registration could not be completed. Please check your information and try again.");
+                setIsSubmitting(false);
+                return;
+            }
+
+            // Slight artificial buffer explicitly to let the cinematic loading spinner complete its first rotation gracefully before snapping to the UI success screen! 
+            await new Promise((resolve) => setTimeout(resolve, 600));
+            
+            setIsSubmitting(false);
+            setIsSubmitted(true);
+
         } catch (error) {
             console.error("API Transmission Failed:", error);
-            setErrorMessage("Network error during submission. Please try again.");
+            setErrorMessage("Network error during submission. Please check your connection and try again.");
+            setIsSubmitting(false);
         }
-
-        // Slight artificial buffer explicitly to let the cinematic loading spinner complete its first rotation gracefully before snapping to the UI success screen! 
-        await new Promise((resolve) => setTimeout(resolve, 600));
-        
-        setIsSubmitting(false);
-        setIsSubmitted(true);
     };
 
     if (isSubmitted) {
@@ -175,6 +185,13 @@ export function SignupFunnel() {
                                 autoComplete="off" 
                             />
                         </div>
+                    </div>
+                )}
+
+                {/* Error Message Display */}
+                {errorMessage && (
+                    <div className="mx-auto max-w-md p-4 bg-[#3d1004]/90 border-2 border-red-500/70 rounded-lg text-[#fdf5d3] text-center text-sm md:text-base font-bold shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-in fade-in duration-300">
+                        {errorMessage}
                     </div>
                 )}
 
