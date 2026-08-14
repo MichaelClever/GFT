@@ -8,35 +8,40 @@ export function SignupFunnel() {
     const [timezone, setTimezone] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [honeypot, setHoneypot] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleRegister = async () => {
         setIsSubmitting(true);
+        setErrorMessage("");
         
         try {
-            const formData = new FormData();
-            formData.append("access_key", "e413ec97-023a-411d-a414-004ad1f333f9");
-            formData.append("subject", "New Webinar Registration!");
-            formData.append("from_name", "Webinar Portal");
-            formData.append("name", name);
-            formData.append("email", email);
-            formData.append("Date Selected", date);
-            formData.append("Time Selected", time);
-            formData.append("Timezone", timezone);
-
-            const response = await fetch("https://api.web3forms.com/submit", {
+            const response = await fetch("/api/webinar-register", {
                 method: "POST",
-                body: formData
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    date,
+                    time,
+                    timezone,
+                    website: honeypot
+                })
             });
             
             const data = await response.json();
             if (!data.success) {
-                console.error("API Response Failure:", data.message);
+                console.error("Registration Failure:", data.message);
+                setErrorMessage(data.message || "Registration could not be completed. Please check your information and try again.");
             }
         } catch (error) {
             console.error("API Transmission Failed:", error);
+            setErrorMessage("Network error during submission. Please try again.");
         }
 
         // Slight artificial buffer explicitly to let the cinematic loading spinner complete its first rotation gracefully before snapping to the UI success screen! 
@@ -156,6 +161,18 @@ export function SignupFunnel() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="p-3 bg-[#2a1b12] border-2 border-[#8c6a1d] rounded text-[#fdf5d3] focus:border-[#d4af37] focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 transition-all w-full shadow-inner"
                                 placeholder="your.email@example.com"
+                            />
+                        </div>
+
+                        {/* Honeypot field - invisible to real human users */}
+                        <div className="hidden" aria-hidden="true">
+                            <input 
+                                type="text" 
+                                name="website"
+                                tabIndex={-1} 
+                                value={honeypot} 
+                                onChange={(e) => setHoneypot(e.target.value)} 
+                                autoComplete="off" 
                             />
                         </div>
                     </div>
