@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import Link from 'next/link';
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/teachers",
+    },
+};
+
 
 export default function TeachersPage() {
     return (
