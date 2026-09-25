@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/marketing/HeroSection";
 import { CardDeck } from "@/components/marketing/CardDeck";
 import { GFTSearchWidget } from "@/components/marketing/GFTSearchWidget";
 import { VideoGrid } from "@/components/marketing/VideoGrid";
 import { SpecialsButton } from "@/components/marketing/SpecialsButton";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/",
+    },
+};
+
 
 export default function Home() {
     return (
