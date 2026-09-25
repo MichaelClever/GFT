@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { MathEducationBookWrapper } from "@/components/features/MathEducationBookWrapper";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/research/math-education-in-america",
+    },
+};
+
 
 export default function MathEducationPage() {
     return (
