@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Bookshelf } from "@/components/research/Bookshelf";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/research",
+    },
+};
+
 
 export default function ResearchPage() {
     return (
