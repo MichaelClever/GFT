@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { OnlineGamesBookWrapper } from "@/components/features/OnlineGamesBookWrapper";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/research/online-games",
+    },
+};
+
 
 export default function OnlineGamesPage() {
     return (
