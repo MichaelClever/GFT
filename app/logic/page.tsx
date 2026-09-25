@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductByHandle } from "@/lib/shopify/productMap";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/logic",
+    },
+};
+
 
 export default function LogicPage() {
     const wffNProofProduct = getProductByHandle("wff-n-proof-the-game-of-modern-logic");
