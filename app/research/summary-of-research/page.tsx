@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { ResearchBookWrapper } from "@/components/features/ResearchBookWrapper";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/research/summary-of-research",
+    },
+};
+
 
 export default function SummaryOfResearchPage() {
     return (
