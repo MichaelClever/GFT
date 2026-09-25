@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { GamesGodsGradesBookWrapper } from "@/components/features/GamesGodsGradesBookWrapper";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/research/games-gods-grades",
+    },
+};
+
 
 export default function GamesGodsGradesPage() {
     return (
