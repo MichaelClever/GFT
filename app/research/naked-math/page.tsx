@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { NakedMathBookWrapper } from "@/components/features/NakedMathBookWrapper";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/research/naked-math",
+    },
+};
+
 
 export default function NakedMathPage() {
     return (
