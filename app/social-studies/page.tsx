@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductByHandle } from "@/lib/shopify/productMap";
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "https://gamesforthinkers.org/social-studies",
+    },
+};
+
 
 export default function SocialStudiesPage() {
     const propProduct = getProductByHandle("the-propaganda-game");
