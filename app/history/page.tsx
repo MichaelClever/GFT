@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
+export const metadata: Metadata = {
+    robots: {
+        index: false,
+        follow: true,
+    },
+};
+
 
 export default function HistoryPage() {
     return (
