@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { commerceClient } from '@/services/commerce/commerce-client';
 import { Navbar } from '@/components/layout/Navbar';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+export const metadata: Metadata = {
+    robots: {
+        index: false,
+        follow: true,
+    },
+};
+
 
 export async function generateStaticParams() {
     const collections = await commerceClient.getCollections();
