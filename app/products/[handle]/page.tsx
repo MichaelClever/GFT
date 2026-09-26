@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { commerceClient } from '@/services/commerce/commerce-client';
 import { Navbar } from '@/components/layout/Navbar';
 import { notFound } from 'next/navigation';
+export const metadata: Metadata = {
+    robots: {
+        index: false,
+        follow: true,
+    },
+};
+
 
 export async function generateStaticParams() {
     // For static export, Next.js needs to know all possible routes at build time.
