@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { SignupFunnel } from "@/components/features/SignupFunnel";
+export const metadata: Metadata = {
+    robots: {
+        index: false,
+        follow: true,
+    },
+};
+
 
 export default function SignUpPage() {
     return (
