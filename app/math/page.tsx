@@ -15,6 +15,7 @@ export default function MathPage() {
     const realProduct = getProductByHandle("real-numbers");
     const classProduct = getProductByHandle("classroom-set");
     const eqMasteryProduct = getProductByHandle("equations-mastery-collection-cd");
+    const eqMasteryDigitalProduct = getProductByHandle("equations-mastery-collection-windows-digital-download");
     const geometryProduct = getProductByHandle("the-geometry-of-incidence");
     const mathBundleProduct = getProductByHandle("math-games-bundle");
     return (
@@ -111,6 +112,16 @@ export default function MathPage() {
                             price={eqMasteryProduct?.price}
                             requiresSelections={eqMasteryProduct?.requiresSelections}
                             selections={eqMasteryProduct?.selections}
+                        />
+                    </div>
+                    
+                    <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-700 fill-mode-both">
+                        <ProductCard 
+                            title="EQUATIONS Mastery Collection - Windows Digital Download"
+                            imageSrc="/eqmastery.jpeg"
+                            titlePopupText="The downloadable Windows edition of the EQUATIONS Mastery Collection includes the DIG Math Program and EQUATIONS Challenge Matches, an extensive collection of computer-assisted EQUATIONS games, lessons, challenges, and research activities. This edition is designed for Windows 10 and Windows 11. Digital download only; no physical CD or other media will be shipped. Not compatible with macOS."
+                            shopifyMerchandiseId={eqMasteryDigitalProduct?.id}
+                            price={eqMasteryDigitalProduct?.price}
                         />
                     </div>
                     
