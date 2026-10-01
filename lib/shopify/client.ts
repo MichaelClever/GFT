@@ -76,6 +76,10 @@ const cartFragment = `
           ... on ProductVariant {
             id
             title
+            price {
+              amount
+              currencyCode
+            }
             product {
               title
               handle
