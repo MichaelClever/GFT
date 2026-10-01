@@ -33,6 +33,7 @@ export type ShopifyCart = {
                 merchandise: {
                     id: string;
                     title: string;
+                    price?: { amount: string; currencyCode: string };
                     product: {
                         title: string;
                         handle: string;
@@ -134,16 +135,24 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }
     };
 
-    const items: CartItem[] = cart?.lines?.edges?.map(({ node }) => ({
-        id: node.id,
-        variantId: node.merchandise.id,
-        title: node.merchandise.title,
-        productTitle: node.merchandise.product.title,
-        quantity: node.quantity,
-        price: parseFloat(node.cost.totalAmount.amount) / node.quantity, // single item price
-        image: node.merchandise.product.featuredImage?.url,
-        attributes: node.attributes
-    })) || [];
+    const items: CartItem[] = cart?.lines?.edges?.map(({ node }) => {
+        const variantPrice = parseFloat(node.merchandise.price?.amount ?? "");
+        const lineTotal = parseFloat(node.cost?.totalAmount?.amount ?? "");
+        const unitPrice = Number.isFinite(variantPrice)
+            ? variantPrice
+            : (Number.isFinite(lineTotal) && node.quantity > 0 ? lineTotal / node.quantity : 0);
+
+        return {
+            id: node.id,
+            variantId: node.merchandise.id,
+            title: node.merchandise.title,
+            productTitle: node.merchandise.product.title,
+            quantity: node.quantity,
+            price: unitPrice,
+            image: node.merchandise.product.featuredImage?.url,
+            attributes: node.attributes
+        };
+    }) || [];
 
     const cartCount = cart?.totalQuantity || 0;
 
