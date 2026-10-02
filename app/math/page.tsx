@@ -116,7 +116,7 @@ export default function MathPage() {
                     <div className="animate-in fade-in zoom-in slide-in-from-bottom-8 duration-700 delay-700 fill-mode-both">
                         <ProductCard 
                             title="EQUATIONS Mastery Collection - Windows Digital Download"
-                            imageSrc="/eqmastery.jpeg"
+                            imageSrc="/masterycollection.jpg"
                             titlePopupText="The downloadable Windows edition of the EQUATIONS Mastery Collection includes the DIG Math Program and EQUATIONS Challenge Matches, an extensive collection of computer-assisted EQUATIONS games, lessons, challenges, and research activities. This edition is designed for Windows 10 and Windows 11. Digital download only; no physical CD or other media will be shipped. Not compatible with macOS."
                             shopifyMerchandiseId={eqMasteryDigitalProduct?.id}
                             price={eqMasteryDigitalProduct?.price}
