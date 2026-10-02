@@ -158,7 +158,7 @@ export const products: Product[] = [
     handle: "equations-mastery-collection-windows-digital-download",
     price: "49.00",
     category: "Math",
-    image: "/masterycollection.jpg",
+    image: "/masterycollection.jpeg",
     description: "The downloadable Windows edition of the EQUATIONS Mastery Collection includes the DIG Math Program and EQUATIONS Challenge Matches, an extensive collection of computer-assisted EQUATIONS games, lessons, challenges, and research activities. This edition is designed for Windows 10 and Windows 11. Digital download only; no physical CD or other media will be shipped. Not compatible with macOS."
   },
   {
