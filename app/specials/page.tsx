@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/specials",
     },
+    openGraph: {
+        title: "Educational Game Bundles & Specials | Games For Thinkers",
+        description: "Save on educational game bundles and collections, including 3-game and 7-game specials and the complete Games For Thinkers library.",
+        url: "https://gamesforthinkers.org/specials",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Educational Game Bundles & Specials | Games For Thinkers",
+        description: "Save on educational game bundles and collections, including 3-game and 7-game specials and the complete Games For Thinkers library.",
+    },
 };
 
 
