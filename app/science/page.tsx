@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/science",
     },
+    openGraph: {
+        title: "Scientific Reasoning & Science Games | Games For Thinkers",
+        description: "Explore QUERIES ’N THEORIES, an educational science and language game built around scientific reasoning, hypothesis testing, patterns and careful questioning.",
+        url: "https://gamesforthinkers.org/science",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Scientific Reasoning & Science Games | Games For Thinkers",
+        description: "Explore QUERIES ’N THEORIES, an educational science and language game built around scientific reasoning, hypothesis testing, patterns and careful questioning.",
+    },
 };
 
 
