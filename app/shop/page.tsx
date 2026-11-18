@@ -49,7 +49,7 @@ export default function ShopPage() {
                 </div>
             
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-                    {filteredProducts.map((product) => (
+                    {filteredProducts.map((product, index) => (
                         <ProductCard
                             key={product.id}
                             title={product.title}
@@ -61,6 +61,7 @@ export default function ShopPage() {
                             hideInfoButtons={true}
                             titlePopupText={product.description}
                             variants={product.variants}
+                            imageLoading={index < 3 ? "eager" : "lazy"}
                         />
                     ))}
                 </div>
