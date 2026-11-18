@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 export const metadata: Metadata = {
+    title: "Free Online Educational Games | Games For Thinkers",
+    description: "Play educational reasoning games online, including The Propaganda Game and Math Science Quest, with activities in critical thinking and scientific method.",
     alternates: {
         canonical: "https://gamesforthinkers.org/play-online",
     },
