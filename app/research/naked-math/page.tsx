@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { NakedMathBookWrapper } from "@/components/features/NakedMathBookWrapper";
 export const metadata: Metadata = {
+    title: "Naked Math by Buzz Allen | Games For Thinkers",
+    description: "Read Buzz Allen’s Naked Math, an essay on mathematics learning, education and the ideas behind Games For Thinkers’ approach to instructional gaming.",
     alternates: {
         canonical: "https://gamesforthinkers.org/research/naked-math",
     },
