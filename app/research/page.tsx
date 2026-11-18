@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Bookshelf } from "@/components/research/Bookshelf";
 export const metadata: Metadata = {
+    title: "Educational Game Research Library | Games For Thinkers",
+    description: "Read research and essays on instructional gaming, math education, critical thinking and learning through games from the Games For Thinkers research library.",
     alternates: {
         canonical: "https://gamesforthinkers.org/research",
     },
