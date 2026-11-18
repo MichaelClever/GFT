@@ -6,6 +6,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/play-online",
     },
+    openGraph: {
+        title: "Free Online Educational Games | Games For Thinkers",
+        description: "Play educational reasoning games online, including The Propaganda Game and Math Science Quest, with activities in critical thinking and scientific method.",
+        url: "https://gamesforthinkers.org/play-online",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Free Online Educational Games | Games For Thinkers",
+        description: "Play educational reasoning games online, including The Propaganda Game and Math Science Quest, with activities in critical thinking and scientific method.",
+    },
 };
 
 
