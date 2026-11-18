@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+    title: "Educational Board Games & Learning Games Shop | Games For Thinkers",
+    description: "Shop educational board games for math, logic, language, science and social studies, plus classroom sets, bundles and Windows learning software.",
     alternates: {
         canonical: "https://gamesforthinkers.org/shop",
     },
