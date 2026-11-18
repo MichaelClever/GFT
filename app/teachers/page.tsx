@@ -7,6 +7,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/teachers",
     },
+    openGraph: {
+        title: "Educational Games for Teachers & Schools | Games For Thinkers",
+        description: "Resources for teachers, public schools and classrooms using educational games for math, reasoning and critical thinking, with free program videos and demonstrations.",
+        url: "https://gamesforthinkers.org/teachers",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Educational Games for Teachers & Schools | Games For Thinkers",
+        description: "Resources for teachers, public schools and classrooms using educational games for math, reasoning and critical thinking, with free program videos and demonstrations.",
+    },
 };
 
 
