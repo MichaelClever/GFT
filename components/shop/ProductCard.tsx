@@ -17,9 +17,10 @@ interface ProductCardProps {
     price?: string;
     hideInfoButtons?: boolean;
     variants?: ProductVariant[];
+    imageLoading?: "eager" | "lazy";
 }
 
-export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText, shopifyMerchandiseId, requiresSelections, selections, price, hideInfoButtons, variants }: ProductCardProps) {
+export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, detailsVideoUrl, titlePopupText, shopifyMerchandiseId, requiresSelections, selections, price, hideInfoButtons, variants, imageLoading = "eager" }: ProductCardProps) {
     const getDisplayTitle = (t: string) => {
         if (t === "EQUATIONS: The Game of Creative Mathematics" || t === "EQUATIONS - The Game of Creative Mathematics") {
             return "EQUATIONS: The Game of Creative Mathematics by Layman E. Allen (University of Michigan)";
@@ -141,7 +142,8 @@ export function ProductCard({ title, imageSrc, description, howToPlayVideoUrl, d
             >
                 <img 
                     src={imageSrc} 
-                    alt={title} 
+                    alt={title}
+                    loading={imageLoading}
                     className="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
