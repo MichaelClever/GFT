@@ -7,6 +7,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/research/naked-math",
     },
+    openGraph: {
+        title: "Naked Math by Buzz Allen | Games For Thinkers",
+        description: "Read Buzz Allen’s Naked Math, an essay on mathematics learning, education and the ideas behind Games For Thinkers’ approach to instructional gaming.",
+        url: "https://gamesforthinkers.org/research/naked-math",
+        siteName: "Games For Thinkers",
+        type: "article",
+    },
+    twitter: {
+        card: "summary",
+        title: "Naked Math by Buzz Allen | Games For Thinkers",
+        description: "Read Buzz Allen’s Naked Math, an essay on mathematics learning, education and the ideas behind Games For Thinkers’ approach to instructional gaming.",
+    },
 };
 
 
