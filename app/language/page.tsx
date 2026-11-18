@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/language",
     },
+    openGraph: {
+        title: "Language Arts, Grammar & Word Games | Games For Thinkers",
+        description: "Explore educational language games for grammar, vocabulary, spelling and word structure, including LinguiSHTIK and ON-WORDS for students and families.",
+        url: "https://gamesforthinkers.org/language",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Language Arts, Grammar & Word Games | Games For Thinkers",
+        description: "Explore educational language games for grammar, vocabulary, spelling and word structure, including LinguiSHTIK and ON-WORDS for students and families.",
+    },
 };
 
 
