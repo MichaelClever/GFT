@@ -3,6 +3,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductByHandle } from "@/lib/shopify/productMap";
 export const metadata: Metadata = {
+    title: "Educational Math Games & Math Strategy Games | Games For Thinkers",
+    description: "Explore EQUATIONS, ON-SETS and other educational math games for problem solving, arithmetic, algebra, classrooms, homeschool and advanced learners.",
     alternates: {
         canonical: "https://gamesforthinkers.org/math",
     },
