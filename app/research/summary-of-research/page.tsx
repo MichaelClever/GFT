@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { ResearchBookWrapper } from "@/components/features/ResearchBookWrapper";
 export const metadata: Metadata = {
+    title: "Research on WFF ’N PROOF Instructional Gaming | Games For Thinkers",
+    description: "Review research on the WFF ’N PROOF Instructional Gaming Program, including findings on math achievement, attendance, applied concepts and learning outcomes.",
     alternates: {
         canonical: "https://gamesforthinkers.org/research/summary-of-research",
     },
