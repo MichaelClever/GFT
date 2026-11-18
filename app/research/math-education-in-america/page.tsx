@@ -10,9 +10,31 @@ export const metadata: Metadata = {
 };
 
 
+const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Math Education in America",
+    description: "Buzz Allen’s essay on math education in America and why technology alone cannot solve deeper problems in mathematics teaching and learning.",
+    mainEntityOfPage: "https://gamesforthinkers.org/research/math-education-in-america",
+    url: "https://gamesforthinkers.org/research/math-education-in-america",
+    author: {
+        "@type": "Person",
+        name: "Buzz Allen",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "Accelerated Learning Foundation",
+        url: "https://gamesforthinkers.org",
+    },
+};
+
 export default function MathEducationPage() {
     return (
         <main className="relative w-full flex flex-col font-lora min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData).replace(/</g, "\\u003c") }}
+            />
             <Navbar />
             <div className="flex-1 w-full flex flex-col items-center justify-center p-4 md:p-8 z-10 relative overflow-x-hidden pt-10 pb-20">
                 <div className="w-full max-w-[1400px] flex flex-col items-center justify-center">
