@@ -11,6 +11,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/",
     },
+    openGraph: {
+        title: "Educational Board Games for Critical Thinking | Games For Thinkers",
+        description: "Educational board games for math, logic, language, science and social studies, designed for students, teachers, homeschool families and thoughtful play.",
+        url: "https://gamesforthinkers.org/",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Educational Board Games for Critical Thinking | Games For Thinkers",
+        description: "Educational board games for math, logic, language, science and social studies, designed for students, teachers, homeschool families and thoughtful play.",
+    },
 };
 
 
