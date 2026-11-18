@@ -7,6 +7,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/research",
     },
+    openGraph: {
+        title: "Educational Game Research Library | Games For Thinkers",
+        description: "Read research and essays on instructional gaming, math education, critical thinking and learning through games from the Games For Thinkers research library.",
+        url: "https://gamesforthinkers.org/research",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Educational Game Research Library | Games For Thinkers",
+        description: "Read research and essays on instructional gaming, math education, critical thinking and learning through games from the Games For Thinkers research library.",
+    },
 };
 
 
