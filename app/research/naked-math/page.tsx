@@ -10,9 +10,31 @@ export const metadata: Metadata = {
 };
 
 
+const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Naked Math",
+    description: "Buzz Allen’s Naked Math, an essay on mathematics learning, education and the ideas behind Games For Thinkers’ approach to instructional gaming.",
+    mainEntityOfPage: "https://gamesforthinkers.org/research/naked-math",
+    url: "https://gamesforthinkers.org/research/naked-math",
+    author: {
+        "@type": "Person",
+        name: "Buzz Allen",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "Accelerated Learning Foundation",
+        url: "https://gamesforthinkers.org",
+    },
+};
+
 export default function NakedMathPage() {
     return (
         <main className="relative w-full flex flex-col font-lora min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData).replace(/</g, "\\u003c") }}
+            />
             <Navbar />
             <div className="flex-1 w-full flex flex-col items-center justify-center p-4 md:p-8 z-10 relative overflow-x-hidden pt-10 pb-20">
                 <div className="w-full max-w-[1400px] flex flex-col items-center justify-center">
