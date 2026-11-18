@@ -3,6 +3,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductByHandle } from "@/lib/shopify/productMap";
 export const metadata: Metadata = {
+    title: "Logic & Critical Thinking Games | Games For Thinkers",
+    description: "Explore logic, reasoning, strategy and puzzle games including WFF ’N PROOF, TAC-TICKLE, QWIK-SANE and CONFIGURATIONS for students and adults.",
     alternates: {
         canonical: "https://gamesforthinkers.org/logic",
     },
