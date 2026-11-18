@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import Link from 'next/link';
 export const metadata: Metadata = {
+    title: "Educational Games for Teachers & Schools | Games For Thinkers",
+    description: "Resources for teachers, public schools and classrooms using educational games for math, reasoning and critical thinking, with free program videos and demonstrations.",
     alternates: {
         canonical: "https://gamesforthinkers.org/teachers",
     },
