@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { OnlineGamesBookWrapper } from "@/components/features/OnlineGamesBookWrapper";
 export const metadata: Metadata = {
+    title: "Online Games: What Do They Teach? | Games For Thinkers",
+    description: "Read Buzz Allen’s essay examining what online games teach and how game design can shape learning, habits, skills and educational experience.",
     alternates: {
         canonical: "https://gamesforthinkers.org/research/online-games",
     },
