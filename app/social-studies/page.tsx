@@ -3,6 +3,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductByHandle } from "@/lib/shopify/productMap";
 export const metadata: Metadata = {
+    title: "Media Literacy & Propaganda Games | Games For Thinkers",
+    description: "Explore The Propaganda Game, a social studies learning game about persuasion techniques, faulty reasoning, advertising, media literacy and critical thinking.",
     alternates: {
         canonical: "https://gamesforthinkers.org/social-studies",
     },
