@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { MathEducationBookWrapper } from "@/components/features/MathEducationBookWrapper";
 export const metadata: Metadata = {
+    title: "Math Education in America by Buzz Allen | Games For Thinkers",
+    description: "Read Buzz Allen’s essay on math education in America and why technology alone cannot solve deeper problems in mathematics teaching and learning.",
     alternates: {
         canonical: "https://gamesforthinkers.org/research/math-education-in-america",
     },
