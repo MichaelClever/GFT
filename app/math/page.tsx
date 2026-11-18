@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/math",
     },
+    openGraph: {
+        title: "Educational Math Games & Math Strategy Games | Games For Thinkers",
+        description: "Explore EQUATIONS, ON-SETS and other educational math games for problem solving, arithmetic, algebra, classrooms, homeschool and advanced learners.",
+        url: "https://gamesforthinkers.org/math",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Educational Math Games & Math Strategy Games | Games For Thinkers",
+        description: "Explore EQUATIONS, ON-SETS and other educational math games for problem solving, arithmetic, algebra, classrooms, homeschool and advanced learners.",
+    },
 };
 
 
