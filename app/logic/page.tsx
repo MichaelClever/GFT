@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/logic",
     },
+    openGraph: {
+        title: "Logic & Critical Thinking Games | Games For Thinkers",
+        description: "Explore logic, reasoning, strategy and puzzle games including WFF ’N PROOF, TAC-TICKLE, QWIK-SANE and CONFIGURATIONS for students and adults.",
+        url: "https://gamesforthinkers.org/logic",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Logic & Critical Thinking Games | Games For Thinkers",
+        description: "Explore logic, reasoning, strategy and puzzle games including WFF ’N PROOF, TAC-TICKLE, QWIK-SANE and CONFIGURATIONS for students and adults.",
+    },
 };
 
 
