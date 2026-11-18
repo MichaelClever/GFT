@@ -3,6 +3,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductByHandle } from "@/lib/shopify/productMap";
 export const metadata: Metadata = {
+    title: "Language Arts, Grammar & Word Games | Games For Thinkers",
+    description: "Explore educational language games for grammar, vocabulary, spelling and word structure, including LinguiSHTIK and ON-WORDS for students and families.",
     alternates: {
         canonical: "https://gamesforthinkers.org/language",
     },
