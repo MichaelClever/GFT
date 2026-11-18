@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/social-studies",
     },
+    openGraph: {
+        title: "Media Literacy & Propaganda Games | Games For Thinkers",
+        description: "Explore The Propaganda Game, a social studies learning game about persuasion techniques, faulty reasoning, advertising, media literacy and critical thinking.",
+        url: "https://gamesforthinkers.org/social-studies",
+        siteName: "Games For Thinkers",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Media Literacy & Propaganda Games | Games For Thinkers",
+        description: "Explore The Propaganda Game, a social studies learning game about persuasion techniques, faulty reasoning, advertising, media literacy and critical thinking.",
+    },
 };
 
 
