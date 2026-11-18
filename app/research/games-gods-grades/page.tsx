@@ -10,9 +10,31 @@ export const metadata: Metadata = {
 };
 
 
+const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Games, Gods and Grades",
+    description: "Buzz Allen’s essay Games, Gods and Grades, exploring instructional gaming, education and the role of games in learning and academic achievement.",
+    mainEntityOfPage: "https://gamesforthinkers.org/research/games-gods-grades",
+    url: "https://gamesforthinkers.org/research/games-gods-grades",
+    author: {
+        "@type": "Person",
+        name: "Buzz Allen",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "Accelerated Learning Foundation",
+        url: "https://gamesforthinkers.org",
+    },
+};
+
 export default function GamesGodsGradesPage() {
     return (
         <main className="relative w-full flex flex-col font-lora min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData).replace(/</g, "\\u003c") }}
+            />
             <Navbar />
             <div className="flex-1 w-full flex flex-col items-center justify-center p-4 md:p-8 z-10 relative overflow-x-hidden pt-10 pb-20">
                 <div className="w-full max-w-[1400px] flex flex-col items-center justify-center">
