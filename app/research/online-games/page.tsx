@@ -7,6 +7,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/research/online-games",
     },
+    openGraph: {
+        title: "Online Games: What Do They Teach? | Games For Thinkers",
+        description: "Read Buzz Allen’s essay examining what online games teach and how game design can shape learning, habits, skills and educational experience.",
+        url: "https://gamesforthinkers.org/research/online-games",
+        siteName: "Games For Thinkers",
+        type: "article",
+    },
+    twitter: {
+        card: "summary",
+        title: "Online Games: What Do They Teach? | Games For Thinkers",
+        description: "Read Buzz Allen’s essay examining what online games teach and how game design can shape learning, habits, skills and educational experience.",
+    },
 };
 
 
