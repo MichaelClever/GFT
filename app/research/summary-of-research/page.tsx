@@ -10,9 +10,27 @@ export const metadata: Metadata = {
 };
 
 
+const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Summary of Research on the WFF ’N PROOF Instructional Gaming Program",
+    description: "Research on the WFF ’N PROOF Instructional Gaming Program, including findings on math achievement, attendance, applied concepts and learning outcomes.",
+    mainEntityOfPage: "https://gamesforthinkers.org/research/summary-of-research",
+    url: "https://gamesforthinkers.org/research/summary-of-research",
+    publisher: {
+        "@type": "Organization",
+        name: "Accelerated Learning Foundation",
+        url: "https://gamesforthinkers.org",
+    },
+};
+
 export default function SummaryOfResearchPage() {
     return (
         <main className="relative w-full flex flex-col font-lora min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData).replace(/</g, "\\u003c") }}
+            />
             <Navbar />
             <div className="flex-1 w-full flex flex-col items-center justify-center p-4 md:p-8 z-10 relative overflow-x-hidden pt-4 pb-20">
                 <div className="w-full max-w-[1400px] flex flex-col items-center justify-center">
