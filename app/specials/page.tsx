@@ -3,6 +3,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductByHandle } from "@/lib/shopify/productMap";
 export const metadata: Metadata = {
+    title: "Educational Game Bundles & Specials | Games For Thinkers",
+    description: "Save on educational game bundles and collections, including 3-game and 7-game specials and the complete Games For Thinkers library.",
     alternates: {
         canonical: "https://gamesforthinkers.org/specials",
     },
