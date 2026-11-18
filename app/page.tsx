@@ -6,6 +6,8 @@ import { GFTSearchWidget } from "@/components/marketing/GFTSearchWidget";
 import { VideoGrid } from "@/components/marketing/VideoGrid";
 import { SpecialsButton } from "@/components/marketing/SpecialsButton";
 export const metadata: Metadata = {
+    title: "Educational Board Games for Critical Thinking | Games For Thinkers",
+    description: "Educational board games for math, logic, language, science and social studies, designed for students, teachers, homeschool families and thoughtful play.",
     alternates: {
         canonical: "https://gamesforthinkers.org/",
     },
