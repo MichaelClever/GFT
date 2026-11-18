@@ -7,6 +7,18 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://gamesforthinkers.org/research/summary-of-research",
     },
+    openGraph: {
+        title: "Research on WFF ’N PROOF Instructional Gaming | Games For Thinkers",
+        description: "Review research on the WFF ’N PROOF Instructional Gaming Program, including findings on math achievement, attendance, applied concepts and learning outcomes.",
+        url: "https://gamesforthinkers.org/research/summary-of-research",
+        siteName: "Games For Thinkers",
+        type: "article",
+    },
+    twitter: {
+        card: "summary",
+        title: "Research on WFF ’N PROOF Instructional Gaming | Games For Thinkers",
+        description: "Review research on the WFF ’N PROOF Instructional Gaming Program, including findings on math achievement, attendance, applied concepts and learning outcomes.",
+    },
 };
 
 
