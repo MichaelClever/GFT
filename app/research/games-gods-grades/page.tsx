@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { GamesGodsGradesBookWrapper } from "@/components/features/GamesGodsGradesBookWrapper";
 export const metadata: Metadata = {
+    title: "Games, Gods and Grades by Buzz Allen | Games For Thinkers",
+    description: "Read Buzz Allen’s essay Games, Gods and Grades, exploring instructional gaming, education and the role of games in learning and academic achievement.",
     alternates: {
         canonical: "https://gamesforthinkers.org/research/games-gods-grades",
     },
