@@ -3,6 +3,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductByHandle } from "@/lib/shopify/productMap";
 export const metadata: Metadata = {
+    title: "Scientific Reasoning & Science Games | Games For Thinkers",
+    description: "Explore QUERIES ’N THEORIES, an educational science and language game built around scientific reasoning, hypothesis testing, patterns and careful questioning.",
     alternates: {
         canonical: "https://gamesforthinkers.org/science",
     },
